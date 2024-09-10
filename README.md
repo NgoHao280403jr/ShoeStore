@@ -26,6 +26,7 @@
 ## 4. Triển Khai Dự Án
 
 ### 4.1 Mô Tả Tổng Quan
+- AI: Gợi ý sản phẩm 
 - Hệ thống bán hàng trực tuyến chuyên nghiệp tập trung vào giày thể thao.
 - Các tính năng chính bao gồm:
   - Quản lý danh mục sản phẩm
