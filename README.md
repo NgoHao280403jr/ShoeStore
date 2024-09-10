@@ -31,7 +31,6 @@
   - Quản lý danh mục sản phẩm
   - Tìm kiếm và lọc sản phẩm
   - Thêm sản phẩm vào giỏ hàng
-  - Thanh toán trực tuyến
   - Quản lý đơn hàng và tài khoản khách hàng
 
 ### 4.2 Yêu Cầu Chức Năng
