@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("QLBanGiay.Models")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+429feffbe9de2f63c94e14aa6f84c3a4cbffae7c")]
 [assembly: System.Reflection.AssemblyProductAttribute("QLBanGiay.Models")]
 [assembly: System.Reflection.AssemblyTitleAttribute("QLBanGiay.Models")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -54,12 +54,14 @@ D:\QLBanGiay\QLBanGIayApplication\bin\Debug\net8.0-windows\Npgsql.EntityFramewor
 D:\QLBanGiay\QLBanGIayApplication\bin\Debug\net8.0-windows\QLBanGiay.Models.dll
 D:\QLBanGiay\QLBanGIayApplication\bin\Debug\net8.0-windows\QLBanGiay.Models.pdb
 D:\QLBanGiay\QLBanGIayApplication\obj\Debug\net8.0-windows\QLBanGiay_Application.csproj.AssemblyReference.cache
-D:\QLBanGiay\QLBanGIayApplication\obj\Debug\net8.0-windows\QLBanGiay_Application.frm_Login.resources
+D:\QLBanGiay\QLBanGIayApplication\obj\Debug\net8.0-windows\QLBanGiay_Application.View.frm_Login.resources
+D:\QLBanGiay\QLBanGIayApplication\obj\Debug\net8.0-windows\QLBanGiay_Application.View.frm_Main.resources
 D:\QLBanGiay\QLBanGIayApplication\obj\Debug\net8.0-windows\QLBanGiay_Application.csproj.GenerateResource.cache
 D:\QLBanGiay\QLBanGIayApplication\obj\Debug\net8.0-windows\QLBanGiay_Application.GeneratedMSBuildEditorConfig.editorconfig
 D:\QLBanGiay\QLBanGIayApplication\obj\Debug\net8.0-windows\QLBanGiay_Application.AssemblyInfoInputs.cache
 D:\QLBanGiay\QLBanGIayApplication\obj\Debug\net8.0-windows\QLBanGiay_Application.AssemblyInfo.cs
 D:\QLBanGiay\QLBanGIayApplication\obj\Debug\net8.0-windows\QLBanGiay_Application.csproj.CoreCompileInputs.cache
+D:\QLBanGiay\QLBanGIayApplication\obj\Debug\net8.0-windows\QLBanGiay_Application.sourcelink.json
 D:\QLBanGiay\QLBanGIayApplication\obj\Debug\net8.0-windows\QLBanGia.85120ED2.Up2Date
 D:\QLBanGiay\QLBanGIayApplication\obj\Debug\net8.0-windows\QLBanGiay_Application.dll
 D:\QLBanGiay\QLBanGIayApplication\obj\Debug\net8.0-windows\refint\QLBanGiay_Application.dll
