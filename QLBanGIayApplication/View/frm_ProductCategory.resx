@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="guna2ImageButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btn_Timkiem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EAAACxABrSO9dQAAAtpJREFUaEPtmbmqFEEUhsdATU1ccAnURzBw9xUEN9xA1AcQXFAEl0x9AcFIDQQR
+        DAAACwwBP0AiyAAAAtpJREFUaEPtmbmqFEEUhsdATU1ccAnURzBw9xUEN9xA1AcQXFAEl0x9AcFIDQQR
         AzeM3RK3NzAxVSPFff2+Yg5chrkyc6u6pucyP3zYVc6t06e76tSp052JJmqnlsAhuA6v4QP86PIeXoH/
         dxAWQ+u0Be7DT/g7IP72HmyGkWs1PIS4uV/wGI7CWlgEc7t4vQ6OwRPwt/F3D2AVjET74BN4I5/hAiyE
         QaVjF+ELOMZH2ANVdRbiad6EZTBTLYdbEOOdgSo6Dxr8072eAyV0BH5DFWecThrS4A47CmsnhDO77WhC

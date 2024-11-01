@@ -27,14 +27,12 @@ namespace QLBanGiay_Application.View
             string username = txt_UserName.Text.Trim();
             string password = txt_PassWord.Text.Trim();
 
-            // Kiểm tra nếu tên đăng nhập hoặc mật khẩu để trống
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("Tên đăng nhập và mật khẩu không được để trống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Đang kiểm tra thông tin đăng nhập
             try
             {
                 if (_userService.ValidateLogin(username, password))
@@ -42,7 +40,7 @@ namespace QLBanGiay_Application.View
                     MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     this.Hide();
-                    frm_Employee mainForm = new frm_Employee();
+                    frm_ProductCategory mainForm = new frm_ProductCategory();
                     mainForm.Show();
                 }
                 else

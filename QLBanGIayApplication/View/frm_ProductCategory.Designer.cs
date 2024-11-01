@@ -32,12 +32,12 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_ProductCategory));
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -51,14 +51,14 @@
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             groupBox1 = new GroupBox();
             txt_Timkiem = new Guna.UI2.WinForms.Guna2TextBox();
-            guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
+            btn_Timkiem = new Guna.UI2.WinForms.Guna2ImageButton();
             groupBox2 = new GroupBox();
+            cbo_Madmcha = new Guna.UI2.WinForms.Guna2ComboBox();
             guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             txt_Tendm = new Guna.UI2.WinForms.Guna2TextBox();
             guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             txt_Madm = new Guna.UI2.WinForms.Guna2TextBox();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            cbo_Madmcha = new Guna.UI2.WinForms.Guna2ComboBox();
             groupBox3 = new GroupBox();
             btn_Thoat = new Guna.UI2.WinForms.Guna2Button();
             btn_Xoa = new Guna.UI2.WinForms.Guna2Button();
@@ -77,7 +77,7 @@
             // groupBox1
             // 
             groupBox1.Controls.Add(txt_Timkiem);
-            groupBox1.Controls.Add(guna2ImageButton1);
+            groupBox1.Controls.Add(btn_Timkiem);
             groupBox1.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             groupBox1.ForeColor = SystemColors.HotTrack;
             groupBox1.Location = new Point(12, 12);
@@ -109,20 +109,20 @@
             txt_Timkiem.Size = new Size(372, 42);
             txt_Timkiem.TabIndex = 1;
             // 
-            // guna2ImageButton1
+            // btn_Timkiem
             // 
-            guna2ImageButton1.CheckedState.ImageSize = new Size(64, 64);
-            guna2ImageButton1.HoverState.ImageSize = new Size(64, 64);
-            guna2ImageButton1.Image = (Image)resources.GetObject("guna2ImageButton1.Image");
-            guna2ImageButton1.ImageOffset = new Point(0, 0);
-            guna2ImageButton1.ImageRotate = 0F;
-            guna2ImageButton1.ImageSize = new Size(30, 30);
-            guna2ImageButton1.Location = new Point(30, 26);
-            guna2ImageButton1.Name = "guna2ImageButton1";
-            guna2ImageButton1.PressedState.ImageSize = new Size(64, 64);
-            guna2ImageButton1.ShadowDecoration.CustomizableEdges = customizableEdges3;
-            guna2ImageButton1.Size = new Size(71, 62);
-            guna2ImageButton1.TabIndex = 0;
+            btn_Timkiem.CheckedState.ImageSize = new Size(64, 64);
+            btn_Timkiem.HoverState.ImageSize = new Size(64, 64);
+            btn_Timkiem.Image = (Image)resources.GetObject("btn_Timkiem.Image");
+            btn_Timkiem.ImageOffset = new Point(0, 0);
+            btn_Timkiem.ImageRotate = 0F;
+            btn_Timkiem.ImageSize = new Size(30, 30);
+            btn_Timkiem.Location = new Point(30, 26);
+            btn_Timkiem.Name = "btn_Timkiem";
+            btn_Timkiem.PressedState.ImageSize = new Size(64, 64);
+            btn_Timkiem.ShadowDecoration.CustomizableEdges = customizableEdges3;
+            btn_Timkiem.Size = new Size(71, 62);
+            btn_Timkiem.TabIndex = 0;
             // 
             // groupBox2
             // 
@@ -140,6 +140,24 @@
             groupBox2.TabIndex = 2;
             groupBox2.TabStop = false;
             groupBox2.Text = "Thông tin danh mục con";
+            // 
+            // cbo_Madmcha
+            // 
+            cbo_Madmcha.BackColor = Color.Transparent;
+            cbo_Madmcha.BorderColor = Color.FromArgb(0, 192, 192);
+            cbo_Madmcha.CustomizableEdges = customizableEdges4;
+            cbo_Madmcha.DrawMode = DrawMode.OwnerDrawFixed;
+            cbo_Madmcha.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbo_Madmcha.FocusedColor = Color.FromArgb(94, 148, 255);
+            cbo_Madmcha.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            cbo_Madmcha.Font = new Font("Segoe UI", 10F);
+            cbo_Madmcha.ForeColor = Color.FromArgb(68, 88, 112);
+            cbo_Madmcha.ItemHeight = 30;
+            cbo_Madmcha.Location = new Point(107, 282);
+            cbo_Madmcha.Name = "cbo_Madmcha";
+            cbo_Madmcha.ShadowDecoration.CustomizableEdges = customizableEdges5;
+            cbo_Madmcha.Size = new Size(372, 36);
+            cbo_Madmcha.TabIndex = 6;
             // 
             // guna2HtmlLabel3
             // 
@@ -218,24 +236,6 @@
             guna2HtmlLabel1.Size = new Size(126, 30);
             guna2HtmlLabel1.TabIndex = 0;
             guna2HtmlLabel1.Text = "Mã danh mục:";
-            // 
-            // cbo_Madmcha
-            // 
-            cbo_Madmcha.BackColor = Color.Transparent;
-            cbo_Madmcha.BorderColor = Color.FromArgb(0, 192, 192);
-            cbo_Madmcha.CustomizableEdges = customizableEdges4;
-            cbo_Madmcha.DrawMode = DrawMode.OwnerDrawFixed;
-            cbo_Madmcha.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbo_Madmcha.FocusedColor = Color.FromArgb(94, 148, 255);
-            cbo_Madmcha.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            cbo_Madmcha.Font = new Font("Segoe UI", 10F);
-            cbo_Madmcha.ForeColor = Color.FromArgb(68, 88, 112);
-            cbo_Madmcha.ItemHeight = 30;
-            cbo_Madmcha.Location = new Point(107, 282);
-            cbo_Madmcha.Name = "cbo_Madmcha";
-            cbo_Madmcha.ShadowDecoration.CustomizableEdges = customizableEdges5;
-            cbo_Madmcha.Size = new Size(372, 36);
-            cbo_Madmcha.TabIndex = 6;
             // 
             // groupBox3
             // 
@@ -338,7 +338,7 @@
             groupBox4.ForeColor = SystemColors.HotTrack;
             groupBox4.Location = new Point(524, 4);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(579, 718);
+            groupBox4.Size = new Size(579, 586);
             groupBox4.TabIndex = 4;
             groupBox4.TabStop = false;
             groupBox4.Text = "Danh sách danh mục con";
@@ -365,12 +365,13 @@
             dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(71, 69, 94);
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dgv_danhsachdm.DefaultCellStyle = dataGridViewCellStyle3;
+            dgv_danhsachdm.Dock = DockStyle.Fill;
             dgv_danhsachdm.GridColor = Color.FromArgb(231, 229, 255);
-            dgv_danhsachdm.Location = new Point(6, 37);
+            dgv_danhsachdm.Location = new Point(3, 34);
             dgv_danhsachdm.Name = "dgv_danhsachdm";
             dgv_danhsachdm.RowHeadersVisible = false;
             dgv_danhsachdm.RowHeadersWidth = 51;
-            dgv_danhsachdm.Size = new Size(567, 641);
+            dgv_danhsachdm.Size = new Size(573, 549);
             dgv_danhsachdm.TabIndex = 0;
             dgv_danhsachdm.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             dgv_danhsachdm.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -404,6 +405,7 @@
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Name = "frm_ProductCategory";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "frm_ProductCategory";
             groupBox1.ResumeLayout(false);
             groupBox2.ResumeLayout(false);
@@ -419,7 +421,7 @@
 
         private GroupBox groupBox1;
         private Guna.UI2.WinForms.Guna2TextBox txt_Timkiem;
-        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
+        private Guna.UI2.WinForms.Guna2ImageButton btn_Timkiem;
         private GroupBox groupBox2;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
         private Guna.UI2.WinForms.Guna2TextBox txt_Tendm;
