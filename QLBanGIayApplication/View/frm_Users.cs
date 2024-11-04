@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace QLBanGiay_Application.View
 {
-    public partial class frm_Main : Form
+    public partial class frm_Users : Form
     {
-        public frm_Main()
+        public frm_Users()
         {
             InitializeComponent();
-        }
-
-        private void frm_Main_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

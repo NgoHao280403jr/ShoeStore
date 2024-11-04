@@ -27,19 +27,44 @@ namespace QLBanGiay_Application.View
             string username = txt_UserName.Text.Trim();
             string password = txt_PassWord.Text.Trim();
 
-            // Kiểm tra thông tin đăng nhập
-            if (_userService.ValidateLogin(username, password))
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
-                MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                
-                this.Hide();
+                MessageBox.Show("Tên đăng nhập và mật khẩu không được để trống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-                frm_Main mainForm = new frm_Main();
-                mainForm.Show();
+            try
+            {
+                if (_userService.ValidateLogin(username, password))
+                {
+                    MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    this.Hide();
+                    frm_ProductCategory mainForm = new frm_ProductCategory();
+                    mainForm.Show();
+                }
+                else
+                {
+
+                    MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Xử lý lỗi
+                MessageBox.Show("Có lỗi xảy ra: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ckHienThi_CheckedChanged(object sender, EventArgs e)
+        {          
+            if (ckHienThi.Checked)
+            {
+                txt_PassWord.PasswordChar = '\0'; // Hiển thị mật khẩu
             }
             else
             {
-                MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txt_PassWord.PasswordChar = '*'; // Ẩn mật khẩu
             }
         }
     }
