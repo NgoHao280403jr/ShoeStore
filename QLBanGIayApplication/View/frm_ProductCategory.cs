@@ -18,6 +18,7 @@ namespace QLBanGiay_Application.View
     {
         private readonly CategoryService _categoryService;
         private readonly ParentService _parentService;
+        private readonly ProductService _productService;
         private List<Productcategory> categories;
         private readonly QlShopBanGiayContext _context;
 
@@ -33,6 +34,7 @@ namespace QLBanGiay_Application.View
 
             _context = new QlShopBanGiayContext(); // Tạo một đối tượng context
             _categoryService = new CategoryService(new CategoryRepository(_context));
+            _productService = new ProductService(new ProductRepository(_context));
             _parentService = new ParentService(new ParentCategoryRepository(_context));
         }
 
@@ -40,8 +42,36 @@ namespace QLBanGiay_Application.View
         {
             if (long.TryParse(txt_Madm.Text, out long categoryId))
             {
+                // Kiểm tra xem có sản phẩm nào thuộc danh mục này không
+                var relatedProducts = _productService.GetProductsByCategory(categoryId);
+
+                if (relatedProducts.Any())
+                {
+                    // Hiển thị thông báo cho người dùng
+                    var result = MessageBox.Show("Danh mục này có sản phẩm liên quan. Bạn có muốn xóa tất cả sản phẩm liên quan không?",
+                                                  "Thông báo",
+                                                  MessageBoxButtons.YesNo,
+                                                  MessageBoxIcon.Warning);
+                    if (result == DialogResult.Yes)
+                    {
+                        // Xóa tất cả sản phẩm liên quan trước
+                        foreach (var product in relatedProducts)
+                        {
+                            long productId = product.Productid; 
+                            _productService.DeleteProduct(productId);
+                        }
+                    }
+                    else
+                    {
+                        return; // Ngừng hàm nếu người dùng không muốn xóa
+                    }
+                }
+
+                // Tiến hành xóa danh mục
                 _categoryService.DeleteCategory(categoryId);
+                _context.SaveChanges(); // Lưu thay đổi vào cơ sở dữ liệu
                 LoadCategories(); // Tải lại danh sách sau khi xóa
+                MessageBox.Show("Xóa danh mục thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -120,12 +150,17 @@ namespace QLBanGiay_Application.View
 
         private void Btn_Timkiem_Click(object? sender, EventArgs e)
         {
-            string searchTerm = txt_Timkiem.Text;
+            string searchTerm = txt_Timkiem.Text.Trim().ToLower(); 
             var categories = _categoryService.GetAllCategories();
 
-            // Lọc danh sách danh mục dựa trên điều kiện tìm kiếm
-            var filteredCategories = categories.Where(c => c.Categoryname.Contains(searchTerm)).ToList();
+            var filteredCategories = categories.Where(c => c.Categoryname.ToLower().Contains(searchTerm)).ToList();
+
             dgv_danhsachdm.DataSource = filteredCategories;
+
+            if (filteredCategories.Count == 0)
+            {
+                MessageBox.Show("Không tìm thấy danh mục nào.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void Frm_ProductCategory_Load(object? sender, EventArgs e)

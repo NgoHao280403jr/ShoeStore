@@ -3,20 +3,88 @@
   "WorkspaceRootPath": "D:\\QLBanGiay\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{F9B4D512-6782-418E-9E11-A0CBD715419C}|QLBanGiay\\QLBanGiay.csproj|d:\\qlbangiay\\qlbangiay\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{F9B4D512-6782-418E-9E11-A0CBD715419C}|QLBanGiay\\QLBanGiay.csproj|solutionrelative:qlbangiay\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B50DF9E0-BFD2-49D0-B25E-70E42967301B}|QLBanGIayApplication\\QLBanGiay_Application.csproj|d:\\qlbangiay\\qlbangiayapplication\\view\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B50DF9E0-BFD2-49D0-B25E-70E42967301B}|QLBanGIayApplication\\QLBanGiay_Application.csproj|solutionrelative:qlbangiayapplication\\view\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B50DF9E0-BFD2-49D0-B25E-70E42967301B}|QLBanGIayApplication\\QLBanGiay_Application.csproj|d:\\qlbangiay\\qlbangiayapplication\\view\\frm_users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B50DF9E0-BFD2-49D0-B25E-70E42967301B}|QLBanGIayApplication\\QLBanGiay_Application.csproj|solutionrelative:qlbangiayapplication\\view\\frm_users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B50DF9E0-BFD2-49D0-B25E-70E42967301B}|QLBanGIayApplication\\QLBanGiay_Application.csproj|d:\\qlbangiay\\qlbangiayapplication\\view\\frm_products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B50DF9E0-BFD2-49D0-B25E-70E42967301B}|QLBanGIayApplication\\QLBanGiay_Application.csproj|solutionrelative:qlbangiayapplication\\view\\frm_products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B50DF9E0-BFD2-49D0-B25E-70E42967301B}|QLBanGIayApplication\\QLBanGiay_Application.csproj|d:\\qlbangiay\\qlbangiayapplication\\view\\frm_productcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B50DF9E0-BFD2-49D0-B25E-70E42967301B}|QLBanGIayApplication\\QLBanGiay_Application.csproj|solutionrelative:qlbangiayapplication\\view\\frm_productcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B50DF9E0-BFD2-49D0-B25E-70E42967301B}|QLBanGIayApplication\\QLBanGiay_Application.csproj|d:\\qlbangiay\\qlbangiayapplication\\view\\frm_parentproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B50DF9E0-BFD2-49D0-B25E-70E42967301B}|QLBanGIayApplication\\QLBanGiay_Application.csproj|solutionrelative:qlbangiayapplication\\view\\frm_parentproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B50DF9E0-BFD2-49D0-B25E-70E42967301B}|QLBanGIayApplication\\QLBanGiay_Application.csproj|d:\\qlbangiay\\qlbangiayapplication\\view\\frm_orderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B50DF9E0-BFD2-49D0-B25E-70E42967301B}|QLBanGIayApplication\\QLBanGiay_Application.csproj|solutionrelative:qlbangiayapplication\\view\\frm_orderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B50DF9E0-BFD2-49D0-B25E-70E42967301B}|QLBanGIayApplication\\QLBanGiay_Application.csproj|d:\\qlbangiay\\qlbangiayapplication\\view\\frm_orders.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B50DF9E0-BFD2-49D0-B25E-70E42967301B}|QLBanGIayApplication\\QLBanGiay_Application.csproj|solutionrelative:qlbangiayapplication\\view\\frm_orders.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B50DF9E0-BFD2-49D0-B25E-70E42967301B}|QLBanGIayApplication\\QLBanGiay_Application.csproj|d:\\qlbangiay\\qlbangiayapplication\\view\\frm_invoice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B50DF9E0-BFD2-49D0-B25E-70E42967301B}|QLBanGIayApplication\\QLBanGiay_Application.csproj|solutionrelative:qlbangiayapplication\\view\\frm_invoice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B50DF9E0-BFD2-49D0-B25E-70E42967301B}|QLBanGIayApplication\\QLBanGiay_Application.csproj|d:\\qlbangiay\\qlbangiayapplication\\view\\frm_employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B50DF9E0-BFD2-49D0-B25E-70E42967301B}|QLBanGIayApplication\\QLBanGiay_Application.csproj|solutionrelative:qlbangiayapplication\\view\\frm_employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B50DF9E0-BFD2-49D0-B25E-70E42967301B}|QLBanGIayApplication\\QLBanGiay_Application.csproj|D:\\QLBanGiay\\qlbangiayapplication\\view\\frm_login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B50DF9E0-BFD2-49D0-B25E-70E42967301B}|QLBanGIayApplication\\QLBanGiay_Application.csproj|solutionrelative:qlbangiayapplication\\view\\frm_login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B50DF9E0-BFD2-49D0-B25E-70E42967301B}|QLBanGIayApplication\\QLBanGiay_Application.csproj|d:\\qlbangiay\\qlbangiayapplication\\view\\frm_customers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B50DF9E0-BFD2-49D0-B25E-70E42967301B}|QLBanGIayApplication\\QLBanGiay_Application.csproj|solutionrelative:qlbangiayapplication\\view\\frm_customers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\QLBanGiay\\QLBanGiay\\obj\\Debug\\net8.0\\QLBanGiay.AssemblyInfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:QLBanGiay\\obj\\Debug\\net8.0\\QLBanGiay.AssemblyInfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\QLBanGiay\\QLBanGiay\\obj\\Debug\\net8.0\\QLBanGiay.AssemblyInfoInputs.cache||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:QLBanGiay\\obj\\Debug\\net8.0\\QLBanGiay.AssemblyInfoInputs.cache||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\QLBanGiay\\.vs\\QLBanGiay\\v17\\DocumentLayout.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.vs\\QLBanGiay\\v17\\DocumentLayout.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B50DF9E0-BFD2-49D0-B25E-70E42967301B}|QLBanGIayApplication\\QLBanGiay_Application.csproj|D:\\QLBanGiay\\qlbangiayapplication\\view\\frm_main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B50DF9E0-BFD2-49D0-B25E-70E42967301B}|QLBanGIayApplication\\QLBanGiay_Application.csproj|solutionrelative:qlbangiayapplication\\view\\frm_main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7599913C-295D-473E-B9B3-230F43534A17}|QLBanGiay.Models\\QLBanGiay.Models.csproj|d:\\qlbangiay\\qlbangiay.models\\models\\qlshopbangiaycontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7599913C-295D-473E-B9B3-230F43534A17}|QLBanGiay.Models\\QLBanGiay.Models.csproj|solutionrelative:qlbangiay.models\\models\\qlshopbangiaycontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7599913C-295D-473E-B9B3-230F43534A17}|QLBanGiay.Models\\QLBanGiay.Models.csproj|d:\\qlbangiay\\qlbangiay.models\\models\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7599913C-295D-473E-B9B3-230F43534A17}|QLBanGiay.Models\\QLBanGiay.Models.csproj|solutionrelative:qlbangiay.models\\models\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B50DF9E0-BFD2-49D0-B25E-70E42967301B}|QLBanGIayApplication\\QLBanGiay_Application.csproj|d:\\qlbangiay\\qlbangiayapplication\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B50DF9E0-BFD2-49D0-B25E-70E42967301B}|QLBanGIayApplication\\QLBanGiay_Application.csproj|solutionrelative:qlbangiayapplication\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F9B4D512-6782-418E-9E11-A0CBD715419C}|QLBanGiay\\QLBanGiay.csproj|d:\\qlbangiay\\qlbangiay\\models\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F9B4D512-6782-418E-9E11-A0CBD715419C}|QLBanGiay\\QLBanGiay.csproj|solutionrelative:qlbangiay\\models\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B50DF9E0-BFD2-49D0-B25E-70E42967301B}|QLBanGIayApplication\\QLBanGiay_Application.csproj|d:\\qlbangiay\\qlbangiayapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B50DF9E0-BFD2-49D0-B25E-70E42967301B}|QLBanGIayApplication\\QLBanGiay_Application.csproj|solutionrelative:qlbangiayapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F9B4D512-6782-418E-9E11-A0CBD715419C}|QLBanGiay\\QLBanGiay.csproj|d:\\qlbangiay\\qlbangiay\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{F9B4D512-6782-418E-9E11-A0CBD715419C}|QLBanGiay\\QLBanGiay.csproj|solutionrelative:qlbangiay\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7599913C-295D-473E-B9B3-230F43534A17}|QLBanGiay.Models\\QLBanGiay.Models.csproj|d:\\qlbangiay\\qlbangiay.models\\models\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7599913C-295D-473E-B9B3-230F43534A17}|QLBanGiay.Models\\QLBanGiay.Models.csproj|solutionrelative:qlbangiay.models\\models\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\QLBanGiay\\YourWinFormsProject\\frm_Login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -42,7 +110,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -62,20 +130,222 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "D:\\QLBanGiay\\QLBanGiay\\Models\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "QLBanGiay\\Models\\ApplicationDbContext.cs",
-              "ToolTip": "D:\\QLBanGiay\\QLBanGiay\\Models\\ApplicationDbContext.cs",
-              "RelativeToolTip": "QLBanGiay\\Models\\ApplicationDbContext.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAUwAAAAAAAAAAA",
+              "DocumentIndex": 1,
+              "Title": "frmMain.cs",
+              "DocumentMoniker": "D:\\QLBanGiay\\QLBanGIayApplication\\View\\frmMain.cs",
+              "RelativeDocumentMoniker": "QLBanGIayApplication\\View\\frmMain.cs",
+              "ToolTip": "D:\\QLBanGiay\\QLBanGIayApplication\\View\\frmMain.cs",
+              "RelativeToolTip": "QLBanGIayApplication\\View\\frmMain.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-17T07:40:04.412Z",
+              "WhenOpened": "2024-11-04T13:49:54.688Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "frm_Users.cs",
+              "DocumentMoniker": "D:\\QLBanGiay\\QLBanGIayApplication\\View\\frm_Users.cs",
+              "RelativeDocumentMoniker": "QLBanGIayApplication\\View\\frm_Users.cs",
+              "ToolTip": "D:\\QLBanGiay\\QLBanGIayApplication\\View\\frm_Users.cs",
+              "RelativeToolTip": "QLBanGIayApplication\\View\\frm_Users.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-04T13:49:53.566Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "frm_Products.cs",
+              "DocumentMoniker": "D:\\QLBanGiay\\QLBanGIayApplication\\View\\frm_Products.cs",
+              "RelativeDocumentMoniker": "QLBanGIayApplication\\View\\frm_Products.cs",
+              "ToolTip": "D:\\QLBanGiay\\QLBanGIayApplication\\View\\frm_Products.cs",
+              "RelativeToolTip": "QLBanGIayApplication\\View\\frm_Products.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-04T13:49:52.273Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "frm_ProductCategory.cs",
+              "DocumentMoniker": "D:\\QLBanGiay\\QLBanGIayApplication\\View\\frm_ProductCategory.cs",
+              "RelativeDocumentMoniker": "QLBanGIayApplication\\View\\frm_ProductCategory.cs",
+              "ToolTip": "D:\\QLBanGiay\\QLBanGIayApplication\\View\\frm_ProductCategory.cs",
+              "RelativeToolTip": "QLBanGIayApplication\\View\\frm_ProductCategory.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-04T13:49:51.055Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "frm_ParentProduct.cs",
+              "DocumentMoniker": "D:\\QLBanGiay\\QLBanGIayApplication\\View\\frm_ParentProduct.cs",
+              "RelativeDocumentMoniker": "QLBanGIayApplication\\View\\frm_ParentProduct.cs",
+              "ToolTip": "D:\\QLBanGiay\\QLBanGIayApplication\\View\\frm_ParentProduct.cs",
+              "RelativeToolTip": "QLBanGIayApplication\\View\\frm_ParentProduct.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-04T13:49:49.394Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\QLBanGiay\\QLBanGiay\\appsettings.json",
+              "RelativeDocumentMoniker": "QLBanGiay\\appsettings.json",
+              "ToolTip": "D:\\QLBanGiay\\QLBanGiay\\appsettings.json",
+              "RelativeToolTip": "QLBanGiay\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAABoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-10-12T09:00:46.43Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "frm_Orders.cs",
+              "DocumentMoniker": "D:\\QLBanGiay\\QLBanGIayApplication\\View\\frm_Orders.cs",
+              "RelativeDocumentMoniker": "QLBanGIayApplication\\View\\frm_Orders.cs",
+              "ToolTip": "D:\\QLBanGiay\\QLBanGIayApplication\\View\\frm_Orders.cs",
+              "RelativeToolTip": "QLBanGIayApplication\\View\\frm_Orders.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-04T13:49:34.169Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "frm_OrderDetail.cs",
+              "DocumentMoniker": "D:\\QLBanGiay\\QLBanGIayApplication\\View\\frm_OrderDetail.cs",
+              "RelativeDocumentMoniker": "QLBanGIayApplication\\View\\frm_OrderDetail.cs",
+              "ToolTip": "D:\\QLBanGiay\\QLBanGIayApplication\\View\\frm_OrderDetail.cs",
+              "RelativeToolTip": "QLBanGIayApplication\\View\\frm_OrderDetail.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-04T13:49:32.706Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "frm_Invoice.cs",
+              "DocumentMoniker": "D:\\QLBanGiay\\QLBanGIayApplication\\View\\frm_Invoice.cs",
+              "RelativeDocumentMoniker": "QLBanGIayApplication\\View\\frm_Invoice.cs",
+              "ToolTip": "D:\\QLBanGiay\\QLBanGIayApplication\\View\\frm_Invoice.cs",
+              "RelativeToolTip": "QLBanGIayApplication\\View\\frm_Invoice.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-04T13:49:30.67Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "frm_Employee.cs",
+              "DocumentMoniker": "D:\\QLBanGiay\\QLBanGIayApplication\\View\\frm_Employee.cs",
+              "RelativeDocumentMoniker": "QLBanGIayApplication\\View\\frm_Employee.cs",
+              "ToolTip": "D:\\QLBanGiay\\QLBanGIayApplication\\View\\frm_Employee.cs",
+              "RelativeToolTip": "QLBanGIayApplication\\View\\frm_Employee.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-04T13:49:25.486Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "frm_Customers.cs",
+              "DocumentMoniker": "D:\\QLBanGiay\\QLBanGIayApplication\\View\\frm_Customers.cs",
+              "RelativeDocumentMoniker": "QLBanGIayApplication\\View\\frm_Customers.cs",
+              "ToolTip": "D:\\QLBanGiay\\QLBanGIayApplication\\View\\frm_Customers.cs",
+              "RelativeToolTip": "QLBanGIayApplication\\View\\frm_Customers.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-04T13:49:16.157Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "QLBanGiay.AssemblyInfo.cs",
+              "DocumentMoniker": "D:\\QLBanGiay\\QLBanGiay\\obj\\Debug\\net8.0\\QLBanGiay.AssemblyInfo.cs",
+              "RelativeDocumentMoniker": "QLBanGiay\\obj\\Debug\\net8.0\\QLBanGiay.AssemblyInfo.cs",
+              "ToolTip": "D:\\QLBanGiay\\QLBanGiay\\obj\\Debug\\net8.0\\QLBanGiay.AssemblyInfo.cs",
+              "RelativeToolTip": "QLBanGiay\\obj\\Debug\\net8.0\\QLBanGiay.AssemblyInfo.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-04T13:18:00.668Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "QLBanGiay.AssemblyInfoInputs.cache",
+              "DocumentMoniker": "D:\\QLBanGiay\\QLBanGiay\\obj\\Debug\\net8.0\\QLBanGiay.AssemblyInfoInputs.cache",
+              "RelativeDocumentMoniker": "QLBanGiay\\obj\\Debug\\net8.0\\QLBanGiay.AssemblyInfoInputs.cache",
+              "ToolTip": "D:\\QLBanGiay\\QLBanGiay\\obj\\Debug\\net8.0\\QLBanGiay.AssemblyInfoInputs.cache",
+              "RelativeToolTip": "QLBanGiay\\obj\\Debug\\net8.0\\QLBanGiay.AssemblyInfoInputs.cache",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAABAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002368|",
+              "WhenOpened": "2024-11-04T13:17:58.392Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "DocumentLayout.json",
+              "DocumentMoniker": "D:\\QLBanGiay\\.vs\\QLBanGiay\\v17\\DocumentLayout.json",
+              "RelativeDocumentMoniker": ".vs\\QLBanGiay\\v17\\DocumentLayout.json",
+              "ToolTip": "D:\\QLBanGiay\\.vs\\QLBanGiay\\v17\\DocumentLayout.json",
+              "RelativeToolTip": ".vs\\QLBanGiay\\v17\\DocumentLayout.json",
+              "ViewState": "AQIAAGwAAAAAZWZmZiYwwE4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-11-04T13:16:41.466Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "frm_Login.cs [Design]",
+              "DocumentMoniker": "D:\\QLBanGiay\\QLBanGIayApplication\\View\\frm_Login.cs",
+              "RelativeDocumentMoniker": "QLBanGIayApplication\\View\\frm_Login.cs",
+              "ToolTip": "D:\\QLBanGiay\\QLBanGIayApplication\\View\\frm_Login.cs [Design]",
+              "RelativeToolTip": "QLBanGIayApplication\\View\\frm_Login.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-04T12:50:23.967Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "frm_Main.cs [Design]",
+              "DocumentMoniker": "D:\\QLBanGiay\\QLBanGIayApplication\\View\\frm_Main.cs",
+              "RelativeDocumentMoniker": "QLBanGIayApplication\\View\\frm_Main.cs",
+              "ToolTip": "D:\\QLBanGiay\\QLBanGIayApplication\\View\\frm_Main.cs [Design]",
+              "RelativeToolTip": "QLBanGIayApplication\\View\\frm_Main.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-17T14:41:54.865Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "QlShopBanGiayContext.cs",
+              "DocumentMoniker": "D:\\QLBanGiay\\QLBanGiay.Models\\Models\\QlShopBanGiayContext.cs",
+              "RelativeDocumentMoniker": "QLBanGiay.Models\\Models\\QlShopBanGiayContext.cs",
+              "ToolTip": "D:\\QLBanGiay\\QLBanGiay.Models\\Models\\QlShopBanGiayContext.cs",
+              "RelativeToolTip": "QLBanGiay.Models\\Models\\QlShopBanGiayContext.cs",
+              "ViewState": "AQIAABgAAAAAAAAAAAAmwCsAAABzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-23T10:25:50.641Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\QLBanGiay\\QLBanGIayApplication\\Program.cs",
               "RelativeDocumentMoniker": "QLBanGIayApplication\\Program.cs",
@@ -87,7 +357,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 23,
               "Title": "frm_Login.cs",
               "DocumentMoniker": "D:\\QLBanGiay\\QLBanGIayApplication\\frm_Login.cs",
               "RelativeDocumentMoniker": "QLBanGIayApplication\\frm_Login.cs",
@@ -98,7 +368,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 24,
               "Title": "frm_Login.cs [Design]",
               "DocumentMoniker": "D:\\QLBanGiay\\QLBanGIayApplication\\frm_Login.cs",
               "RelativeDocumentMoniker": "QLBanGIayApplication\\frm_Login.cs",
@@ -109,31 +379,43 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\QLBanGiay\\QLBanGiay\\appsettings.json",
-              "RelativeDocumentMoniker": "QLBanGiay\\appsettings.json",
-              "ToolTip": "D:\\QLBanGiay\\QLBanGiay\\appsettings.json",
-              "RelativeToolTip": "QLBanGiay\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAnAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-10-12T09:00:46.43Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 17,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "D:\\QLBanGiay\\QLBanGiay.Models\\Models\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "QLBanGiay.Models\\Models\\ApplicationDbContext.cs",
               "ToolTip": "D:\\QLBanGiay\\QLBanGiay.Models\\Models\\ApplicationDbContext.cs",
               "RelativeToolTip": "QLBanGiay.Models\\Models\\ApplicationDbContext.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAhAAAA",
+              "ViewState": "AQIAACQAAABAmpmZmdkjwAQAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-12T08:56:34.326Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 19,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "D:\\QLBanGiay\\QLBanGiay\\Models\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "QLBanGiay\\Models\\ApplicationDbContext.cs",
+              "ToolTip": "D:\\QLBanGiay\\QLBanGiay\\Models\\ApplicationDbContext.cs",
+              "RelativeToolTip": "QLBanGiay\\Models\\ApplicationDbContext.cs",
+              "ViewState": "AQIAACcAAAAAkMzMzMzMvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-17T07:40:04.412Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "D:\\QLBanGiay\\QLBanGIayApplication\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "QLBanGIayApplication\\Services\\UserService.cs",
+              "ToolTip": "D:\\QLBanGiay\\QLBanGIayApplication\\Services\\UserService.cs",
+              "RelativeToolTip": "QLBanGIayApplication\\Services\\UserService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-17T14:41:41.752Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
               "Title": "frm_Login.cs",
               "DocumentMoniker": "D:\\QLBanGiay\\YourWinFormsProject\\frm_Login.cs",
               "RelativeDocumentMoniker": "YourWinFormsProject\\frm_Login.cs",
@@ -144,7 +426,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 22,
               "Title": "frm_Login.cs [Design]",
               "DocumentMoniker": "D:\\QLBanGiay\\YourWinFormsProject\\frm_Login.cs",
               "RelativeDocumentMoniker": "YourWinFormsProject\\frm_Login.cs",
