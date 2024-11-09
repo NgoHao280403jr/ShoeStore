@@ -17,6 +17,11 @@ namespace QLBanGiay_Application.Services
             _categoryRepository = categoryRepository;
         }
 
+        public List<Productcategory> GetCategoriesByParentCategoryId(long parentCategoryId)
+        {
+            return _categoryRepository.GetCategoriesByParentCategoryId(parentCategoryId); 
+        }
+
         public IEnumerable<Productcategory> GetAllCategories() // Sử dụng Productcategory
         {
             return _categoryRepository.GetAllCategories();

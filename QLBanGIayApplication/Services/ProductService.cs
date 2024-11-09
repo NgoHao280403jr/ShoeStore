@@ -44,8 +44,10 @@ namespace QLBanGiay_Application.Services
 
         public IEnumerable<Product> GetProductsByCategory(long categoryId)
         {
-            return _productRepository.GetProductsByCategory(categoryId);
+            //return _productRepository.GetProductsByCategory(categoryId);
+            return _productRepository.GetProductsByCategory(categoryId) ?? new List<Product>();
         }
+
 
         public IEnumerable<Product> GetProductsByParentCategory(long parentCategoryId) // Lấy sản phẩm theo danh mục cha
         {

@@ -9,6 +9,7 @@ namespace QLBanGiay_Application.Repository.IRepository
 {
     public interface ICategoryRepository
     {
+        List<Productcategory> GetCategoriesByParentCategoryId(long parentCategoryId);
         IEnumerable<Productcategory> GetAllCategories();
         Productcategory GetCategoryById(long categoryId);
         void AddCategory(Productcategory category);

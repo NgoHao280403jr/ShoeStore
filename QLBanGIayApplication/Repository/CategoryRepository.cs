@@ -22,6 +22,15 @@ namespace QLBanGiay_Application.Repository
             return _context.Productcategories.ToList(); // Truy vấn tất cả danh mục từ cơ sở dữ liệu
         }
 
+        public List<Productcategory> GetCategoriesByParentCategoryId(long parentCategoryId)
+        {
+            // Giả sử bảng Category có trường Parentcategoryid
+            return _context.Productcategories
+                           .Where(c => c.Parentcategoryid == parentCategoryId)
+                           .ToList();
+        }
+
+
         public Productcategory GetCategoryById(long categoryId)
         {
             return _context.Productcategories.FirstOrDefault(c => c.Categoryid == categoryId); // Tìm danh mục theo ID

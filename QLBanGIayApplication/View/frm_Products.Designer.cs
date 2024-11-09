@@ -67,7 +67,7 @@
             txt_Timkiem = new Guna.UI2.WinForms.Guna2TextBox();
             btn_Timkiem = new Guna.UI2.WinForms.Guna2ImageButton();
             groupBox2 = new GroupBox();
-            numeric_Soluong = new Guna.UI2.WinForms.Guna2NumericUpDown();
+            txt_Soluong = new Guna.UI2.WinForms.Guna2TextBox();
             ck_Hienthi = new Guna.UI2.WinForms.Guna2CheckBox();
             guna2HtmlLabel10 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             btn_Taianh = new Guna.UI2.WinForms.Guna2Button();
@@ -98,7 +98,6 @@
             guna2HtmlLabel11 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numeric_Soluong).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Picture_SP).BeginInit();
             groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgv_danhsachsp).BeginInit();
@@ -157,7 +156,7 @@
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(numeric_Soluong);
+            groupBox2.Controls.Add(txt_Soluong);
             groupBox2.Controls.Add(ck_Hienthi);
             groupBox2.Controls.Add(guna2HtmlLabel10);
             groupBox2.Controls.Add(btn_Taianh);
@@ -187,17 +186,27 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Thông tin sản phẩm";
             // 
-            // numeric_Soluong
+            // txt_Soluong
             // 
-            numeric_Soluong.BackColor = Color.Transparent;
-            numeric_Soluong.CustomizableEdges = customizableEdges4;
-            numeric_Soluong.Font = new Font("Segoe UI", 9F);
-            numeric_Soluong.Location = new Point(30, 333);
-            numeric_Soluong.Margin = new Padding(3, 4, 3, 4);
-            numeric_Soluong.Name = "numeric_Soluong";
-            numeric_Soluong.ShadowDecoration.CustomizableEdges = customizableEdges5;
-            numeric_Soluong.Size = new Size(158, 44);
-            numeric_Soluong.TabIndex = 22;
+            txt_Soluong.BorderColor = Color.FromArgb(0, 192, 192);
+            txt_Soluong.CustomizableEdges = customizableEdges4;
+            txt_Soluong.DefaultText = "";
+            txt_Soluong.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txt_Soluong.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txt_Soluong.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txt_Soluong.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txt_Soluong.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txt_Soluong.Font = new Font("Segoe UI", 9F);
+            txt_Soluong.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txt_Soluong.Location = new Point(32, 333);
+            txt_Soluong.Margin = new Padding(3, 4, 3, 4);
+            txt_Soluong.Name = "txt_Soluong";
+            txt_Soluong.PasswordChar = '\0';
+            txt_Soluong.PlaceholderText = "";
+            txt_Soluong.SelectedText = "";
+            txt_Soluong.ShadowDecoration.CustomizableEdges = customizableEdges5;
+            txt_Soluong.Size = new Size(176, 42);
+            txt_Soluong.TabIndex = 22;
             // 
             // ck_Hienthi
             // 
@@ -207,7 +216,7 @@
             ck_Hienthi.CheckedState.BorderThickness = 0;
             ck_Hienthi.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
             ck_Hienthi.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ck_Hienthi.Location = new Point(148, 597);
+            ck_Hienthi.Location = new Point(52, 573);
             ck_Hienthi.Name = "ck_Hienthi";
             ck_Hienthi.Size = new Size(102, 32);
             ck_Hienthi.TabIndex = 21;
@@ -222,7 +231,7 @@
             guna2HtmlLabel10.BackColor = Color.Transparent;
             guna2HtmlLabel10.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guna2HtmlLabel10.ForeColor = SystemColors.Desktop;
-            guna2HtmlLabel10.Location = new Point(32, 596);
+            guna2HtmlLabel10.Location = new Point(30, 537);
             guna2HtmlLabel10.Name = "guna2HtmlLabel10";
             guna2HtmlLabel10.Size = new Size(95, 30);
             guna2HtmlLabel10.TabIndex = 20;
@@ -238,7 +247,7 @@
             btn_Taianh.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btn_Taianh.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btn_Taianh.ForeColor = Color.White;
-            btn_Taianh.Location = new Point(26, 523);
+            btn_Taianh.Location = new Point(26, 446);
             btn_Taianh.Name = "btn_Taianh";
             btn_Taianh.ShadowDecoration.CustomizableEdges = customizableEdges7;
             btn_Taianh.Size = new Size(128, 43);
@@ -249,10 +258,10 @@
             // 
             Picture_SP.CustomizableEdges = customizableEdges8;
             Picture_SP.ImageRotate = 0F;
-            Picture_SP.Location = new Point(199, 398);
+            Picture_SP.Location = new Point(192, 398);
             Picture_SP.Name = "Picture_SP";
             Picture_SP.ShadowDecoration.CustomizableEdges = customizableEdges9;
-            Picture_SP.Size = new Size(280, 177);
+            Picture_SP.Size = new Size(287, 228);
             Picture_SP.TabIndex = 18;
             Picture_SP.TabStop = false;
             // 
@@ -675,7 +684,6 @@
             groupBox1.ResumeLayout(false);
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numeric_Soluong).EndInit();
             ((System.ComponentModel.ISupportInitialize)Picture_SP).EndInit();
             groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgv_danhsachsp).EndInit();
@@ -718,6 +726,6 @@
         private Guna.UI2.WinForms.Guna2Button btn_Them;
         private Guna.UI2.WinForms.Guna2Button btn_Capnhat;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel11;
-        private Guna.UI2.WinForms.Guna2NumericUpDown numeric_Soluong;
+        private Guna.UI2.WinForms.Guna2TextBox txt_Soluong;
     }
 }
