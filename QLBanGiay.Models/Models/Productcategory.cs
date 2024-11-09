@@ -15,3 +15,4 @@ public partial class Productcategory
 
     public virtual ICollection<Product> Products { get; set; } = new List<Product>();
 }
+    

@@ -18,6 +18,8 @@ namespace QLBanGiay_Application.View
     public partial class frm_ParentProduct : Form
     {
         private readonly ParentService _parentService;
+        private readonly ProductService _productService;
+        private readonly CategoryService _categoryService;
         private List<Parentproductcategory> parents;
         private readonly QlShopBanGiayContext _context;
         public frm_ParentProduct()
@@ -30,6 +32,30 @@ namespace QLBanGiay_Application.View
             this.btn_Them.Click += Btn_Them_Click;
             this.btn_Capnhat.Click += Btn_Capnhat_Click;
             this.btn_Xoa.Click += Btn_Xoa_Click;
+            this.btn_Timkiem.Click += Btn_Timkiem_Click;
+
+            _context = new QlShopBanGiayContext();
+            _parentService = new ParentService(new ParentCategoryRepository(_context));
+            _productService = new ProductService(new ProductRepository(_context));
+            _categoryService = new CategoryService(new CategoryRepository(_context));
+        }
+
+        private void Btn_Timkiem_Click(object? sender, EventArgs e)
+        {
+            string searchTerm = txt_Timkiem.Text.Trim().ToLower();  
+            var allParents = _parentService.GetAllParentCategories();
+            var filteredParents = allParents
+                .Where(p => p.Parentcategoryname.ToLower().Contains(searchTerm)) 
+                .ToList();
+
+            dgv_danhsachdm.DataSource = filteredParents;
+            if (filteredParents.Count == 0)
+            {
+                MessageBox.Show("Không tìm thấy danh mục cha nào với từ khóa '" + searchTerm + "'.",
+                                "Thông báo",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
+            }
         }
 
         private void Btn_Xoa_Click(object? sender, EventArgs e)
@@ -45,20 +71,28 @@ namespace QLBanGiay_Application.View
                     {
                         try
                         {
-                            // Lấy và xóa tất cả danh mục con
-                            var childCategories = _context.Productcategories
-                                                          .Where(pc => pc.Parentcategoryid == categoryId)
-                                                          .ToList();
-
-                            _context.Productcategories.RemoveRange(childCategories);
-                            _context.SaveChanges();
+                            // Lấy và xóa tất cả sản phẩm thuộc danh mục này
+                            var relatedProducts = _productService.GetProductsByCategory(categoryId);
+                            if (relatedProducts.Any())
+                            {
+                                // Có sản phẩm liên quan, hỏi người dùng có muốn xóa không
+                                var result = MessageBox.Show("Danh mục này có sản phẩm liên quan. Bạn có muốn xóa tất cả sản phẩm liên quan không?",
+                                                              "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                                if (result == DialogResult.Yes)
+                                {
+                                    foreach (var product in relatedProducts)
+                                    {
+                                        _productService.DeleteProduct(product.Productid);
+                                    }
+                                }
+                            }
 
                             // Xóa danh mục cha
-                            _parentService.DeleteParentCategory(categoryId);
+                            _categoryService.DeleteCategory(categoryId);
                             _context.SaveChanges();
                             transaction.Commit();
 
-                            LoadParentCategories();
+                            LoadParentCategories(); // Tải lại danh sách
                         }
                         catch (Exception ex)
                         {
