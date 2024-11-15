@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using QLBanGiay.Models;
 using System.Diagnostics;
-
+using QLBanGiay.Attributes;
 namespace QLBanGiay.Controllers
 {
     public class HomeController : Controller
@@ -12,18 +12,19 @@ namespace QLBanGiay.Controllers
         {
             _logger = logger;
         }
-
-        public IActionResult Index()
+		[AuthorizeUser]
+		public IActionResult Index()
         {
             return View();
         }
-
+        
         public IActionResult Privacy()
         {
             return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
