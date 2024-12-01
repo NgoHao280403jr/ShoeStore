@@ -263,7 +263,6 @@ public partial class ApplicationDbContext : DbContext
             entity.Property(e => e.Productname)
                 .HasMaxLength(255)
                 .HasColumnName("productname");
-            entity.Property(e => e.Quantity).HasColumnName("quantity");
             entity.Property(e => e.Ratingcount).HasColumnName("ratingcount");
 
             entity.HasOne(d => d.Category).WithMany(p => p.Products)

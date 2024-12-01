@@ -25,8 +25,6 @@ public partial class Product
 
     public bool Isactive { get; set; }
 
-    public int? Quantity { get; set; }
-
     public virtual Productcategory? Category { get; set; }
 
     public virtual ICollection<Invoicedetail> Invoicedetails { get; set; } = new List<Invoicedetail>();

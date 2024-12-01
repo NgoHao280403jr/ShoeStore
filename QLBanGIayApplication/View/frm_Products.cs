@@ -38,7 +38,6 @@ namespace QLBanGiay_Application.View
             this.txt_Gia.KeyPress += Txt_Gia_KeyPress;
             this.txt_Gia.TextChanged += Txt_Gia_TextChanged;
             this.txt_Giamgia.KeyPress += Txt_Giamgia_KeyPress;
-            this.txt_Soluong.KeyPress += Txt_Soluong_KeyPress;
 
             _context = new QlShopBanGiayContext(); 
             _categoryService = new CategoryService(new CategoryRepository(_context));
@@ -136,8 +135,7 @@ namespace QLBanGiay_Application.View
         private void Btn_Capnhat_Click(object? sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txt_Tensp.Text) ||
-            string.IsNullOrWhiteSpace(txt_Gia.Text) ||
-            string.IsNullOrWhiteSpace(txt_Soluong.Text))
+            string.IsNullOrWhiteSpace(txt_Gia.Text))
             {
                 MessageBox.Show("Vui lòng nhập tất cả thông tin bắt buộc.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -155,7 +153,6 @@ namespace QLBanGiay_Application.View
             existingProduct.Productname = txt_Tensp.Text.Trim();
             existingProduct.Price = decimal.TryParse(txt_Gia.Text, out var price) ? (long?)price : null;
             existingProduct.Discount = int.TryParse(txt_Giamgia.Text, out var discount) ? discount : (int?)null;
-            existingProduct.Quantity = int.TryParse(txt_Soluong.Text, out var quantity) ? quantity : 0;
             existingProduct.Productdescription = txt_Mota.Text;
             existingProduct.Isactive = ck_Hienthi.Checked;
             existingProduct.Categoryid = (long?)cbo_Madmcon.SelectedValue;
@@ -178,8 +175,7 @@ namespace QLBanGiay_Application.View
         {
             // Kiểm tra các trường bắt buộc
             if (string.IsNullOrWhiteSpace(txt_Tensp.Text) ||
-                string.IsNullOrWhiteSpace(txt_Gia.Text) ||
-                string.IsNullOrWhiteSpace(txt_Soluong.Text))
+                string.IsNullOrWhiteSpace(txt_Gia.Text))
             {
                 MessageBox.Show("Vui lòng nhập tất cả thông tin bắt buộc.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -190,7 +186,6 @@ namespace QLBanGiay_Application.View
                 Productname = txt_Tensp.Text.Trim(),
                 Price = decimal.TryParse(txt_Gia.Text, out var price) ? (long?)price : null, // Chuyển đổi rõ ràng
                 Discount = int.TryParse(txt_Giamgia.Text, out var discount) ? discount : (int?)null, // Chuyển đổi sang int
-                Quantity = int.TryParse(txt_Soluong.Text, out var quantity) ? quantity : 0,
                 Productdescription = txt_Mota.Text,
                 Isactive = ck_Hienthi.Checked,
                 Categoryid = (long?)cbo_Madmcon.SelectedValue,
@@ -202,12 +197,6 @@ namespace QLBanGiay_Application.View
             if (newProduct.Price == null || newProduct.Price <= 0)
             {
                 MessageBox.Show("Giá sản phẩm không hợp lệ.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (newProduct.Quantity < 0)
-            {
-                MessageBox.Show("Số lượng sản phẩm không thể âm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -268,7 +257,6 @@ namespace QLBanGiay_Application.View
                 txt_Tensp.Text = selectedProduct.Productname;
                 txt_Gia.Text = selectedProduct.Price?.ToString("N0") ?? "0";
                 txt_Giamgia.Text = selectedProduct.Discount?.ToString() ?? "0";
-                txt_Soluong.Text = selectedProduct.Quantity.ToString();
                 txt_Mota.Text = selectedProduct.Productdescription ?? "";
                 ck_Hienthi.Checked = selectedProduct.Isactive;
 

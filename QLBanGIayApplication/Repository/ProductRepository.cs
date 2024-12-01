@@ -47,7 +47,6 @@ namespace QLBanGiay_Application.Repository
                 existingProduct.Ratingcount = product.Ratingcount;
                 existingProduct.Productdescription = product.Productdescription;
                 existingProduct.Isactive = product.Isactive;
-                existingProduct.Quantity = product.Quantity;
                 _context.SaveChanges();
             }
         }
