@@ -11,7 +11,6 @@ using System.Windows.Forms;
 using QLBanGiay.Models.Models;
 using QLBanGiay_Application.Repository;
 using QLBanGiay_Application.Repository.IRepository;
-using QLBanGiay_Application.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace QLBanGiay_Application.View
@@ -34,6 +33,7 @@ namespace QLBanGiay_Application.View
             this.btn_Them.Click += Btn_Them_Click;
             this.btn_Capnhat.Click += Btn_Capnhat_Click;
             this.btn_Xoa.Click += Btn_Xoa_Click;
+            this.btn_Thoat.Click += Btn_Thoat_Click;
             this.cbo_Madmcha.SelectedIndexChanged += Cbo_Madmcha_SelectedIndexChanged;
             this.txt_Gia.KeyPress += Txt_Gia_KeyPress;
             this.txt_Gia.TextChanged += Txt_Gia_TextChanged;
@@ -43,6 +43,13 @@ namespace QLBanGiay_Application.View
             _categoryService = new CategoryService(new CategoryRepository(_context));
             _parentService = new ParentService(new ParentCategoryRepository(_context));
             _productService = new ProductService(new ProductRepository(_context));
+        }
+
+        private void Btn_Thoat_Click(object? sender, EventArgs e)
+        {
+            this.Close();
+            frm_Main mainForm = new frm_Main();
+            mainForm.Show();
         }
 
         private void Txt_Soluong_KeyPress(object? sender, KeyPressEventArgs e)
@@ -114,6 +121,9 @@ namespace QLBanGiay_Application.View
 
             try
             {
+                var productSizes = _context.ProductSizes.Where(ps => ps.ProductId == productId).ToList();
+                _context.ProductSizes.RemoveRange(productSizes);
+
                 var existingProduct = _productService.GetProductById(productId); // Lấy sản phẩm theo ID
                 if (existingProduct == null)
                 {

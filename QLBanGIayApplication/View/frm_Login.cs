@@ -40,7 +40,7 @@ namespace QLBanGiay_Application.View
                     MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     this.Hide();
-                    frm_Products mainForm = new frm_Products();
+                    frm_ProductSize mainForm = new frm_ProductSize();
                     mainForm.Show();
                 }
                 else
@@ -60,11 +60,11 @@ namespace QLBanGiay_Application.View
         {          
             if (ckHienThi.Checked)
             {
-                txt_PassWord.PasswordChar = '\0'; // Hiển thị mật khẩu
+                txt_PassWord.PasswordChar = '\0';
             }
             else
             {
-                txt_PassWord.PasswordChar = '*'; // Ẩn mật khẩu
+                txt_PassWord.PasswordChar = '*'; 
             }
         }
     }

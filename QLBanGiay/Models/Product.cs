@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace QLBanGiay.Models;
+namespace QLBanGiay.Models.Models;
 
 public partial class Product
 {
@@ -25,8 +25,6 @@ public partial class Product
 
     public bool Isactive { get; set; }
 
-    public int? Quantity { get; set; }
-
     public virtual Productcategory? Category { get; set; }
 
     public virtual ICollection<Invoicedetail> Invoicedetails { get; set; } = new List<Invoicedetail>();
@@ -36,4 +34,6 @@ public partial class Product
     public virtual Parentproductcategory? Parentcategory { get; set; }
 
     public virtual ICollection<Productreview> Productreviews { get; set; } = new List<Productreview>();
+    public virtual ICollection<ProductSize> ProductSizes { get; set; } = new List<ProductSize>();
+
 }

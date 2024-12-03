@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using QLBanGiay.Models.Models;
 
 namespace QLBanGiay.Models;
 
@@ -31,6 +32,7 @@ public partial class QlShopBanGiayContext : DbContext
 
     public virtual DbSet<Product> Products { get; set; }
 
+    public virtual DbSet<ProductSize> ProductSizes { get; set; }
     public virtual DbSet<Productcategory> Productcategories { get; set; }
 
     public virtual DbSet<Productreview> Productreviews { get; set; }
@@ -45,6 +47,27 @@ public partial class QlShopBanGiayContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<ProductSize>(entity =>
+        {
+            entity.HasKey(e => e.ProductSizeId).HasName("productsize_pkey");
+
+            entity.ToTable("productsize");
+
+            entity.Property(e => e.ProductSizeId).HasColumnName("productsizeid");
+            entity.Property(e => e.ProductId).HasColumnName("productid");
+            entity.Property(e => e.Size)
+                .HasMaxLength(50)
+                .HasColumnName("size");
+            entity.Property(e => e.Quantity)
+                .HasColumnName("quantity")
+                .HasDefaultValue(0);
+
+            entity.HasOne(d => d.Product)
+                .WithMany(p => p.ProductSizes)
+                .HasForeignKey(d => d.ProductId)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("fk_productsize_product");
+        });
         modelBuilder.Entity<Customer>(entity =>
         {
             entity.HasKey(e => e.Customerid).HasName("customer_pkey");
