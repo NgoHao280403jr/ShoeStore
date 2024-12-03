@@ -34,4 +34,5 @@ public partial class Product
     public virtual Parentproductcategory? Parentcategory { get; set; }
 
     public virtual ICollection<Productreview> Productreviews { get; set; } = new List<Productreview>();
+	public virtual ICollection<ProductSize> ProductSizes { get; set; }
 }

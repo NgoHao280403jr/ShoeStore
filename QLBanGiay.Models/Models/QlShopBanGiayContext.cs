@@ -30,8 +30,9 @@ public partial class QlShopBanGiayContext : DbContext
     public virtual DbSet<Parentproductcategory> Parentproductcategories { get; set; }
 
     public virtual DbSet<Product> Products { get; set; }
+	public virtual DbSet<ProductSize> ProductSizes { get; set; }
 
-    public virtual DbSet<Productcategory> Productcategories { get; set; }
+	public virtual DbSet<Productcategory> Productcategories { get; set; }
 
     public virtual DbSet<Productreview> Productreviews { get; set; }
 
@@ -274,8 +275,32 @@ public partial class QlShopBanGiayContext : DbContext
                 .HasForeignKey(d => d.Parentcategoryid)
                 .HasConstraintName("product_parentcategoryid_fkey");
         });
+		modelBuilder.Entity<ProductSize>(entity =>
+		{
+			entity.HasKey(e => e.ProductSizeId).HasName("productsize_pkey");
+			entity.ToTable("productsize");
+			entity.Property(e => e.ProductSizeId)
+				.HasColumnName("productsizeid");
 
-        modelBuilder.Entity<Productcategory>(entity =>
+			entity.Property(e => e.ProductId)
+				.HasColumnName("productid");
+
+			entity.Property(e => e.Size)
+				.HasMaxLength(50)
+				.IsRequired() 
+				.HasColumnName("size");
+
+			entity.Property(e => e.Quantity)
+				.HasDefaultValue(0)
+				.HasColumnName("quantity");
+
+			
+			entity.HasOne(d => d.Product)
+				.WithMany(p => p.ProductSizes)
+				.HasForeignKey(d => d.ProductId)
+				.HasConstraintName("productsize_productid_fkey");
+		});
+		modelBuilder.Entity<Productcategory>(entity =>
         {
             entity.HasKey(e => e.Categoryid).HasName("productcategory_pkey");
 
