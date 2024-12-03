@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using QLBanGiay.Models;
+using QLBanGiay.Models.Models;
 using Microsoft.AspNetCore.Http;
 using System.Linq;
 
