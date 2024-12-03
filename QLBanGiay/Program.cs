@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using QLBanGiay.Models;
+using QLBanGiay.Models.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 

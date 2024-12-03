@@ -1,0 +1,92 @@
+﻿@model Product
+
+<div class="colorlib-product">
+	<div class="container">
+		<div class="row row-pb-lg product-detail-wrap">
+			<div class="col-sm-8">
+				<img src="~/images/@Model.Image"style="width: 90%; height: 90%; object-fit: cover;" alt="@Model.Productname" />
+			</div>
+			<div class="col-sm-4">
+				<div class="product-desc">
+					<h3>@Model.Productname</h3>
+					<p class="price">
+						<span>@(((decimal)(Model.Price * (1 - Model.Discount / 100M)))) VNĐ</span>
+						<span class="rate">
+							<i class="icon-star-full"></i>
+							<i class="icon-star-full"></i>
+							<i class="icon-star-full"></i>
+							<i class="icon-star-full"></i>
+							<i class="icon-star-half"></i>
+							(74 Rating)
+						</span>
+					</p>
+					<p>@Model.Category?.Categoryname</p>
+					<div class="size-wrap">
+						<div class="block-26 mb-2">
+							<h4>Size</h4>
+							<ul>
+								<li><a href="#">37</a></li>
+								<li><a href="#">38</a></li>
+								<li><a href="#">39</a></li>
+								<li><a href="#">40</a></li>
+								<li><a href="#">41</a></li>
+								<li><a href="#">42</a></li>
+								<li><a href="#">43</a></li>
+								
+							</ul>
+						</div>
+					</div>
+					<div class="input-group mb-4">
+						<span class="input-group-btn">
+							<button type="button" class="quantity-left-minus btn" data-type="minus" data-field="">
+								<i class="icon-minus2"></i>
+							</button>
+						</span>
+						<input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">
+						<span class="input-group-btn ml-1">
+							<button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
+								<i class="icon-plus2"></i>
+							</button>
+						</span>
+					</div>
+					<div class="row">
+						<div class="col-sm-12 text-center">
+							<p class="addtocart"><a href="cart.html" class="btn btn-primary btn-addtocart"><i class="icon-shopping-cart"></i> Add to Cart</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="row">
+					<div class="col-md-12 pills">
+						<div class="bd-example bd-example-tabs">
+							<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+
+								<li class="nav-item">
+									<a class="nav-link active" id="pills-description-tab" data-toggle="pill" href="#pills-description" role="tab" aria-controls="pills-description" aria-expanded="true">Description</a>
+								</li>
+							</ul>
+
+							<div class="tab-content" id="pills-tabContent">
+								<div class="tab-pane border fade show active" id="pills-description" role="tabpanel" aria-labelledby="pills-description-tab">
+									<p>@Model.Productdescription</p>
+									<ul>
+										<li>The Big Oxmox advised her not to do so</li>
+										<li>Because there were thousands of bad Commas</li>
+										<li>Wild Question Marks and devious Semikoli</li>
+										<li>She packed her seven versalia</li>
+										<li>tial into the belt and made herself on the way.</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

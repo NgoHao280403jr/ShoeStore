@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using QLBanGiay.Models;
+using QLBanGiay.Models.Models;
 
 public class ProductController : Controller
 {
@@ -36,5 +36,18 @@ public class ProductController : Controller
         public List<Product> Data { get; set; }
         public int CurrentPage { get; set; }
         public int TotalPages { get; set; }
+    }
+    public async Task<IActionResult> DetailProduct(int id)
+    {
+        string apiUrl = $"https://localhost:7063/api/ProductApi/{id}";
+        var response = await _httpClient.GetAsync(apiUrl);
+        if (response.IsSuccessStatusCode)
+        {
+            var jsonData = await response.Content.ReadAsStringAsync();
+            var product = JsonConvert.DeserializeObject<Product>(jsonData);
+            return View(product);
+        }
+
+        return View("Error"); // Trả về trang lỗi nếu API không thành công
     }
 }
