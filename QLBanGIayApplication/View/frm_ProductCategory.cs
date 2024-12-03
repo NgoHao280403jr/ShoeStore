@@ -31,11 +31,19 @@ namespace QLBanGiay_Application.View
             this.btn_Them.Click += Btn_Them_Click;
             this.btn_Capnhat.Click += Btn_Capnhat_Click;
             this.btn_Xoa.Click += Btn_Xoa_Click;
+            this.btn_Thoat.Click += Btn_Thoat_Click;
 
-            _context = new QlShopBanGiayContext(); // Tạo một đối tượng context
+            _context = new QlShopBanGiayContext(); 
             _categoryService = new CategoryService(new CategoryRepository(_context));
             _productService = new ProductService(new ProductRepository(_context));
             _parentService = new ParentService(new ParentCategoryRepository(_context));
+        }
+
+        private void Btn_Thoat_Click(object? sender, EventArgs e)
+        {
+            this.Close();
+            frm_Main mainForm = new frm_Main();
+            mainForm.Show();
         }
 
         private void Btn_Xoa_Click(object? sender, EventArgs e)
