@@ -40,7 +40,7 @@ namespace QLBanGiay_Application.View
                     MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     this.Hide();
-                    frm_Products mainForm = new frm_Products();
+                    frmMain mainForm = new frmMain();
                     mainForm.Show();
                 }
                 else

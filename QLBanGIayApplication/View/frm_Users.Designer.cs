@@ -32,21 +32,21 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_Users));
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -59,25 +59,25 @@
             txt_Timkiem = new Guna.UI2.WinForms.Guna2TextBox();
             guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
             groupBox2 = new GroupBox();
+            guna2CheckBox3 = new Guna.UI2.WinForms.Guna2CheckBox();
+            guna2TextBox3 = new Guna.UI2.WinForms.Guna2TextBox();
+            guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            guna2TextBox2 = new Guna.UI2.WinForms.Guna2TextBox();
+            guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            ckHienThi = new Guna.UI2.WinForms.Guna2CheckBox();
+            guna2CheckBox2 = new Guna.UI2.WinForms.Guna2CheckBox();
+            guna2CheckBox1 = new Guna.UI2.WinForms.Guna2CheckBox();
+            guna2HtmlLabel10 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
+            guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             cbo_Mavaitro = new Guna.UI2.WinForms.Guna2ComboBox();
             guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             txt_Tennguoidung = new Guna.UI2.WinForms.Guna2TextBox();
             guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             txt_Manguoidung = new Guna.UI2.WinForms.Guna2TextBox();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
-            guna2HtmlLabel10 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            guna2CheckBox1 = new Guna.UI2.WinForms.Guna2CheckBox();
-            guna2CheckBox2 = new Guna.UI2.WinForms.Guna2CheckBox();
             groupBox4 = new GroupBox();
             dgv_danhsachsp = new Guna.UI2.WinForms.Guna2DataGridView();
-            ckHienThi = new Guna.UI2.WinForms.Guna2CheckBox();
-            guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            guna2TextBox2 = new Guna.UI2.WinForms.Guna2TextBox();
-            guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            guna2TextBox3 = new Guna.UI2.WinForms.Guna2TextBox();
-            guna2CheckBox3 = new Guna.UI2.WinForms.Guna2CheckBox();
             groupBox3 = new GroupBox();
             btn_Thoat = new Guna.UI2.WinForms.Guna2Button();
             btn_Xoa = new Guna.UI2.WinForms.Guna2Button();
@@ -167,6 +167,188 @@
             groupBox2.TabIndex = 4;
             groupBox2.TabStop = false;
             groupBox2.Text = "Thông tin người dùng";
+            // 
+            // guna2CheckBox3
+            // 
+            guna2CheckBox3.AutoSize = true;
+            guna2CheckBox3.CheckedState.BorderColor = Color.FromArgb(94, 148, 255);
+            guna2CheckBox3.CheckedState.BorderRadius = 0;
+            guna2CheckBox3.CheckedState.BorderThickness = 0;
+            guna2CheckBox3.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
+            guna2CheckBox3.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            guna2CheckBox3.Location = new Point(298, 507);
+            guna2CheckBox3.Name = "guna2CheckBox3";
+            guna2CheckBox3.Size = new Size(169, 27);
+            guna2CheckBox3.TabIndex = 29;
+            guna2CheckBox3.Text = "Hiển thị mật khẩu";
+            guna2CheckBox3.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
+            guna2CheckBox3.UncheckedState.BorderRadius = 0;
+            guna2CheckBox3.UncheckedState.BorderThickness = 0;
+            guna2CheckBox3.UncheckedState.FillColor = Color.FromArgb(125, 137, 149);
+            // 
+            // guna2TextBox3
+            // 
+            guna2TextBox3.BorderColor = Color.FromArgb(0, 192, 192);
+            guna2TextBox3.CustomizableEdges = customizableEdges4;
+            guna2TextBox3.DefaultText = "";
+            guna2TextBox3.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            guna2TextBox3.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            guna2TextBox3.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            guna2TextBox3.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            guna2TextBox3.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            guna2TextBox3.Font = new Font("Segoe UI", 9F);
+            guna2TextBox3.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            guna2TextBox3.Location = new Point(30, 458);
+            guna2TextBox3.Margin = new Padding(3, 4, 3, 4);
+            guna2TextBox3.Name = "guna2TextBox3";
+            guna2TextBox3.PasswordChar = '\0';
+            guna2TextBox3.PlaceholderText = "";
+            guna2TextBox3.SelectedText = "";
+            guna2TextBox3.ShadowDecoration.CustomizableEdges = customizableEdges5;
+            guna2TextBox3.Size = new Size(447, 42);
+            guna2TextBox3.TabIndex = 28;
+            // 
+            // guna2HtmlLabel6
+            // 
+            guna2HtmlLabel6.BackColor = Color.Transparent;
+            guna2HtmlLabel6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            guna2HtmlLabel6.ForeColor = SystemColors.Desktop;
+            guna2HtmlLabel6.Location = new Point(32, 421);
+            guna2HtmlLabel6.Name = "guna2HtmlLabel6";
+            guna2HtmlLabel6.Size = new Size(205, 30);
+            guna2HtmlLabel6.TabIndex = 27;
+            guna2HtmlLabel6.Text = "Nhập lại mật khẩu mới:";
+            // 
+            // guna2TextBox2
+            // 
+            guna2TextBox2.BorderColor = Color.FromArgb(0, 192, 192);
+            guna2TextBox2.CustomizableEdges = customizableEdges6;
+            guna2TextBox2.DefaultText = "";
+            guna2TextBox2.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            guna2TextBox2.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            guna2TextBox2.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            guna2TextBox2.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            guna2TextBox2.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            guna2TextBox2.Font = new Font("Segoe UI", 9F);
+            guna2TextBox2.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            guna2TextBox2.Location = new Point(32, 373);
+            guna2TextBox2.Margin = new Padding(3, 4, 3, 4);
+            guna2TextBox2.Name = "guna2TextBox2";
+            guna2TextBox2.PasswordChar = '\0';
+            guna2TextBox2.PlaceholderText = "";
+            guna2TextBox2.SelectedText = "";
+            guna2TextBox2.ShadowDecoration.CustomizableEdges = customizableEdges7;
+            guna2TextBox2.Size = new Size(447, 42);
+            guna2TextBox2.TabIndex = 26;
+            // 
+            // guna2HtmlLabel5
+            // 
+            guna2HtmlLabel5.BackColor = Color.Transparent;
+            guna2HtmlLabel5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            guna2HtmlLabel5.ForeColor = SystemColors.Desktop;
+            guna2HtmlLabel5.Location = new Point(30, 336);
+            guna2HtmlLabel5.Name = "guna2HtmlLabel5";
+            guna2HtmlLabel5.Size = new Size(128, 30);
+            guna2HtmlLabel5.TabIndex = 25;
+            guna2HtmlLabel5.Text = "Mật khẩu mới:";
+            // 
+            // ckHienThi
+            // 
+            ckHienThi.AutoSize = true;
+            ckHienThi.CheckedState.BorderColor = Color.FromArgb(94, 148, 255);
+            ckHienThi.CheckedState.BorderRadius = 0;
+            ckHienThi.CheckedState.BorderThickness = 0;
+            ckHienThi.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
+            ckHienThi.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ckHienThi.Location = new Point(298, 313);
+            ckHienThi.Name = "ckHienThi";
+            ckHienThi.Size = new Size(169, 27);
+            ckHienThi.TabIndex = 24;
+            ckHienThi.Text = "Hiển thị mật khẩu";
+            ckHienThi.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
+            ckHienThi.UncheckedState.BorderRadius = 0;
+            ckHienThi.UncheckedState.BorderThickness = 0;
+            ckHienThi.UncheckedState.FillColor = Color.FromArgb(125, 137, 149);
+            // 
+            // guna2CheckBox2
+            // 
+            guna2CheckBox2.AutoSize = true;
+            guna2CheckBox2.CheckedState.BorderColor = Color.FromArgb(94, 148, 255);
+            guna2CheckBox2.CheckedState.BorderRadius = 0;
+            guna2CheckBox2.CheckedState.BorderThickness = 0;
+            guna2CheckBox2.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
+            guna2CheckBox2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            guna2CheckBox2.Location = new Point(298, 565);
+            guna2CheckBox2.Name = "guna2CheckBox2";
+            guna2CheckBox2.Size = new Size(98, 32);
+            guna2CheckBox2.TabIndex = 23;
+            guna2CheckBox2.Text = "Bị khóa";
+            guna2CheckBox2.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
+            guna2CheckBox2.UncheckedState.BorderRadius = 0;
+            guna2CheckBox2.UncheckedState.BorderThickness = 0;
+            guna2CheckBox2.UncheckedState.FillColor = Color.FromArgb(125, 137, 149);
+            // 
+            // guna2CheckBox1
+            // 
+            guna2CheckBox1.AutoSize = true;
+            guna2CheckBox1.CheckedState.BorderColor = Color.FromArgb(94, 148, 255);
+            guna2CheckBox1.CheckedState.BorderRadius = 0;
+            guna2CheckBox1.CheckedState.BorderThickness = 0;
+            guna2CheckBox1.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
+            guna2CheckBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            guna2CheckBox1.Location = new Point(47, 565);
+            guna2CheckBox1.Name = "guna2CheckBox1";
+            guna2CheckBox1.Size = new Size(129, 32);
+            guna2CheckBox1.TabIndex = 22;
+            guna2CheckBox1.Text = "Hoạt động";
+            guna2CheckBox1.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
+            guna2CheckBox1.UncheckedState.BorderRadius = 0;
+            guna2CheckBox1.UncheckedState.BorderThickness = 0;
+            guna2CheckBox1.UncheckedState.FillColor = Color.FromArgb(125, 137, 149);
+            // 
+            // guna2HtmlLabel10
+            // 
+            guna2HtmlLabel10.BackColor = Color.Transparent;
+            guna2HtmlLabel10.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            guna2HtmlLabel10.ForeColor = SystemColors.Desktop;
+            guna2HtmlLabel10.Location = new Point(30, 529);
+            guna2HtmlLabel10.Name = "guna2HtmlLabel10";
+            guna2HtmlLabel10.Size = new Size(95, 30);
+            guna2HtmlLabel10.TabIndex = 21;
+            guna2HtmlLabel10.Text = "Trạng thái:";
+            // 
+            // guna2TextBox1
+            // 
+            guna2TextBox1.BorderColor = Color.FromArgb(0, 192, 192);
+            guna2TextBox1.CustomizableEdges = customizableEdges8;
+            guna2TextBox1.DefaultText = "";
+            guna2TextBox1.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            guna2TextBox1.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            guna2TextBox1.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            guna2TextBox1.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            guna2TextBox1.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            guna2TextBox1.Font = new Font("Segoe UI", 9F);
+            guna2TextBox1.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            guna2TextBox1.Location = new Point(30, 264);
+            guna2TextBox1.Margin = new Padding(3, 4, 3, 4);
+            guna2TextBox1.Name = "guna2TextBox1";
+            guna2TextBox1.PasswordChar = '\0';
+            guna2TextBox1.PlaceholderText = "";
+            guna2TextBox1.SelectedText = "";
+            guna2TextBox1.ShadowDecoration.CustomizableEdges = customizableEdges9;
+            guna2TextBox1.Size = new Size(447, 42);
+            guna2TextBox1.TabIndex = 8;
+            // 
+            // guna2HtmlLabel4
+            // 
+            guna2HtmlLabel4.BackColor = Color.Transparent;
+            guna2HtmlLabel4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            guna2HtmlLabel4.ForeColor = SystemColors.Desktop;
+            guna2HtmlLabel4.Location = new Point(271, 55);
+            guna2HtmlLabel4.Name = "guna2HtmlLabel4";
+            guna2HtmlLabel4.Size = new Size(65, 30);
+            guna2HtmlLabel4.TabIndex = 7;
+            guna2HtmlLabel4.Text = "Vai trò:";
             // 
             // cbo_Mavaitro
             // 
@@ -264,86 +446,6 @@
             guna2HtmlLabel1.TabIndex = 0;
             guna2HtmlLabel1.Text = "Mã người dùng:";
             // 
-            // guna2HtmlLabel4
-            // 
-            guna2HtmlLabel4.BackColor = Color.Transparent;
-            guna2HtmlLabel4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            guna2HtmlLabel4.ForeColor = SystemColors.Desktop;
-            guna2HtmlLabel4.Location = new Point(271, 55);
-            guna2HtmlLabel4.Name = "guna2HtmlLabel4";
-            guna2HtmlLabel4.Size = new Size(65, 30);
-            guna2HtmlLabel4.TabIndex = 7;
-            guna2HtmlLabel4.Text = "Vai trò:";
-            // 
-            // guna2TextBox1
-            // 
-            guna2TextBox1.BorderColor = Color.FromArgb(0, 192, 192);
-            guna2TextBox1.CustomizableEdges = customizableEdges8;
-            guna2TextBox1.DefaultText = "";
-            guna2TextBox1.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            guna2TextBox1.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            guna2TextBox1.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox1.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox1.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox1.Font = new Font("Segoe UI", 9F);
-            guna2TextBox1.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox1.Location = new Point(30, 264);
-            guna2TextBox1.Margin = new Padding(3, 4, 3, 4);
-            guna2TextBox1.Name = "guna2TextBox1";
-            guna2TextBox1.PasswordChar = '\0';
-            guna2TextBox1.PlaceholderText = "";
-            guna2TextBox1.SelectedText = "";
-            guna2TextBox1.ShadowDecoration.CustomizableEdges = customizableEdges9;
-            guna2TextBox1.Size = new Size(447, 42);
-            guna2TextBox1.TabIndex = 8;
-            // 
-            // guna2HtmlLabel10
-            // 
-            guna2HtmlLabel10.BackColor = Color.Transparent;
-            guna2HtmlLabel10.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            guna2HtmlLabel10.ForeColor = SystemColors.Desktop;
-            guna2HtmlLabel10.Location = new Point(30, 529);
-            guna2HtmlLabel10.Name = "guna2HtmlLabel10";
-            guna2HtmlLabel10.Size = new Size(95, 30);
-            guna2HtmlLabel10.TabIndex = 21;
-            guna2HtmlLabel10.Text = "Trạng thái:";
-            // 
-            // guna2CheckBox1
-            // 
-            guna2CheckBox1.AutoSize = true;
-            guna2CheckBox1.CheckedState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2CheckBox1.CheckedState.BorderRadius = 0;
-            guna2CheckBox1.CheckedState.BorderThickness = 0;
-            guna2CheckBox1.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
-            guna2CheckBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            guna2CheckBox1.Location = new Point(47, 565);
-            guna2CheckBox1.Name = "guna2CheckBox1";
-            guna2CheckBox1.Size = new Size(129, 32);
-            guna2CheckBox1.TabIndex = 22;
-            guna2CheckBox1.Text = "Hoạt động";
-            guna2CheckBox1.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
-            guna2CheckBox1.UncheckedState.BorderRadius = 0;
-            guna2CheckBox1.UncheckedState.BorderThickness = 0;
-            guna2CheckBox1.UncheckedState.FillColor = Color.FromArgb(125, 137, 149);
-            // 
-            // guna2CheckBox2
-            // 
-            guna2CheckBox2.AutoSize = true;
-            guna2CheckBox2.CheckedState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2CheckBox2.CheckedState.BorderRadius = 0;
-            guna2CheckBox2.CheckedState.BorderThickness = 0;
-            guna2CheckBox2.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
-            guna2CheckBox2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            guna2CheckBox2.Location = new Point(298, 565);
-            guna2CheckBox2.Name = "guna2CheckBox2";
-            guna2CheckBox2.Size = new Size(98, 32);
-            guna2CheckBox2.TabIndex = 23;
-            guna2CheckBox2.Text = "Bị khóa";
-            guna2CheckBox2.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
-            guna2CheckBox2.UncheckedState.BorderRadius = 0;
-            guna2CheckBox2.UncheckedState.BorderThickness = 0;
-            guna2CheckBox2.UncheckedState.FillColor = Color.FromArgb(125, 137, 149);
-            // 
             // groupBox4
             // 
             groupBox4.Controls.Add(dgv_danhsachsp);
@@ -406,108 +508,6 @@
             dgv_danhsachsp.ThemeStyle.RowsStyle.Height = 29;
             dgv_danhsachsp.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dgv_danhsachsp.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
-            // 
-            // ckHienThi
-            // 
-            ckHienThi.AutoSize = true;
-            ckHienThi.CheckedState.BorderColor = Color.FromArgb(94, 148, 255);
-            ckHienThi.CheckedState.BorderRadius = 0;
-            ckHienThi.CheckedState.BorderThickness = 0;
-            ckHienThi.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
-            ckHienThi.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ckHienThi.Location = new Point(298, 313);
-            ckHienThi.Name = "ckHienThi";
-            ckHienThi.Size = new Size(169, 27);
-            ckHienThi.TabIndex = 24;
-            ckHienThi.Text = "Hiển thị mật khẩu";
-            ckHienThi.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
-            ckHienThi.UncheckedState.BorderRadius = 0;
-            ckHienThi.UncheckedState.BorderThickness = 0;
-            ckHienThi.UncheckedState.FillColor = Color.FromArgb(125, 137, 149);
-            // 
-            // guna2HtmlLabel5
-            // 
-            guna2HtmlLabel5.BackColor = Color.Transparent;
-            guna2HtmlLabel5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            guna2HtmlLabel5.ForeColor = SystemColors.Desktop;
-            guna2HtmlLabel5.Location = new Point(30, 336);
-            guna2HtmlLabel5.Name = "guna2HtmlLabel5";
-            guna2HtmlLabel5.Size = new Size(128, 30);
-            guna2HtmlLabel5.TabIndex = 25;
-            guna2HtmlLabel5.Text = "Mật khẩu mới:";
-            // 
-            // guna2TextBox2
-            // 
-            guna2TextBox2.BorderColor = Color.FromArgb(0, 192, 192);
-            guna2TextBox2.CustomizableEdges = customizableEdges6;
-            guna2TextBox2.DefaultText = "";
-            guna2TextBox2.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            guna2TextBox2.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            guna2TextBox2.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox2.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox2.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox2.Font = new Font("Segoe UI", 9F);
-            guna2TextBox2.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox2.Location = new Point(32, 373);
-            guna2TextBox2.Margin = new Padding(3, 4, 3, 4);
-            guna2TextBox2.Name = "guna2TextBox2";
-            guna2TextBox2.PasswordChar = '\0';
-            guna2TextBox2.PlaceholderText = "";
-            guna2TextBox2.SelectedText = "";
-            guna2TextBox2.ShadowDecoration.CustomizableEdges = customizableEdges7;
-            guna2TextBox2.Size = new Size(447, 42);
-            guna2TextBox2.TabIndex = 26;
-            // 
-            // guna2HtmlLabel6
-            // 
-            guna2HtmlLabel6.BackColor = Color.Transparent;
-            guna2HtmlLabel6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            guna2HtmlLabel6.ForeColor = SystemColors.Desktop;
-            guna2HtmlLabel6.Location = new Point(32, 421);
-            guna2HtmlLabel6.Name = "guna2HtmlLabel6";
-            guna2HtmlLabel6.Size = new Size(205, 30);
-            guna2HtmlLabel6.TabIndex = 27;
-            guna2HtmlLabel6.Text = "Nhập lại mật khẩu mới:";
-            // 
-            // guna2TextBox3
-            // 
-            guna2TextBox3.BorderColor = Color.FromArgb(0, 192, 192);
-            guna2TextBox3.CustomizableEdges = customizableEdges4;
-            guna2TextBox3.DefaultText = "";
-            guna2TextBox3.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            guna2TextBox3.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            guna2TextBox3.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox3.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox3.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox3.Font = new Font("Segoe UI", 9F);
-            guna2TextBox3.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox3.Location = new Point(30, 458);
-            guna2TextBox3.Margin = new Padding(3, 4, 3, 4);
-            guna2TextBox3.Name = "guna2TextBox3";
-            guna2TextBox3.PasswordChar = '\0';
-            guna2TextBox3.PlaceholderText = "";
-            guna2TextBox3.SelectedText = "";
-            guna2TextBox3.ShadowDecoration.CustomizableEdges = customizableEdges5;
-            guna2TextBox3.Size = new Size(447, 42);
-            guna2TextBox3.TabIndex = 28;
-            // 
-            // guna2CheckBox3
-            // 
-            guna2CheckBox3.AutoSize = true;
-            guna2CheckBox3.CheckedState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2CheckBox3.CheckedState.BorderRadius = 0;
-            guna2CheckBox3.CheckedState.BorderThickness = 0;
-            guna2CheckBox3.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
-            guna2CheckBox3.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            guna2CheckBox3.Location = new Point(298, 507);
-            guna2CheckBox3.Name = "guna2CheckBox3";
-            guna2CheckBox3.Size = new Size(169, 27);
-            guna2CheckBox3.TabIndex = 29;
-            guna2CheckBox3.Text = "Hiển thị mật khẩu";
-            guna2CheckBox3.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
-            guna2CheckBox3.UncheckedState.BorderRadius = 0;
-            guna2CheckBox3.UncheckedState.BorderThickness = 0;
-            guna2CheckBox3.UncheckedState.FillColor = Color.FromArgb(125, 137, 149);
             // 
             // groupBox3
             // 

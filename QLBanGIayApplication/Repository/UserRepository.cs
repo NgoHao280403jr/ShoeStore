@@ -1,4 +1,5 @@
-﻿using QLBanGiay.Models.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using QLBanGiay.Models.Models;
 using QLBanGiay_Application.Repository.IRepository;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,11 @@ namespace QLBanGiay_Application.Repository
         public User GetUserByUsernameAndPassword(string username, string password)
         {
             return _context.Users.FirstOrDefault(u => u.Username == username && u.Password == password);
+        }
+        public void AddUser(User user)
+        {
+            _context.Users.Add(user);
+            _context.SaveChanges();
         }
     }
 }

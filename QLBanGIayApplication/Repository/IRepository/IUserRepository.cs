@@ -10,5 +10,6 @@ namespace QLBanGiay_Application.Repository.IRepository
     public interface IUserRepository
     {
         User GetUserByUsernameAndPassword(string username, string password);
+        void AddUser(User user);
     }
 }
