@@ -23,6 +23,7 @@ namespace QLBanGiay_Application.View
         public frm_ProductSize()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
             this.Load += Frm_ProductSize_Load;
             this.btn_Timkiem.Click += Btn_Timkiem_Click;
             this.btn_Them.Click += Btn_Them_Click;

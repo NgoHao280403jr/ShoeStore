@@ -26,6 +26,7 @@ namespace QLBanGiay_Application.View
         public frm_Products()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
             this.Load += Frm_Products_Load;
             this.btn_Timkiem.Click += Btn_Timkiem_Click;
             this.dgv_danhsachsp.CellClick += Dgv_danhsachsp_CellClick;

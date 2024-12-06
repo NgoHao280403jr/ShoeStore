@@ -1,4 +1,5 @@
-﻿using QLBanGiay.Models.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using QLBanGiay.Models.Models;
 using QLBanGiay_Application.Repository.IRepository;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,11 @@ namespace QLBanGiay_Application.Repository
         {
             _context = context;
         }
+        public User GetUserByUsername(string username)  //mk chưa băm
+        {
+            return _context.Users.FirstOrDefault(u => u.Username == username);
+        }
+
         public IEnumerable<User> GetAllUsers()
         {
             return _context.Users.ToList();
@@ -55,10 +61,13 @@ namespace QLBanGiay_Application.Repository
                 _context.SaveChanges();
             }
         }
-        public User GetUserByUsernameAndPassword(string username, string password)
+        public User GetUserByUsernameAndPassword(string username, string hashedPassword)
         {
-            return _context.Users.FirstOrDefault(u => u.Username == username && u.Password == password);
+            return _context.Users
+                .Include(u => u.Role) 
+                .FirstOrDefault(u => u.Username == username && u.Password == hashedPassword);
         }
+
 
         public IEnumerable<User> GetUsersByRole(long roleId)
         {

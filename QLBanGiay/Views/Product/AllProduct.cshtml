@@ -1,0 +1,82 @@
+﻿@model List<Product>
+
+<section style="background-color: #eee;">
+    <div class="text-center container py-5">
+        <h4 class="mt-4 mb-5"><strong>Products</strong></h4>
+
+        <div class="row">
+            @foreach (var product in Model)
+            {
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+                             style="height: 313px; position: relative; overflow: hidden;"
+                             data-mdb-ripple-color="light">
+                            <img src="~/images/@product.Image" style="width: 100%; height: 100%; object-fit: cover;" alt="@product.Productname" />
+                            <a href="@Url.Action("DetailProduct", "Product", new { id = product.Productid })">
+                                <div class="mask" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                                    <div class="d-flex justify-content-start align-items-end h-100">
+                                        @if (product.Discount > 0)
+                                        {
+                                            <h5><span class="badge bg-danger ms-2">-@product.Discount%</span></h5>
+                                        }
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <a href="@Url.Action("DetailProduct", "Product", new { id = product.Productid })" class="text-reset">
+                                <h5 class="card-title mb-3">@product.Productname</h5>
+                            </a>
+                            <a href="@Url.Action("DetailProduct", "Product", new { id = product.Productid })" class="text-reset">
+                                <p>@product.Category?.Categoryname</p>
+                            </a>
+                            <h6 class="mb-3">
+                                @if (product.Discount > 0)
+                                {
+                                    <s>@product.Price VNĐ</s>
+                                    <strong class="ms-2 text-danger">@(((decimal)(product.Price * (1 - product.Discount / 100M)))) VNĐ</strong>
+                                }
+                                else
+                                {
+                                    <s>@product.Price VNĐ</s>
+                                }
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- Pagination -->
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center mt-4">
+                @if (ViewBag.CurrentPage > 1)
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("AllProduct", new { page = ViewBag.CurrentPage - 1 })" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                }
+
+                @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                {
+                    <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                        <a class="page-link" href="@Url.Action("AllProduct", new { page = i })">@i</a>
+                    </li>
+                }
+
+                @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("AllProduct", new { page = ViewBag.CurrentPage + 1 })" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    </div>
+</section>
