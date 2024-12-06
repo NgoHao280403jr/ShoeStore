@@ -57,7 +57,7 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             groupBox1 = new GroupBox();
             txt_Timkiem = new Guna.UI2.WinForms.Guna2TextBox();
-            guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
+            btn_Timkiem = new Guna.UI2.WinForms.Guna2ImageButton();
             groupBox2 = new GroupBox();
             guna2CheckBox3 = new Guna.UI2.WinForms.Guna2CheckBox();
             guna2TextBox3 = new Guna.UI2.WinForms.Guna2TextBox();
@@ -69,6 +69,16 @@
             guna2CheckBox1 = new Guna.UI2.WinForms.Guna2CheckBox();
             guna2HtmlLabel10 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
+            ck_Hienthi1 = new Guna.UI2.WinForms.Guna2CheckBox();
+            txt_Mknew1 = new Guna.UI2.WinForms.Guna2TextBox();
+            guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            txt_Mknew = new Guna.UI2.WinForms.Guna2TextBox();
+            guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            ckHienThi = new Guna.UI2.WinForms.Guna2CheckBox();
+            ck_Bikhoa = new Guna.UI2.WinForms.Guna2CheckBox();
+            ck_Hoatdong = new Guna.UI2.WinForms.Guna2CheckBox();
+            guna2HtmlLabel10 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            txt_Mkcu = new Guna.UI2.WinForms.Guna2TextBox();
             guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             cbo_Mavaitro = new Guna.UI2.WinForms.Guna2ComboBox();
             guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -78,6 +88,7 @@
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             groupBox4 = new GroupBox();
             dgv_danhsachsp = new Guna.UI2.WinForms.Guna2DataGridView();
+            dgv_danhsachnd = new Guna.UI2.WinForms.Guna2DataGridView();
             groupBox3 = new GroupBox();
             btn_Thoat = new Guna.UI2.WinForms.Guna2Button();
             btn_Xoa = new Guna.UI2.WinForms.Guna2Button();
@@ -86,14 +97,14 @@
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgv_danhsachsp).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgv_danhsachnd).BeginInit();
             groupBox3.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
             // 
             groupBox1.Controls.Add(txt_Timkiem);
-            groupBox1.Controls.Add(guna2ImageButton1);
+            groupBox1.Controls.Add(btn_Timkiem);
             groupBox1.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             groupBox1.ForeColor = SystemColors.HotTrack;
             groupBox1.Location = new Point(12, 12);
@@ -125,33 +136,33 @@
             txt_Timkiem.Size = new Size(372, 42);
             txt_Timkiem.TabIndex = 1;
             // 
-            // guna2ImageButton1
+            // btn_Timkiem
             // 
-            guna2ImageButton1.CheckedState.ImageSize = new Size(64, 64);
-            guna2ImageButton1.HoverState.ImageSize = new Size(64, 64);
-            guna2ImageButton1.Image = (Image)resources.GetObject("guna2ImageButton1.Image");
-            guna2ImageButton1.ImageOffset = new Point(0, 0);
-            guna2ImageButton1.ImageRotate = 0F;
-            guna2ImageButton1.ImageSize = new Size(30, 30);
-            guna2ImageButton1.Location = new Point(30, 26);
-            guna2ImageButton1.Name = "guna2ImageButton1";
-            guna2ImageButton1.PressedState.ImageSize = new Size(64, 64);
-            guna2ImageButton1.ShadowDecoration.CustomizableEdges = customizableEdges3;
-            guna2ImageButton1.Size = new Size(71, 62);
-            guna2ImageButton1.TabIndex = 0;
+            btn_Timkiem.CheckedState.ImageSize = new Size(64, 64);
+            btn_Timkiem.HoverState.ImageSize = new Size(64, 64);
+            btn_Timkiem.Image = (Image)resources.GetObject("btn_Timkiem.Image");
+            btn_Timkiem.ImageOffset = new Point(0, 0);
+            btn_Timkiem.ImageRotate = 0F;
+            btn_Timkiem.ImageSize = new Size(30, 30);
+            btn_Timkiem.Location = new Point(30, 26);
+            btn_Timkiem.Name = "btn_Timkiem";
+            btn_Timkiem.PressedState.ImageSize = new Size(64, 64);
+            btn_Timkiem.ShadowDecoration.CustomizableEdges = customizableEdges3;
+            btn_Timkiem.Size = new Size(71, 62);
+            btn_Timkiem.TabIndex = 0;
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(guna2CheckBox3);
-            groupBox2.Controls.Add(guna2TextBox3);
+            groupBox2.Controls.Add(ck_Hienthi1);
+            groupBox2.Controls.Add(txt_Mknew1);
             groupBox2.Controls.Add(guna2HtmlLabel6);
-            groupBox2.Controls.Add(guna2TextBox2);
+            groupBox2.Controls.Add(txt_Mknew);
             groupBox2.Controls.Add(guna2HtmlLabel5);
             groupBox2.Controls.Add(ckHienThi);
-            groupBox2.Controls.Add(guna2CheckBox2);
-            groupBox2.Controls.Add(guna2CheckBox1);
+            groupBox2.Controls.Add(ck_Bikhoa);
+            groupBox2.Controls.Add(ck_Hoatdong);
             groupBox2.Controls.Add(guna2HtmlLabel10);
-            groupBox2.Controls.Add(guna2TextBox1);
+            groupBox2.Controls.Add(txt_Mkcu);
             groupBox2.Controls.Add(guna2HtmlLabel4);
             groupBox2.Controls.Add(cbo_Mavaitro);
             groupBox2.Controls.Add(guna2HtmlLabel3);
@@ -207,6 +218,45 @@
             guna2TextBox3.ShadowDecoration.CustomizableEdges = customizableEdges5;
             guna2TextBox3.Size = new Size(447, 42);
             guna2TextBox3.TabIndex = 28;
+            // ck_Hienthi1
+            // 
+            ck_Hienthi1.AutoSize = true;
+            ck_Hienthi1.CheckedState.BorderColor = Color.FromArgb(94, 148, 255);
+            ck_Hienthi1.CheckedState.BorderRadius = 0;
+            ck_Hienthi1.CheckedState.BorderThickness = 0;
+            ck_Hienthi1.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
+            ck_Hienthi1.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ck_Hienthi1.Location = new Point(298, 313);
+            ck_Hienthi1.Name = "ck_Hienthi1";
+            ck_Hienthi1.Size = new Size(169, 27);
+            ck_Hienthi1.TabIndex = 29;
+            ck_Hienthi1.Text = "Hiển thị mật khẩu";
+            ck_Hienthi1.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
+            ck_Hienthi1.UncheckedState.BorderRadius = 0;
+            ck_Hienthi1.UncheckedState.BorderThickness = 0;
+            ck_Hienthi1.UncheckedState.FillColor = Color.FromArgb(125, 137, 149);
+            // 
+            // txt_Mknew1
+            // 
+            txt_Mknew1.BorderColor = Color.FromArgb(0, 192, 192);
+            txt_Mknew1.CustomizableEdges = customizableEdges4;
+            txt_Mknew1.DefaultText = "";
+            txt_Mknew1.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txt_Mknew1.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txt_Mknew1.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txt_Mknew1.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txt_Mknew1.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txt_Mknew1.Font = new Font("Segoe UI", 9F);
+            txt_Mknew1.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txt_Mknew1.Location = new Point(30, 458);
+            txt_Mknew1.Margin = new Padding(3, 4, 3, 4);
+            txt_Mknew1.Name = "txt_Mknew1";
+            txt_Mknew1.PasswordChar = '●';
+            txt_Mknew1.PlaceholderText = "";
+            txt_Mknew1.SelectedText = "";
+            txt_Mknew1.ShadowDecoration.CustomizableEdges = customizableEdges5;
+            txt_Mknew1.Size = new Size(447, 42);
+            txt_Mknew1.TabIndex = 28;
             // 
             // guna2HtmlLabel6
             // 
@@ -240,6 +290,27 @@
             guna2TextBox2.ShadowDecoration.CustomizableEdges = customizableEdges7;
             guna2TextBox2.Size = new Size(447, 42);
             guna2TextBox2.TabIndex = 26;
+            // txt_Mknew
+            // 
+            txt_Mknew.BorderColor = Color.FromArgb(0, 192, 192);
+            txt_Mknew.CustomizableEdges = customizableEdges6;
+            txt_Mknew.DefaultText = "";
+            txt_Mknew.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txt_Mknew.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txt_Mknew.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txt_Mknew.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txt_Mknew.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txt_Mknew.Font = new Font("Segoe UI", 9F);
+            txt_Mknew.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txt_Mknew.Location = new Point(32, 373);
+            txt_Mknew.Margin = new Padding(3, 4, 3, 4);
+            txt_Mknew.Name = "txt_Mknew";
+            txt_Mknew.PasswordChar = '●';
+            txt_Mknew.PlaceholderText = "";
+            txt_Mknew.SelectedText = "";
+            txt_Mknew.ShadowDecoration.CustomizableEdges = customizableEdges7;
+            txt_Mknew.Size = new Size(447, 42);
+            txt_Mknew.TabIndex = 26;
             // 
             // guna2HtmlLabel5
             // 
@@ -261,6 +332,7 @@
             ckHienThi.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
             ckHienThi.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             ckHienThi.Location = new Point(298, 313);
+            ckHienThi.Location = new Point(308, 507);
             ckHienThi.Name = "ckHienThi";
             ckHienThi.Size = new Size(169, 27);
             ckHienThi.TabIndex = 24;
@@ -305,6 +377,41 @@
             guna2CheckBox1.UncheckedState.BorderRadius = 0;
             guna2CheckBox1.UncheckedState.BorderThickness = 0;
             guna2CheckBox1.UncheckedState.FillColor = Color.FromArgb(125, 137, 149);
+            // ck_Bikhoa
+            // 
+            ck_Bikhoa.AutoSize = true;
+            ck_Bikhoa.CheckedState.BorderColor = Color.FromArgb(94, 148, 255);
+            ck_Bikhoa.CheckedState.BorderRadius = 0;
+            ck_Bikhoa.CheckedState.BorderThickness = 0;
+            ck_Bikhoa.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
+            ck_Bikhoa.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ck_Bikhoa.Location = new Point(298, 565);
+            ck_Bikhoa.Name = "ck_Bikhoa";
+            ck_Bikhoa.Size = new Size(98, 32);
+            ck_Bikhoa.TabIndex = 23;
+            ck_Bikhoa.Text = "Bị khóa";
+            ck_Bikhoa.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
+            ck_Bikhoa.UncheckedState.BorderRadius = 0;
+            ck_Bikhoa.UncheckedState.BorderThickness = 0;
+            ck_Bikhoa.UncheckedState.FillColor = Color.FromArgb(125, 137, 149);
+            // 
+            // ck_Hoatdong
+            // 
+            ck_Hoatdong.AutoSize = true;
+            ck_Hoatdong.CheckedState.BorderColor = Color.FromArgb(94, 148, 255);
+            ck_Hoatdong.CheckedState.BorderRadius = 0;
+            ck_Hoatdong.CheckedState.BorderThickness = 0;
+            ck_Hoatdong.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
+            ck_Hoatdong.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ck_Hoatdong.Location = new Point(47, 565);
+            ck_Hoatdong.Name = "ck_Hoatdong";
+            ck_Hoatdong.Size = new Size(129, 32);
+            ck_Hoatdong.TabIndex = 22;
+            ck_Hoatdong.Text = "Hoạt động";
+            ck_Hoatdong.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
+            ck_Hoatdong.UncheckedState.BorderRadius = 0;
+            ck_Hoatdong.UncheckedState.BorderThickness = 0;
+            ck_Hoatdong.UncheckedState.FillColor = Color.FromArgb(125, 137, 149);
             // 
             // guna2HtmlLabel10
             // 
@@ -338,6 +445,27 @@
             guna2TextBox1.ShadowDecoration.CustomizableEdges = customizableEdges9;
             guna2TextBox1.Size = new Size(447, 42);
             guna2TextBox1.TabIndex = 8;
+            // txt_Mkcu
+            // 
+            txt_Mkcu.BorderColor = Color.FromArgb(0, 192, 192);
+            txt_Mkcu.CustomizableEdges = customizableEdges8;
+            txt_Mkcu.DefaultText = "";
+            txt_Mkcu.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txt_Mkcu.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txt_Mkcu.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txt_Mkcu.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txt_Mkcu.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txt_Mkcu.Font = new Font("Segoe UI", 9F);
+            txt_Mkcu.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txt_Mkcu.Location = new Point(30, 264);
+            txt_Mkcu.Margin = new Padding(3, 4, 3, 4);
+            txt_Mkcu.Name = "txt_Mkcu";
+            txt_Mkcu.PasswordChar = '●';
+            txt_Mkcu.PlaceholderText = "";
+            txt_Mkcu.SelectedText = "";
+            txt_Mkcu.ShadowDecoration.CustomizableEdges = customizableEdges9;
+            txt_Mkcu.Size = new Size(447, 42);
+            txt_Mkcu.TabIndex = 8;
             // 
             // guna2HtmlLabel4
             // 
@@ -448,7 +576,7 @@
             // 
             // groupBox4
             // 
-            groupBox4.Controls.Add(dgv_danhsachsp);
+            groupBox4.Controls.Add(dgv_danhsachnd);
             groupBox4.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             groupBox4.ForeColor = SystemColors.HotTrack;
             groupBox4.Location = new Point(515, 12);
@@ -458,10 +586,10 @@
             groupBox4.TabStop = false;
             groupBox4.Text = "Danh sách người dùng";
             // 
-            // dgv_danhsachsp
+            // dgv_danhsachnd
             // 
             dataGridViewCellStyle1.BackColor = Color.White;
-            dgv_danhsachsp.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dgv_danhsachnd.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(100, 88, 255);
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -469,9 +597,9 @@
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgv_danhsachsp.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dgv_danhsachsp.ColumnHeadersHeight = 4;
-            dgv_danhsachsp.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dgv_danhsachnd.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dgv_danhsachnd.ColumnHeadersHeight = 4;
+            dgv_danhsachnd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -508,6 +636,35 @@
             dgv_danhsachsp.ThemeStyle.RowsStyle.Height = 29;
             dgv_danhsachsp.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dgv_danhsachsp.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dgv_danhsachnd.DefaultCellStyle = dataGridViewCellStyle3;
+            dgv_danhsachnd.GridColor = Color.FromArgb(231, 229, 255);
+            dgv_danhsachnd.Location = new Point(6, 37);
+            dgv_danhsachnd.Name = "dgv_danhsachnd";
+            dgv_danhsachnd.RowHeadersVisible = false;
+            dgv_danhsachnd.RowHeadersWidth = 51;
+            dgv_danhsachnd.Size = new Size(613, 455);
+            dgv_danhsachnd.TabIndex = 0;
+            dgv_danhsachnd.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
+            dgv_danhsachnd.ThemeStyle.AlternatingRowsStyle.Font = null;
+            dgv_danhsachnd.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty;
+            dgv_danhsachnd.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty;
+            dgv_danhsachnd.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty;
+            dgv_danhsachnd.ThemeStyle.BackColor = Color.White;
+            dgv_danhsachnd.ThemeStyle.GridColor = Color.FromArgb(231, 229, 255);
+            dgv_danhsachnd.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(100, 88, 255);
+            dgv_danhsachnd.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgv_danhsachnd.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dgv_danhsachnd.ThemeStyle.HeaderStyle.ForeColor = Color.White;
+            dgv_danhsachnd.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dgv_danhsachnd.ThemeStyle.HeaderStyle.Height = 4;
+            dgv_danhsachnd.ThemeStyle.ReadOnly = false;
+            dgv_danhsachnd.ThemeStyle.RowsStyle.BackColor = Color.White;
+            dgv_danhsachnd.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgv_danhsachnd.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dgv_danhsachnd.ThemeStyle.RowsStyle.ForeColor = SystemColors.HotTrack;
+            dgv_danhsachnd.ThemeStyle.RowsStyle.Height = 29;
+            dgv_danhsachnd.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            dgv_danhsachnd.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             // 
             // groupBox3
             // 
@@ -606,7 +763,7 @@
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             groupBox4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgv_danhsachsp).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgv_danhsachnd).EndInit();
             groupBox3.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -615,7 +772,7 @@
 
         private GroupBox groupBox1;
         private Guna.UI2.WinForms.Guna2TextBox txt_Timkiem;
-        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
+        private Guna.UI2.WinForms.Guna2ImageButton btn_Timkiem;
         private GroupBox groupBox2;
         private Guna.UI2.WinForms.Guna2ComboBox cbo_Mavaitro;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
@@ -623,17 +780,16 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private Guna.UI2.WinForms.Guna2TextBox txt_Manguoidung;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
+        private Guna.UI2.WinForms.Guna2TextBox txt_Mkcu;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel4;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel10;
-        private Guna.UI2.WinForms.Guna2CheckBox guna2CheckBox2;
-        private Guna.UI2.WinForms.Guna2CheckBox guna2CheckBox1;
+        private Guna.UI2.WinForms.Guna2CheckBox ck_Bikhoa;
+        private Guna.UI2.WinForms.Guna2CheckBox ck_Hoatdong;
         private GroupBox groupBox4;
-        private Guna.UI2.WinForms.Guna2DataGridView dgv_danhsachsp;
-        private Guna.UI2.WinForms.Guna2CheckBox guna2CheckBox3;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox3;
+        private Guna.UI2.WinForms.Guna2DataGridView dgv_danhsachnd;
+        private Guna.UI2.WinForms.Guna2TextBox txt_Mknew1;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel6;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox2;
+        private Guna.UI2.WinForms.Guna2TextBox txt_Mknew;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel5;
         private Guna.UI2.WinForms.Guna2CheckBox ckHienThi;
         private GroupBox groupBox3;
@@ -641,5 +797,6 @@
         private Guna.UI2.WinForms.Guna2Button btn_Xoa;
         private Guna.UI2.WinForms.Guna2Button btn_Them;
         private Guna.UI2.WinForms.Guna2Button btn_Capnhat;
+        private Guna.UI2.WinForms.Guna2CheckBox ck_Hienthi1;
     }
 }

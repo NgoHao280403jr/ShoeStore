@@ -30,8 +30,9 @@ public partial class QlShopBanGiayContext : DbContext
     public virtual DbSet<Parentproductcategory> Parentproductcategories { get; set; }
 
     public virtual DbSet<Product> Products { get; set; }
+	public virtual DbSet<ProductSize> ProductSizes { get; set; }
 
-    public virtual DbSet<Productcategory> Productcategories { get; set; }
+	public virtual DbSet<Productcategory> Productcategories { get; set; }
 
     public virtual DbSet<Productreview> Productreviews { get; set; }
 
@@ -45,6 +46,28 @@ public partial class QlShopBanGiayContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<ProductSize>(entity =>
+        {
+            entity.HasKey(e => e.ProductSizeId).HasName("productsize_pkey");
+
+            entity.ToTable("productsize");
+
+            entity.Property(e => e.ProductSizeId).HasColumnName("productsizeid");
+            entity.Property(e => e.ProductId).HasColumnName("productid");
+            entity.Property(e => e.Size)
+                .HasMaxLength(50)
+                .HasColumnName("size");
+            entity.Property(e => e.Quantity)
+                .HasColumnName("quantity")
+                .HasDefaultValue(0);
+
+            entity.HasOne(d => d.Product)
+                .WithMany(p => p.ProductSizes) 
+                .HasForeignKey(d => d.ProductId)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("fk_productsize_product");
+        });
+
         modelBuilder.Entity<Customer>(entity =>
         {
             entity.HasKey(e => e.Customerid).HasName("customer_pkey");
@@ -167,67 +190,75 @@ public partial class QlShopBanGiayContext : DbContext
                 .HasConstraintName("fk_invoicedetail_product");
         });
 
-        modelBuilder.Entity<Order>(entity =>
-        {
-            entity.HasKey(e => e.Orderid).HasName("orders_pkey");
+		modelBuilder.Entity<Order>(entity =>
+		{
+			entity.HasKey(e => e.Orderid).HasName("orders_pkey");
 
-            entity.ToTable("orders");
+			entity.ToTable("orders");
 
-            entity.Property(e => e.Orderid).HasColumnName("orderid");
-            entity.Property(e => e.Customerid).HasColumnName("customerid");
-            entity.Property(e => e.Deliveryaddress)
+			entity.Property(e => e.Orderid).HasColumnName("orderid");
+			entity.Property(e => e.Customerid).HasColumnName("customerid");
+			entity.Property(e => e.Deliveryaddress)
+				.HasMaxLength(255)
+				.HasColumnName("deliveryaddress");
+			entity.Property(e => e.Expecteddeliverytime).HasColumnName("expecteddeliverytime");
+			entity.Property(e => e.Iscart)
+				.HasDefaultValue(true)
+				.HasColumnName("iscart");
+			entity.Property(e => e.Orderstatus)
+				.HasMaxLength(30)
+				.HasDefaultValueSql("'Cart'::character varying")
+				.HasColumnName("orderstatus");
+			entity.Property(e => e.Ordertime).HasColumnName("ordertime");
+			entity.Property(e => e.Paymentmethod)
+				.HasMaxLength(30)
+				.HasColumnName("paymentmethod");
+			entity.Property(e => e.Paymentstatus)
+				.HasMaxLength(30)
+				.HasDefaultValueSql("'Not Paid'::character varying")
+				.HasColumnName("paymentstatus");
+			entity.Property(e => e.Phonenumber)
+				.HasMaxLength(10)
+				.HasColumnName("phonenumber");
+            entity.Property(e => e.Customername)
                 .HasMaxLength(255)
-                .HasColumnName("deliveryaddress");
-            entity.Property(e => e.Expecteddeliverytime)
-                .HasColumnType("timestamp without time zone")
-                .HasColumnName("expecteddeliverytime");
-            entity.Property(e => e.Orderstatus)
-                .HasMaxLength(30)
-                .HasDefaultValueSql("'Pending'::character varying")
-                .HasColumnName("orderstatus");
-            entity.Property(e => e.Ordertime)
-                .HasColumnType("timestamp without time zone")
-                .HasColumnName("ordertime");
-            entity.Property(e => e.Paymentmethod)
-                .HasMaxLength(30)
-                .HasColumnName("paymentmethod");
-            entity.Property(e => e.Paymentstatus)
-                .HasMaxLength(30)
-                .HasDefaultValueSql("'Not Paid'::character varying")
-                .HasColumnName("paymentstatus");
-            entity.Property(e => e.Phonenumber)
-                .HasMaxLength(10)
-                .HasColumnName("phonenumber");
+                .HasColumnName("customername");
+			entity.HasOne(d => d.Customer).WithMany(p => p.Orders)
+				.HasForeignKey(d => d.Customerid)
+				.OnDelete(DeleteBehavior.ClientSetNull)
+				.HasConstraintName("fk_order_customer");
+		});
 
-            entity.HasOne(d => d.Customer).WithMany(p => p.Orders)
-                .HasForeignKey(d => d.Customerid)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("fk_order_customer");
-        });
+		modelBuilder.Entity<Orderdetail>(entity =>
+		{
+			entity.HasKey(e => e.Orderdetailid).HasName("orderdetail_pkey");
 
-        modelBuilder.Entity<Orderdetail>(entity =>
-        {
-            entity.HasKey(e => new { e.Orderid, e.Productid }).HasName("pk_orderdetail");
+			entity.ToTable("orderdetail");
 
-            entity.ToTable("orderdetail");
+			entity.Property(e => e.Orderdetailid).HasColumnName("orderdetailid");
+			entity.Property(e => e.Orderid).HasColumnName("orderid");
+			entity.Property(e => e.Productid).HasColumnName("productid");
+			entity.Property(e => e.Quantity).HasColumnName("quantity");
+			entity.Property(e => e.Size)
+				.HasMaxLength(50)
+				.HasColumnName("size");
+			entity.Property(e => e.Subtotal)
+				.HasComputedColumnSql("((quantity)::double precision * unitprice)", true)
+				.HasColumnName("subtotal");
+			entity.Property(e => e.Unitprice).HasColumnName("unitprice");
 
-            entity.Property(e => e.Orderid).HasColumnName("orderid");
-            entity.Property(e => e.Productid).HasColumnName("productid");
-            entity.Property(e => e.Quantity).HasColumnName("quantity");
-            entity.Property(e => e.Unitprice).HasColumnName("unitprice");
+			entity.HasOne(d => d.Order).WithMany(p => p.Orderdetails)
+				.HasForeignKey(d => d.Orderid)
+				.OnDelete(DeleteBehavior.ClientSetNull)
+				.HasConstraintName("fk_orderdetail_order");
 
-            entity.HasOne(d => d.Order).WithMany(p => p.Orderdetails)
-                .HasForeignKey(d => d.Orderid)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("fk_orderdetail_order");
+			entity.HasOne(d => d.Product).WithMany(p => p.Orderdetails)
+				.HasForeignKey(d => d.Productid)
+				.OnDelete(DeleteBehavior.ClientSetNull)
+				.HasConstraintName("fk_orderdetail_product");
+		});
 
-            entity.HasOne(d => d.Product).WithMany(p => p.Orderdetails)
-                .HasForeignKey(d => d.Productid)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("fk_orderdetail_product");
-        });
-
-        modelBuilder.Entity<Parentproductcategory>(entity =>
+		modelBuilder.Entity<Parentproductcategory>(entity =>
         {
             entity.HasKey(e => e.Parentcategoryid).HasName("parentproductcategory_pkey");
 
@@ -274,8 +305,25 @@ public partial class QlShopBanGiayContext : DbContext
                 .HasForeignKey(d => d.Parentcategoryid)
                 .HasConstraintName("product_parentcategoryid_fkey");
         });
+		modelBuilder.Entity<ProductSize>(entity =>
+		{
+			entity.HasKey(e => e.ProductSizeId).HasName("productsize_pkey");
 
-        modelBuilder.Entity<Productcategory>(entity =>
+			entity.ToTable("productsize");
+
+			entity.Property(e => e.ProductSizeId).HasColumnName("productsizeid");
+			entity.Property(e => e.ProductId).HasColumnName("productid");
+			entity.Property(e => e.Quantity).HasColumnName("quantity");
+			entity.Property(e => e.Size)
+				.HasMaxLength(50)
+				.HasColumnName("size");
+
+			entity.HasOne(d => d.Product).WithMany(p => p.ProductSizes)
+				.HasForeignKey(d => d.ProductId)
+				.OnDelete(DeleteBehavior.ClientSetNull)
+				.HasConstraintName("productsize_productid_fkey");
+		});
+		modelBuilder.Entity<Productcategory>(entity =>
         {
             entity.HasKey(e => e.Categoryid).HasName("productcategory_pkey");
 

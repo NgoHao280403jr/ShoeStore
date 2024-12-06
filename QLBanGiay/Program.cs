@@ -1,5 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using QLBanGiay.Models;
+using QLBanGiay.Models.Models;
+using QLBanGiay.Repository;
+using QLBanGiay.Repository.IRepository;
+using QLBanGiay.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +24,10 @@ builder.Services.AddSession(options =>
 // Thêm Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+//Đăng ký DI
+
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<ProductService>();
 
 var app = builder.Build();
 

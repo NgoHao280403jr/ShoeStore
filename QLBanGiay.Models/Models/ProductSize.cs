@@ -15,7 +15,4 @@ public partial class ProductSize
 
     public virtual Product? Product { get; set; }
 
-    public virtual ICollection<Invoicedetail> Invoicedetails { get; set; } = new List<Invoicedetail>();
-
-    public virtual ICollection<Orderdetail> Orderdetails { get; set; } = new List<Orderdetail>();
 }

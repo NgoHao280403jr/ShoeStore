@@ -1,4 +1,4 @@
-;(function () {
+﻿;(function () {
 
 	'use strict';
 
@@ -282,10 +282,6 @@
 		  'autoclose': true
 		});
 	};
-
-
-
-	
 	$(function(){
 		mobileMenuOutsideClick();
 		offcanvasMenu();
@@ -297,7 +293,7 @@
 		loaderPage();
 		owlCrouselFeatureSlide();
 		parallax();
-		datePicker();
+		datePicker();		
 	});
 
 

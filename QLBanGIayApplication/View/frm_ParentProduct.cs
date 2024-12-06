@@ -33,11 +33,19 @@ namespace QLBanGiay_Application.View
             this.btn_Capnhat.Click += Btn_Capnhat_Click;
             this.btn_Xoa.Click += Btn_Xoa_Click;
             this.btn_Timkiem.Click += Btn_Timkiem_Click;
+            this.btn_Thoat.Click += Btn_Thoat_Click;
 
             _context = new QlShopBanGiayContext();
             _parentService = new ParentService(new ParentCategoryRepository(_context));
             _productService = new ProductService(new ProductRepository(_context));
             _categoryService = new CategoryService(new CategoryRepository(_context));
+        }
+
+        private void Btn_Thoat_Click(object? sender, EventArgs e)
+        {
+            this.Close();
+            frm_Main mainForm = new frm_Main();
+            mainForm.Show();
         }
 
         private void Btn_Timkiem_Click(object? sender, EventArgs e)
@@ -74,8 +82,7 @@ namespace QLBanGiay_Application.View
                             // Lấy và xóa tất cả sản phẩm thuộc danh mục này
                             var relatedProducts = _productService.GetProductsByCategory(categoryId);
                             if (relatedProducts.Any())
-                            {
-                                // Có sản phẩm liên quan, hỏi người dùng có muốn xóa không
+                            {                              
                                 var result = MessageBox.Show("Danh mục này có sản phẩm liên quan. Bạn có muốn xóa tất cả sản phẩm liên quan không?",
                                                               "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                                 if (result == DialogResult.Yes)
@@ -92,7 +99,7 @@ namespace QLBanGiay_Application.View
                             _context.SaveChanges();
                             transaction.Commit();
 
-                            LoadParentCategories(); // Tải lại danh sách
+                            LoadParentCategories(); 
                         }
                         catch (Exception ex)
                         {

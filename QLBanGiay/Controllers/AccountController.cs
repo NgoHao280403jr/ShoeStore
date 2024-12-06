@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using QLBanGiay.Models;
-using Microsoft.AspNetCore.Http;
-using System.Linq;
+using QLBanGiay.Models.Models;
 
 namespace QLBanGiay.Controllers
 {

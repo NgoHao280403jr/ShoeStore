@@ -22,4 +22,8 @@
     <Folder Include="wwwroot\fonts\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\QLBanGiay.Models\QLBanGiay.Models.csproj" />
+  </ItemGroup>
+
 </Project>

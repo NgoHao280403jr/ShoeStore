@@ -41,6 +41,7 @@ namespace QLBanGiay_Application.View
 
                     this.Hide();
                     frmMain mainForm = new frmMain();
+                    frm_ProductSize mainForm = new frm_ProductSize();
                     mainForm.Show();
                 }
                 else
@@ -60,11 +61,11 @@ namespace QLBanGiay_Application.View
         {          
             if (ckHienThi.Checked)
             {
-                txt_PassWord.PasswordChar = '\0'; // Hiển thị mật khẩu
+                txt_PassWord.PasswordChar = '\0';
             }
             else
             {
-                txt_PassWord.PasswordChar = '*'; // Ẩn mật khẩu
+                txt_PassWord.PasswordChar = '*'; 
             }
         }
     }
