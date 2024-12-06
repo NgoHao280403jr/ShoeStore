@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace QLBanGiay.Models.Models;
@@ -34,6 +35,8 @@ public partial class Product
     public virtual Parentproductcategory? Parentcategory { get; set; }
 
     public virtual ICollection<Productreview> Productreviews { get; set; } = new List<Productreview>();
-    public virtual ICollection<ProductSize> ProductSizes { get; set; } = new List<ProductSize>();
+	
+    [JsonProperty("sizes")]
+	public virtual ICollection<ProductSize> ProductSizes { get; set; } = new List<ProductSize>();
 
 }

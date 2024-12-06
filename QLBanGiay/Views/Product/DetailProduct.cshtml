@@ -25,14 +25,10 @@
 						<div class="block-26 mb-2">
 							<h4>Size</h4>
 							<ul>
-								<li><a href="#">37</a></li>
-								<li><a href="#">38</a></li>
-								<li><a href="#">39</a></li>
-								<li><a href="#">40</a></li>
-								<li><a href="#">41</a></li>
-								<li><a href="#">42</a></li>
-								<li><a href="#">43</a></li>
-								
+								@foreach (var size in Model.ProductSizes)
+								{
+									<li><a href="#">@size.Size</a></li> 
+								}
 							</ul>
 						</div>
 					</div>

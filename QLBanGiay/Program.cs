@@ -25,8 +25,9 @@ builder.Services.AddSession(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 //Đăng ký DI
-builder.Services.AddScoped<ProductSizeService>();
-builder.Services.AddScoped<IProductSizeRepositoy, ProductSizeRepository>();
+
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<ProductService>();
 
 var app = builder.Build();
 

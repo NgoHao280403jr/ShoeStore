@@ -1,8 +1,8 @@
-﻿using System.Net.Http;
-using System.Threading.Tasks;
+﻿
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using QLBanGiay.Models.Models;
+
 
 public class ProductController : Controller
 {
@@ -13,7 +13,7 @@ public class ProductController : Controller
         _httpClient = new HttpClient();
     }
 
-    public async Task<IActionResult> AllProduct(int page = 1, int pageSize = 10)
+    public async Task<IActionResult> AllProduct(int page = 1, int pageSize = 12)
     {
         string apiUrl = $"https://localhost:7063/api/ProductApi?page={page}&pageSize={pageSize}";
         var response = await _httpClient.GetAsync(apiUrl);
@@ -37,17 +37,34 @@ public class ProductController : Controller
         public int CurrentPage { get; set; }
         public int TotalPages { get; set; }
     }
-    public async Task<IActionResult> DetailProduct(int id)
-    {
-        string apiUrl = $"https://localhost:7063/api/ProductApi/{id}";
-        var response = await _httpClient.GetAsync(apiUrl);
-        if (response.IsSuccessStatusCode)
-        {
-            var jsonData = await response.Content.ReadAsStringAsync();
-            var product = JsonConvert.DeserializeObject<Product>(jsonData);
-            return View(product);
-        }
+	public async Task<IActionResult> DetailProduct(int id)
+	{
+		try
+		{
+			string productApiUrl = $"https://localhost:7063/api/ProductApi/{id}";
+			var response = await _httpClient.GetAsync(productApiUrl);
 
-        return View("Error"); // Trả về trang lỗi nếu API không thành công
-    }
+			if (!response.IsSuccessStatusCode)
+			{
+				return View("DetailProduct", new Product
+				{
+					Productname = "Product not found",
+					Isactive = false
+				});
+			}
+
+			var productJson = await response.Content.ReadAsStringAsync();
+			var product = JsonConvert.DeserializeObject<Product>(productJson);
+			return View(product);
+		}
+		catch (Exception ex)
+		{
+			// Trả về view cùng một kiểu dữ liệu
+			return View("DetailProduct", new Product
+			{
+				Productname = $"Error: {ex.Message}",
+				Isactive = false
+			});
+		}
+	}
 }
