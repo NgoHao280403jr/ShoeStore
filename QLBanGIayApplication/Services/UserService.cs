@@ -53,6 +53,5 @@ namespace QLBanGiay_Application.Services
         {
             return _userRepository.GetUsersByRole(roleId);  
         }
-
     }
 }

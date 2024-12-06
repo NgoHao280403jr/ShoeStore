@@ -1,4 +1,5 @@
-﻿using QLBanGiay.Models.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using QLBanGiay.Models.Models;
 using QLBanGiay_Application.Repository.IRepository;
 using System;
 using System.Collections.Generic;
