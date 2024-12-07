@@ -22,6 +22,7 @@ namespace QLBanGiay_Application.View
         public frm_Role()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
             this.btn_Timkiem.Click += Btn_Timkiem_Click;
             this.Load += Frm_Role_Load;
             this.btn_Them.Click += Btn_Them_Click;

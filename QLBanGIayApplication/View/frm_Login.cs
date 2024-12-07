@@ -18,8 +18,15 @@ namespace QLBanGiay_Application.View
         public frm_Login(UserService userService)
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
             btn_DangNhap.Click += Btn_DangNhap_Click;
+            btn_Thoat.Click += Btn_Thoat_Click;
             _userService = userService;
+        }
+
+        private void Btn_Thoat_Click(object? sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void Btn_DangNhap_Click(object? sender, EventArgs e)
@@ -38,35 +45,40 @@ namespace QLBanGiay_Application.View
                 if (_userService.ValidateLogin(username, password))
                 {
                     MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    this.Hide();
-                    frmMain mainForm = new frmMain();
-                    frm_ProductSize mainForm = new frm_ProductSize();
+                    frm_Main mainForm = new frm_Main();
                     mainForm.Show();
+                    Form parentForm = this.FindForm(); 
+                    if (parentForm != null)
+                    {
+                        parentForm.Hide();
+                    }
                 }
                 else
                 {
-
-                    MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng! Hoặc bạn không có quyền!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                // Xử lý lỗi
                 MessageBox.Show("Có lỗi xảy ra: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void ckHienThi_CheckedChanged(object sender, EventArgs e)
-        {          
+        {
             if (ckHienThi.Checked)
             {
                 txt_PassWord.PasswordChar = '\0';
             }
             else
             {
-                txt_PassWord.PasswordChar = '*'; 
+                txt_PassWord.PasswordChar = '*';
             }
+        }
+
+        private void frm_Login_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

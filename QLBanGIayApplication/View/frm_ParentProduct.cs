@@ -25,6 +25,7 @@ namespace QLBanGiay_Application.View
         public frm_ParentProduct()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
             _context = new QlShopBanGiayContext();
             _parentService = new ParentService(new ParentCategoryRepository(_context));
             this.Load += Frm_ParentProduct_Load;
