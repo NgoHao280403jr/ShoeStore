@@ -1,0 +1,229 @@
+﻿@using Microsoft.AspNetCore.Http
+@{
+	var username = Context.Session.GetString("Username");
+	var userid = Context.Session.GetString("UserId");
+}
+<div class="colorlib-product">
+	<div class="container">
+		<div class="row row-pb-lg">
+			<div class="col-md-10 offset-md-1">
+				<div class="process-wrap">
+					<div class="process text-center active">
+						<p><span>01</span></p>
+						<h3>Shopping Cart</h3>
+					</div>
+					<div class="process text-center">
+						<p><span>02</span></p>
+						<h3>Checkout</h3>
+					</div>
+					<div class="process text-center">
+						<p><span>03</span></p>
+						<h3>Order Complete</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row row-pb-lg" id="cartItemsContainer">
+		</div>
+		<div class="row row-pb-lg">
+			<div class="col-md-12">
+				<div class="total-wrap">
+					<div class="row">
+						<div class="col-sm-4 text-center">
+							<div class="total">
+								<div class="grand-total">
+									<p><span><strong>Total:</strong></span> <span id="totalPrice">$0.00</span></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row" >
+			<div class="col-sm-8 offset-sm-2 text-center colorlib-heading colorlib-heading-sm">
+				<h2>Related Products</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3 col-lg-3 mb-4 text-center">
+				<div class="product-entry border">
+					<a href="#" class="prod-img">
+						<img src="images/item-1.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+					</a>
+					<div class="desc">
+						<h2><a href="#">Women's Boots Shoes Maca</a></h2>
+						<span class="price">$139.00</span>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3 col-lg-3 mb-4 text-center">
+				<div class="product-entry border">
+					<a href="#" class="prod-img">
+						<img src="images/item-2.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+					</a>
+					<div class="desc">
+						<h2><a href="#">Women's Minam Meaghan</a></h2>
+						<span class="price">$139.00</span>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3 col-lg-3 mb-4 text-center">
+				<div class="product-entry border">
+					<a href="#" class="prod-img">
+						<img src="images/item-3.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+					</a>
+					<div class="desc">
+						<h2><a href="#">Men's Taja Commissioner</a></h2>
+						<span class="price">$139.00</span>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3 col-lg-3 mb-4 text-center">
+				<div class="product-entry border">
+					<a href="#" class="prod-img">
+						<img src="images/item-4.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+					</a>
+					<div class="desc">
+						<h2><a href="#">Russ Men's Sneakers</a></h2>
+						<span class="price">$139.00</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	const customerId = @userid; // Thay bằng ID khách hàng của bạn
+	const apiUrl = `https://localhost:7063/api/OrderApi/api/cart/${customerId}`;
+
+	// Hàm fetch dữ liệu giỏ hàng từ API
+	async function fetchCartItems() {
+		try {
+			const response = await fetch(apiUrl, {
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			});
+
+			if (!response.ok) {
+				throw new Error('Failed to fetch cart data');
+			}
+
+			const data = await response.json();
+
+			// Render sản phẩm vào HTML
+			renderCartItems(data.cartDetails);
+			// Cập nhật tổng tiền
+			updateTotalPrice(data.cartDetails);
+
+		} catch (error) {
+			console.error('Error fetching cart items:', error);
+		}
+	}
+
+	// Hàm render sản phẩm
+	function renderCartItems(cartDetails) {
+		const cartItemsContainer = document.getElementById('cartItemsContainer');
+		cartItemsContainer.innerHTML = ''; // Xóa nội dung cũ
+
+		cartDetails.forEach(item => {
+			const cartItem = document.createElement('div');
+			cartItem.classList.add('product-cart', 'd-flex');
+			const imageUrl = `/images/${item.imageUrl}`;
+			cartItem.innerHTML = `
+				<div class="one-forth">
+					<div class="product-img" style="background-image: url('${imageUrl}');"></div>
+					<div class="display-tc">
+						<h3>${item.productName}</h3>
+					</div>
+				</div>
+				<div class="one-eight text-center">
+					<div class="display-tc">
+						<span class="price">$${item.unitPrice.toLocaleString()}</span>
+					</div>
+				</div>
+				<div class="one-eight text-center">
+					<div class="display-tc">
+						<input type="number" class="form-control input-number text-center" value="${item.quantity}" min="1" max="100">
+					</div>
+				</div>
+				<div class="one-eight text-center">
+					<div class="display-tc">
+						<span class="price">$${item.subTotal.toLocaleString()}</span>
+					</div>
+				</div>
+				<div class="one-eight text-center">
+					<div class="display-tc">
+						<a class="closed" data-order-detail-id="${item.orderDetailId}"></a>
+					</div>
+				</div>
+			`;
+			cartItemsContainer.appendChild(cartItem);
+		});
+	}
+
+	// Hàm tính tổng tiền
+	function updateTotalPrice(cartDetails) {
+		const totalPrice = cartDetails.reduce((sum, item) => sum + item.subTotal, 0);
+		document.getElementById('totalPrice').textContent = `$${totalPrice.toLocaleString()}`;
+	}
+
+	// Gọi hàm fetch khi trang được tải
+	document.addEventListener('DOMContentLoaded', fetchCartItems);
+	document.addEventListener('click', function (event) {
+		// Kiểm tra nếu click vào link có class 'closed'
+		if (event.target.classList.contains('closed')) {
+			event.preventDefault(); // Ngăn việc điều hướng mặc định
+
+			// Lấy orderDetailId từ thuộc tính data
+			const orderDetailId = event.target.dataset.orderDetailId;
+			if (!orderDetailId) {
+				console.error('OrderDetailId not found for the clicked item.');
+				return;
+			}
+			console.log("orderDetailID:", orderDetailId);
+			// Xác nhận trước khi xóa
+			if (confirm('Are you sure you want to remove this item from the cart?')) {
+				// Gọi API xóa sản phẩm
+				fetch(`https://localhost:7063/api/cart/${customerId}/product/${orderDetailId}`, {
+					method: 'DELETE',
+				})
+					.then(response => {
+						if (!response.ok) {
+							throw new Error('Failed to remove product from cart.');
+						}
+						return response.json();
+					})
+					.then(data => {
+						alert(data.message);
+
+						// Xóa phần tử sản phẩm khỏi giao diện
+						const cartItem = event.target.closest('.product-cart');
+						cartItem.remove();
+
+						// Lấy lại danh sách sản phẩm còn lại trong giỏ hàng
+						const remainingCartDetails = Array.from(
+							document.querySelectorAll('.product-cart')
+						).map(cartElement => ({
+							subTotal: parseFloat(
+								cartElement.querySelector('.price').textContent.replace(/[$,]/g, '')
+							),
+						}));
+
+						// Cập nhật tổng tiền
+						updateTotalPrice(remainingCartDetails);
+					})
+					.catch(error => {
+						console.error('Error:', error);
+						alert('Failed to remove product. Please try again later.');
+					});
+			}
+		}
+	});
+
+
+</script>

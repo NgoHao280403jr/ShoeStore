@@ -83,8 +83,10 @@ namespace QLBanGiay.Controllers.API
 
 			var cartDetails = cart.Orderdetails.Select(od => new
 			{
+				OderDetailId=od.Orderdetailid,
 				ProductId = od.Productid,
 				ProductName = od.Product.Productname,
+				ImageUrl = od.Product.Image,
 				Size = od.Size,
 				Quantity = od.Quantity,
 				UnitPrice = od.Unitprice,
@@ -180,6 +182,35 @@ namespace QLBanGiay.Controllers.API
 			}).ToList();
 
 			return Ok(orderDetails);
+		}
+		[HttpDelete("api/cart/{customerId}/product/{orderDetailId}")]
+		public async Task<IActionResult> RemoveProductFromCart(long customerId, long orderDetailId)
+		{
+			// Tìm giỏ hàng của khách hàng
+			var cart = await _context.Orders
+				.Where(o => o.Customerid == customerId && o.Iscart && o.Orderstatus == "Cart")
+				.FirstOrDefaultAsync();
+
+			if (cart == null)
+			{
+				return NotFound("Cart not found.");
+			}
+
+			// Tìm sản phẩm trong giỏ hàng
+			var orderDetail = await _context.Orderdetails
+				.Where(od => od.Orderid == cart.Orderid && od.Orderdetailid == orderDetailId)
+				.FirstOrDefaultAsync();
+
+			if (orderDetail == null)
+			{
+				return NotFound("Product not found in cart.");
+			}
+
+			// Xóa sản phẩm khỏi giỏ hàng
+			_context.Orderdetails.Remove(orderDetail);
+			await _context.SaveChangesAsync();
+
+			return Ok(new { message = "Product removed from cart successfully." });
 		}
 
 	}

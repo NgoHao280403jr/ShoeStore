@@ -1,5 +1,9 @@
 ﻿@model Product
-
+@using Microsoft.AspNetCore.Http
+@{
+	var username = Context.Session.GetString("Username");
+	var userid = Context.Session.GetString("UserId");
+}
 <div class="colorlib-product">
 	<div class="container">
 		<div class="row row-pb-lg product-detail-wrap">
@@ -27,7 +31,7 @@
 							<ul>
 								@foreach (var size in Model.ProductSizes)
 								{
-									<li><a href="#">@size.Size</a></li> 
+									<li><a class="size-option" data-size="@size.Size">@size.Size</a></li>
 								}
 							</ul>
 						</div>
@@ -47,7 +51,7 @@
 					</div>
 					<div class="row">
 						<div class="col-sm-12 text-center">
-							<p class="addtocart"><a href="cart.html" class="btn btn-primary btn-addtocart"><i class="icon-shopping-cart"></i> Add to Cart</a></p>
+							<p><a href="cart.html" class="btn btn-primary btn-addtocart addtocart"><i class="icon-shopping-cart"></i> Add to Cart</a></p>
 						</div>
 					</div>
 				</div>
@@ -85,4 +89,67 @@
 		</div>
 	</div>
 </div>
+<script>
+	document.querySelector(".addtocart").addEventListener("click", function (event) {
+		event.preventDefault();
 
+		// Get selected size from the active link
+		var sizeElement = document.querySelector(".size-option.selected");
+		var size = sizeElement ? sizeElement.getAttribute("data-size") : null; // Get the selected size
+		var quantity = parseInt(document.getElementById("quantity").value); // Get the quantity
+
+		// Check if size is selected
+		if (!size) {
+			alert("Please select a size.");
+			return; // Exit the function if no size is selected
+		}
+
+		// Get product ID from the model
+		var productId = @Model.Productid;
+		console.log("Product ID:", productId);
+		console.log("Selected Size:", size);
+		console.log("Quantity:", quantity);
+
+		// Prepare request payload
+		var payload = {
+			productId: productId,
+			size: size,
+			quantity: quantity
+		};
+
+		// Get the customer ID (you can get this from your session or any other source)
+		var customerId = @userid;
+		console.log("Customer ID:", customerId);
+
+		// Call the API to add product to cart
+		fetch(`https://localhost:7063/api/OrderApi/api/cart/${customerId}/add`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(payload),
+		})
+			.then(response => response.json())
+			.then(data => {
+				alert(data.message); // Show success message
+				window.location.href = '/Cart/AddToCart';
+			})
+			.catch(error => {
+				console.error('Error:', error);
+				alert('Failed to add product to cart'); // Show error message
+			});
+	});
+
+	// Handle size selection
+	document.querySelectorAll(".size-option").forEach(function (sizeOption) {
+		sizeOption.addEventListener("click", function () {
+			// Remove the 'selected' class from all options
+			document.querySelectorAll(".size-option").forEach(function (el) {
+				el.classList.remove("selected");
+			});
+
+			// Add 'selected' class to the clicked option
+			sizeOption.classList.add("selected");
+		});
+	});
+</script>

@@ -1,9 +1,10 @@
 ﻿
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using QLBanGiay.Attributes;
 using QLBanGiay.Models.Models;
 
-
+[AuthorizeUser]
 public class ProductController : Controller
 {
     private readonly HttpClient _httpClient;

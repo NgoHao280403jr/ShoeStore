@@ -1,0 +1,16 @@
+﻿.size-option {
+    cursor: pointer; /* Đảm bảo rằng con trỏ chuột là dấu tay khi hover */
+    padding: 5px 10px; /* Thêm một chút padding để thẻ có kích thước dễ bấm hơn */
+    border: 1px solid #ccc; /* Thêm đường viền cho các thẻ kích cỡ */
+    margin: 5px;
+    transition: background-color 0.3s; /* Hiệu ứng mượt khi đổi màu nền */
+}
+
+    .size-option.selected {
+        background-color: #95a6a9; /* Màu nền khi chọn kích cỡ */
+        color: white; /* Màu chữ khi chọn */
+    }
+
+    .size-option:hover {
+        background-color: #f0f0f0; /* Màu nền khi hover */
+    }
