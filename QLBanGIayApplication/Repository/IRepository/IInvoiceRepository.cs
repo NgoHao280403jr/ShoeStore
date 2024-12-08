@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.VisualBasic.Devices;
 using QLBanGiay.Models.Models;
 
 namespace QLBanGiay_Application.Repository.IRepository
@@ -15,6 +16,6 @@ namespace QLBanGiay_Application.Repository.IRepository
         void UpdateInvoice(Invoice invoice);
         void DeleteInvoice(long invoiceId);
         IEnumerable<Invoice> GetInvoicesByEmployee(long employeeId);
-        IEnumerable<Invoice> SearchInvoices(string phoneNumber, string paymentMethod);
+        IEnumerable<Invoice> SearchInvoices(string keyword);
     }
 }

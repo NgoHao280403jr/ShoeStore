@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QLBanGiay.Models", "QLBanGi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QLBanGiay_Application", "QLBanGIayApplication\QLBanGiay_Application.csproj", "{B50DF9E0-BFD2-49D0-B25E-70E42967301B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QLBanGIay_Control", "QLBanGIay_Control\QLBanGIay_Control.csproj", "{0F21EE34-C683-4034-9BC3-E479CC69EE64}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{B50DF9E0-BFD2-49D0-B25E-70E42967301B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B50DF9E0-BFD2-49D0-B25E-70E42967301B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B50DF9E0-BFD2-49D0-B25E-70E42967301B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F21EE34-C683-4034-9BC3-E479CC69EE64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F21EE34-C683-4034-9BC3-E479CC69EE64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F21EE34-C683-4034-9BC3-E479CC69EE64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F21EE34-C683-4034-9BC3-E479CC69EE64}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

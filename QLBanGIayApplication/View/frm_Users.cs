@@ -45,7 +45,7 @@ namespace QLBanGiay_Application.View
         {
             if (ck_Bikhoa.Checked)
             {
-                ck_Hoatdong.Checked = false; 
+                ck_Hoatdong.Checked = false;
             }
         }
 
@@ -53,7 +53,7 @@ namespace QLBanGiay_Application.View
         {
             if (ck_Hoatdong.Checked)
             {
-                ck_Bikhoa.Checked = false; 
+                ck_Bikhoa.Checked = false;
             }
         }
 
@@ -95,7 +95,7 @@ namespace QLBanGiay_Application.View
                 if (user != null)
                 {
                     string defaultPassword = "123";
-                    user.Password = HashPassword(defaultPassword); 
+                    user.Password = HashPassword(defaultPassword);
 
                     _userService.UpdateUser(user);
                     MessageBox.Show("Reset mật khẩu thành công!");
@@ -155,11 +155,11 @@ namespace QLBanGiay_Application.View
                 var user = _userService.GetUserById(userId);
                 if (user != null)
                 {
-                    
-                    if (user.Roleid == 1)  
-                    {         
-                        ck_Bikhoa.Checked = false;  
-                        ck_Bikhoa.Enabled = false;  
+
+                    if (user.Roleid == 1)
+                    {
+                        ck_Bikhoa.Checked = false;
+                        ck_Bikhoa.Enabled = false;
                     }
                     else
                     {
@@ -200,14 +200,14 @@ namespace QLBanGiay_Application.View
                 ck_Bikhoa.Checked = Convert.ToBoolean(row.Cells["BịKhóa"].Value);
 
                 var user = _userService.GetUserById(userId);
-                if (user != null && user.Roleid == 1)  
+                if (user != null && user.Roleid == 1)
                 {
-                    ck_Bikhoa.Enabled = false;  
-                    ck_Bikhoa.Checked = false;  
+                    ck_Bikhoa.Enabled = false;
+                    ck_Bikhoa.Checked = false;
                 }
                 else
                 {
-                    ck_Bikhoa.Enabled = true; 
+                    ck_Bikhoa.Enabled = true;
                 }
             }
         }
@@ -284,7 +284,6 @@ namespace QLBanGiay_Application.View
 
             return true;
         }
-     
         private void Frm_Users_Load(object? sender, EventArgs e)
         {
             txt_Tennguoidung.Enabled = false;
@@ -313,7 +312,7 @@ namespace QLBanGiay_Application.View
         }
         private void LoadRoles()
         {
-            var roles = _roleService.GetAllRoles(); 
+            var roles = _roleService.GetAllRoles();
 
             if (roles == null || !roles.Any())
             {
@@ -322,8 +321,8 @@ namespace QLBanGiay_Application.View
             }
 
             cbo_Mavaitro.DataSource = roles;
-            cbo_Mavaitro.DisplayMember = "RoleName";  
-            cbo_Mavaitro.ValueMember = "Roleid";    
+            cbo_Mavaitro.DisplayMember = "RoleName";
+            cbo_Mavaitro.ValueMember = "Roleid";
 
             cbo_Mavaitro.SelectedIndex = 0;
         }

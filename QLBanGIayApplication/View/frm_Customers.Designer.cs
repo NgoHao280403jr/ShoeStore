@@ -122,7 +122,7 @@
             txt_Timkiem.Margin = new Padding(3, 4, 3, 4);
             txt_Timkiem.Name = "txt_Timkiem";
             txt_Timkiem.PasswordChar = '\0';
-            txt_Timkiem.PlaceholderText = "";
+            txt_Timkiem.PlaceholderText = "Tìm kiếm theo tên hoặc số điện thoại";
             txt_Timkiem.SelectedText = "";
             txt_Timkiem.ShadowDecoration.CustomizableEdges = customizableEdges2;
             txt_Timkiem.Size = new Size(372, 42);
@@ -179,6 +179,7 @@
             txt_TenTK.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
             txt_TenTK.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             txt_TenTK.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txt_TenTK.Enabled = false;
             txt_TenTK.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txt_TenTK.Font = new Font("Segoe UI", 9F);
             txt_TenTK.HoverState.BorderColor = Color.FromArgb(94, 148, 255);

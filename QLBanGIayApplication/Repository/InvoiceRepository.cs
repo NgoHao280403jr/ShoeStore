@@ -52,11 +52,10 @@ namespace QLBanGiay_Application.Repository
                            .Include(i => i.Employee)
                            .ToList();
         }
-        public IEnumerable<Invoice> SearchInvoices(string phoneNumber, string paymentMethod)
+        public IEnumerable<Invoice> SearchInvoices(string keyword)
         {
             return _context.Invoices
-                           .Where(i => (string.IsNullOrEmpty(phoneNumber) || i.Phonenumber.Contains(phoneNumber)) &&
-                                       (string.IsNullOrEmpty(paymentMethod) || i.Paymentmethod == paymentMethod))
+                           .Where(i => (string.IsNullOrEmpty(keyword) || i.Phonenumber.Contains(keyword)))
                            .Include(i => i.Employee)
                            .ToList();
         }

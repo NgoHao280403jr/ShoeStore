@@ -45,7 +45,10 @@ namespace QLBanGiay_Application.View
                 if (_userService.ValidateLogin(username, password))
                 {
                     MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    frm_Main mainForm = new frm_Main();
+
+                    this.Hide();
+                    frmMain mainForm = new frmMain();
+                    //frm_ProductSize mainForm = new frm_ProductSize();
                     mainForm.Show();
                     Form parentForm = this.FindForm(); 
                     if (parentForm != null)

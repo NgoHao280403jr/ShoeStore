@@ -63,7 +63,6 @@
             txt_Manguoidung = new Guna.UI2.WinForms.Guna2TextBox();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             groupBox4 = new GroupBox();
-            dgv_danhsachsp = new Guna.UI2.WinForms.Guna2DataGridView();
             dgv_danhsachnd = new Guna.UI2.WinForms.Guna2DataGridView();
             groupBox3 = new GroupBox();
             btn_Reset = new Guna.UI2.WinForms.Guna2Button();
@@ -147,41 +146,6 @@
             ck_Khoa.TabStop = false;
             ck_Khoa.Text = "Thông tin người dùng";
             // 
-            // guna2CheckBox2
-            // 
-            guna2CheckBox2.AutoSize = true;
-            guna2CheckBox2.CheckedState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2CheckBox2.CheckedState.BorderRadius = 0;
-            guna2CheckBox2.CheckedState.BorderThickness = 0;
-            guna2CheckBox2.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
-            guna2CheckBox2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            guna2CheckBox2.Location = new Point(298, 565);
-            guna2CheckBox2.Name = "guna2CheckBox2";
-            guna2CheckBox2.Size = new Size(98, 32);
-            guna2CheckBox2.TabIndex = 23;
-            guna2CheckBox2.Text = "Bị khóa";
-            guna2CheckBox2.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
-            guna2CheckBox2.UncheckedState.BorderRadius = 0;
-            guna2CheckBox2.UncheckedState.BorderThickness = 0;
-            guna2CheckBox2.UncheckedState.FillColor = Color.FromArgb(125, 137, 149);
-            // 
-            // guna2CheckBox1
-            // 
-            guna2CheckBox1.AutoSize = true;
-            guna2CheckBox1.CheckedState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2CheckBox1.CheckedState.BorderRadius = 0;
-            guna2CheckBox1.CheckedState.BorderThickness = 0;
-            guna2CheckBox1.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
-            guna2CheckBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            guna2CheckBox1.Location = new Point(47, 565);
-            guna2CheckBox1.Name = "guna2CheckBox1";
-            guna2CheckBox1.Size = new Size(129, 32);
-            guna2CheckBox1.TabIndex = 22;
-            guna2CheckBox1.Text = "Hoạt động";
-            guna2CheckBox1.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
-            guna2CheckBox1.UncheckedState.BorderRadius = 0;
-            guna2CheckBox1.UncheckedState.BorderThickness = 0;
-            guna2CheckBox1.UncheckedState.FillColor = Color.FromArgb(125, 137, 149);
             // ck_Bikhoa
             // 
             ck_Bikhoa.AutoSize = true;
@@ -358,35 +322,6 @@
             dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(71, 69, 94);
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dgv_danhsachsp.DefaultCellStyle = dataGridViewCellStyle3;
-            dgv_danhsachsp.GridColor = Color.FromArgb(231, 229, 255);
-            dgv_danhsachsp.Location = new Point(6, 37);
-            dgv_danhsachsp.Name = "dgv_danhsachsp";
-            dgv_danhsachsp.RowHeadersVisible = false;
-            dgv_danhsachsp.RowHeadersWidth = 51;
-            dgv_danhsachsp.Size = new Size(613, 455);
-            dgv_danhsachsp.TabIndex = 0;
-            dgv_danhsachsp.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
-            dgv_danhsachsp.ThemeStyle.AlternatingRowsStyle.Font = null;
-            dgv_danhsachsp.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty;
-            dgv_danhsachsp.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty;
-            dgv_danhsachsp.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty;
-            dgv_danhsachsp.ThemeStyle.BackColor = Color.White;
-            dgv_danhsachsp.ThemeStyle.GridColor = Color.FromArgb(231, 229, 255);
-            dgv_danhsachsp.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(100, 88, 255);
-            dgv_danhsachsp.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
-            dgv_danhsachsp.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dgv_danhsachsp.ThemeStyle.HeaderStyle.ForeColor = Color.White;
-            dgv_danhsachsp.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dgv_danhsachsp.ThemeStyle.HeaderStyle.Height = 4;
-            dgv_danhsachsp.ThemeStyle.ReadOnly = false;
-            dgv_danhsachsp.ThemeStyle.RowsStyle.BackColor = Color.White;
-            dgv_danhsachsp.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dgv_danhsachsp.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dgv_danhsachsp.ThemeStyle.RowsStyle.ForeColor = SystemColors.HotTrack;
-            dgv_danhsachsp.ThemeStyle.RowsStyle.Height = 29;
-            dgv_danhsachsp.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dgv_danhsachsp.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             dgv_danhsachnd.DefaultCellStyle = dataGridViewCellStyle3;
             dgv_danhsachnd.GridColor = Color.FromArgb(231, 229, 255);
             dgv_danhsachnd.Location = new Point(6, 37);
