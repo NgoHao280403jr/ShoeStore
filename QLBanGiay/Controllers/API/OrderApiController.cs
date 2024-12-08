@@ -143,6 +143,7 @@ namespace QLBanGiay.Controllers.API
 		[HttpPost("api/cart/{customerId}/checkout")]
 		public async Task<IActionResult> Checkout(long customerId, [FromBody] CheckoutRequest request)
 		{
+			// Lấy giỏ hàng của khách hàng
 			var cart = await _context.Orders
 				.Where(o => o.Customerid == customerId && o.Iscart && o.Orderstatus == "Cart")
 				.Include(o => o.Orderdetails)
@@ -153,7 +154,7 @@ namespace QLBanGiay.Controllers.API
 				return NotFound("Cart not found.");
 			}
 
-			// Cập nhật thông tin giỏ hàng khi thanh toán
+			// Cập nhật thông tin đơn hàng
 			cart.Customername = request.CustomerName;
 			cart.Phonenumber = request.PhoneNumber;
 			cart.Deliveryaddress = request.DeliveryAddress;
@@ -162,10 +163,33 @@ namespace QLBanGiay.Controllers.API
 			cart.Paymentstatus = "Paid";  // Đổi trạng thái thanh toán thành đã thanh toán
 			cart.Iscart = false;  // Đánh dấu giỏ hàng đã thanh toán
 
+			// Cập nhật số lượng sản phẩm trong bảng ProductSize
+			foreach (var orderDetail in cart.Orderdetails)
+			{
+				var productSize = await _context.ProductSizes
+					.FirstOrDefaultAsync(ps => ps.ProductId == orderDetail.Productid && ps.Size == orderDetail.Size);
+
+				if (productSize == null)
+				{
+					return BadRequest($"Product with ID {orderDetail.Productid} and size {orderDetail.Size} not found.");
+				}
+
+				// Kiểm tra số lượng
+				if (productSize.Quantity < orderDetail.Quantity)
+				{
+					return BadRequest($"Not enough stock for Product ID {orderDetail.Productid}, size {orderDetail.Size}.");
+				}
+
+				// Trừ số lượng
+				productSize.Quantity -= orderDetail.Quantity;
+			}
+
+			// Lưu thay đổi vào cơ sở dữ liệu
 			await _context.SaveChangesAsync();
 
 			return Ok(new { message = "Order has been placed successfully." });
 		}
+
 		[HttpGet("api/orders/{customerId}")]
 		public async Task<IActionResult> GetOrders(long customerId)
 		{
