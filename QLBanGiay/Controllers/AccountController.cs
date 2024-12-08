@@ -30,15 +30,16 @@ namespace QLBanGiay.Controllers
                 // Lưu trạng thái đăng nhập vào Session
                 HttpContext.Session.SetString("UserId", user.Userid.ToString());
                 HttpContext.Session.SetString("Username", user.Username);
-
-                Console.WriteLine("Đăng nhập thành công!");
+				TempData["SuccessMessage"] = "You have logged in successfully!";
+				Console.WriteLine("Đăng nhập thành công!");
                 // Chuyển hướng về trang chủ
                 return RedirectToAction("Index", "Home");
             }
             else
             {
-                // Nếu không đúng thông tin đăng nhập
-                ModelState.AddModelError("", "Tên đăng nhập hoặc mật khẩu không đúng.");
+				// Nếu không đúng thông tin đăng nhập
+				TempData["ErrorMessage"] = "Incorrect username or password. Please try again.";
+				ModelState.AddModelError("", "Tên đăng nhập hoặc mật khẩu không đúng.");
                 Console.WriteLine("Đăng nhập thất bại!");
             }
             return View(model);

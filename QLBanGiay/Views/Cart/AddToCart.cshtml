@@ -233,7 +233,7 @@
 						// Xóa phần tử sản phẩm khỏi giao diện
 						const cartItem = event.target.closest('.product-cart');
 						cartItem.remove();
-
+						fetchCartItems();
 						// Lấy lại danh sách sản phẩm còn lại trong giỏ hàng
 						const remainingCartDetails = Array.from(
 							document.querySelectorAll('.product-cart')
