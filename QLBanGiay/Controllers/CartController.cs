@@ -10,5 +10,13 @@ namespace QLBanGiay.Controllers
 		{
 			return View();
 		}
-	}
+		public IActionResult CheckOut()
+		{
+			return View();
+		}
+        public IActionResult OrderComplete()
+        {
+            return View();
+        }
+    }
 }
