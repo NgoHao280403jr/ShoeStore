@@ -52,17 +52,32 @@ namespace QLBanGiay.Controllers.API
 				return NotFound("Product not found.");
 			}
 
-			// Thêm chi tiết đơn hàng (OrderDetail)
-			var orderDetail = new Orderdetail
-			{
-				Orderid = cart.Orderid,
-				Productid = request.ProductId,
-				Size = request.Size,
-				Quantity = request.Quantity,
-				Unitprice = product.Price
-			};
+			var existingOrderDetail = await _context.Orderdetails
+			.FirstOrDefaultAsync(od => od.Orderid == cart.Orderid && od.Productid == request.ProductId && od.Size == request.Size);
 
-			_context.Orderdetails.Add(orderDetail);
+			if (existingOrderDetail != null)
+			{
+				// Nếu đã tồn tại, cập nhật Quantity và Subtotal
+				existingOrderDetail.Quantity += request.Quantity;
+				existingOrderDetail.Subtotal = existingOrderDetail.Quantity * existingOrderDetail.Unitprice;
+			}
+			else
+			{
+				// Nếu chưa tồn tại, thêm mới OrderDetail
+				var orderDetail = new Orderdetail
+				{
+					Orderid = cart.Orderid,
+					Productid = request.ProductId,
+					Size = request.Size,
+					Quantity = request.Quantity,
+					Unitprice = product.Price,
+					Subtotal = request.Quantity * product.Price
+				};
+
+				_context.Orderdetails.Add(orderDetail);
+			}
+
+			// Lưu thay đổi
 			await _context.SaveChangesAsync();
 
 			return Ok(new { message = "Product added to cart successfully." });
@@ -83,7 +98,7 @@ namespace QLBanGiay.Controllers.API
 
 			var cartDetails = cart.Orderdetails.Select(od => new
 			{
-				OderDetailId=od.Orderdetailid,
+				OrderDetailId=od.Orderdetailid,
 				ProductId = od.Productid,
 				ProductName = od.Product.Productname,
 				ImageUrl = od.Product.Image,

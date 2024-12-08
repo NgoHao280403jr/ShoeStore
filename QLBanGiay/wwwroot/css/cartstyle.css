@@ -14,3 +14,6 @@
     .size-option:hover {
         background-color: #f0f0f0; /* Màu nền khi hover */
     }
+.size-info span {
+    display: inline; 
+}
