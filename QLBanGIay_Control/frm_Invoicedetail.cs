@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace QLBanGIay_Control
 {
-    public partial class frm_Invoicedetail : Form
+    public partial class frm_InvoiceDetail : Form
     {
-        public frm_Invoicedetail()
+        public frm_InvoiceDetail()
         {
             InitializeComponent();
         }
