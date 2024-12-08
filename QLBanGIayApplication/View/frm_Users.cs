@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using QLBanGiay.Models.Models;
 using QLBanGiay_Application.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography;
 
 namespace QLBanGiay_Application.View
 {
@@ -23,20 +24,160 @@ namespace QLBanGiay_Application.View
         public frm_Users()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
             this.Load += Frm_Users_Load;
-            this.btn_Them.Click += Btn_Them_Click;
-            this.btn_Capnhat.Click += Btn_Capnhat_Click;
             this.btn_Xoa.Click += Btn_Xoa_Click;
             this.btn_Timkiem.Click += Btn_Timkiem_Click;
             this.dgv_danhsachnd.CellClick += Dgv_danhsachnd_CellClick;
             this.cbo_Mavaitro.SelectedIndexChanged += Cbo_Mavaitro_SelectedIndexChanged;
-            this.ck_Hienthi1.CheckedChanged += Ck_Hienthi1_CheckedChanged;
-            this.ckHienThi.CheckedChanged += CkHienThi_CheckedChanged;
             this.btn_Thoat.Click += Btn_Thoat_Click;
+            this.btn_Capnhat.Click += Btn_Capnhat_Click;
+            this.btn_Reset.Click += Btn_Reset_Click;
+            this.ck_Hoatdong.CheckedChanged += Ck_Hoatdong_CheckedChanged;
+            this.ck_Bikhoa.CheckedChanged += Ck_Bikhoa_CheckedChanged;
             _context = new QlShopBanGiayContext();
             _userService = new UserService(new UserRepository(_context));
             _roleService = new RoleService(new RoleRepository(_context));
 
+        }
+
+        private void Ck_Bikhoa_CheckedChanged(object? sender, EventArgs e)
+        {
+            if (ck_Bikhoa.Checked)
+            {
+                ck_Hoatdong.Checked = false;
+            }
+        }
+
+        private void Ck_Hoatdong_CheckedChanged(object? sender, EventArgs e)
+        {
+            if (ck_Hoatdong.Checked)
+            {
+                ck_Bikhoa.Checked = false;
+            }
+        }
+
+        public User GetUserByUsernameAndPassword(string username, string password)
+        {
+            var hashedPassword = HashPassword(password); // Gọi phương thức mã hóa mật khẩu
+            return _context.Users.FirstOrDefault(u => u.Username == username && u.Password == hashedPassword);
+        }
+
+        private string HashPassword(string password)
+        {
+            using (var sha256 = System.Security.Cryptography.SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                StringBuilder builder = new StringBuilder();
+                foreach (var b in bytes)
+                {
+                    builder.Append(b.ToString("x2"));
+                }
+                return builder.ToString();
+            }
+        }
+
+        private void Btn_Reset_Click(object? sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txt_Manguoidung.Text))
+            {
+                MessageBox.Show("Vui lòng chọn người dùng để reset mật khẩu!");
+                return;
+            }
+
+            long userId = Convert.ToInt64(txt_Manguoidung.Text);
+
+            var confirm = MessageBox.Show("Bạn có chắc chắn muốn đặt lại mật khẩu cho người dùng này?",
+                                          "Xác nhận", MessageBoxButtons.YesNo);
+            if (confirm == DialogResult.Yes)
+            {
+                var user = _userService.GetUserById(userId);
+                if (user != null)
+                {
+                    string defaultPassword = "123";
+                    user.Password = HashPassword(defaultPassword);
+
+                    _userService.UpdateUser(user);
+                    MessageBox.Show("Reset mật khẩu thành công!");
+                    LoadUsers();
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy người dùng!");
+                }
+            }
+        }
+        //private void Btn_Reset_Click(object? sender, EventArgs e)
+        //{
+        //    if (string.IsNullOrWhiteSpace(txt_Manguoidung.Text))
+        //    {
+        //        MessageBox.Show("Vui lòng chọn người dùng để reset mật khẩu!");
+        //        return;
+        //    }
+
+        //    long userId = Convert.ToInt64(txt_Manguoidung.Text);
+
+        //    var confirm = MessageBox.Show("Bạn có chắc chắn muốn đặt lại mật khẩu cho người dùng này?",
+        //                                  "Xác nhận", MessageBoxButtons.YesNo);
+        //    if (confirm == DialogResult.Yes)
+        //    {
+        //        var user = _userService.GetUserById(userId);
+        //        if (user != null)
+        //        {
+        //            string defaultPassword = "123";  
+        //            user.Password = defaultPassword;  
+
+        //            _userService.UpdateUser(user);  
+        //            MessageBox.Show("Reset mật khẩu thành công!");
+        //            LoadUsers();  
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("Không tìm thấy người dùng!");
+        //        }
+        //    }
+        //}
+
+        private void Btn_Capnhat_Click(object? sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txt_Manguoidung.Text))
+            {
+                MessageBox.Show("Vui lòng chọn người dùng để cập nhật!");
+                return;
+            }
+
+            long userId = Convert.ToInt64(txt_Manguoidung.Text);
+
+            var confirm = MessageBox.Show("Bạn có chắc chắn muốn cập nhật thông tin người dùng này?",
+                                          "Xác nhận", MessageBoxButtons.YesNo);
+            if (confirm == DialogResult.Yes)
+            {
+                var user = _userService.GetUserById(userId);
+                if (user != null)
+                {
+
+                    if (user.Roleid == 1)
+                    {
+                        ck_Bikhoa.Checked = false;
+                        ck_Bikhoa.Enabled = false;
+                    }
+                    else
+                    {
+                        ck_Bikhoa.Enabled = true;  // Nếu không phải admin, cho phép thay đổi
+                    }
+
+                    user.Isactive = ck_Hoatdong.Checked;
+                    user.Isbanned = ck_Bikhoa.Checked;
+
+                    _userService.UpdateUser(user);
+                    MessageBox.Show("Cập nhật người dùng thành công!");
+                    LoadUsers();
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy người dùng!");
+                }
+            }
         }
 
         private void Btn_Thoat_Click(object? sender, EventArgs e)
@@ -45,48 +186,29 @@ namespace QLBanGiay_Application.View
             frm_Main mainForm = new frm_Main();
             mainForm.Show();
         }
-
-        private void Ck_Hienthi1_CheckedChanged(object? sender, EventArgs e)
-        {
-            
-
-            if (ck_Hienthi1.Checked)
-            {
-                txt_Mkcu.PasswordChar = '\0';
-            }
-            else
-            {
-                txt_Mkcu.PasswordChar = '●';
-            }
-            txt_Mkcu.Refresh();
-        }
-
-        private void CkHienThi_CheckedChanged(object? sender, EventArgs e)
-        {           
-            if (ckHienThi.Checked)
-            {
-                txt_Mknew.PasswordChar = '\0';
-                txt_Mknew1.PasswordChar = '\0';
-            }
-            else
-            {
-                txt_Mknew.PasswordChar = '●';
-                txt_Mknew1.PasswordChar = '●';
-            }
-        }
-
         private void Dgv_danhsachnd_CellClick(object? sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dgv_danhsachnd.Rows[e.RowIndex];
 
-                // Lấy UserId từ dòng đã chọn
+                long userId = Convert.ToInt64(row.Cells["MãNgườiDùng"].Value);
                 txt_Manguoidung.Text = row.Cells["MãNgườiDùng"].Value.ToString();
                 txt_Tennguoidung.Text = row.Cells["TênNgườiDùng"].Value.ToString();
                 cbo_Mavaitro.SelectedValue = row.Cells["VaiTrò"].Value;
                 ck_Hoatdong.Checked = Convert.ToBoolean(row.Cells["HoạtĐộng"].Value);
                 ck_Bikhoa.Checked = Convert.ToBoolean(row.Cells["BịKhóa"].Value);
+
+                var user = _userService.GetUserById(userId);
+                if (user != null && user.Roleid == 1)
+                {
+                    ck_Bikhoa.Enabled = false;
+                    ck_Bikhoa.Checked = false;
+                }
+                else
+                {
+                    ck_Bikhoa.Enabled = true;
+                }
             }
         }
 
@@ -146,55 +268,6 @@ namespace QLBanGiay_Application.View
                 LoadUsers();
             }
         }
-
-        private void Btn_Capnhat_Click(object? sender, EventArgs e)
-        {
-            if (ValidateInput(isUpdateOrDelete: true))
-            {
-                long userId = Convert.ToInt64(txt_Manguoidung.Text);
-                var user = _userService.GetUserById(userId);
-
-                if (user != null)
-                {
-                    user.Username = txt_Tennguoidung.Text;
-
-                    if (!string.IsNullOrWhiteSpace(txt_Mknew.Text))
-                    {
-                        if (string.IsNullOrWhiteSpace(txt_Mkcu.Text))  
-                        {
-                            MessageBox.Show("Vui lòng nhập mật khẩu cũ!");
-                            return;
-                        }
-
-                        if (txt_Mkcu.Text != user.Password)  
-                        {
-                            MessageBox.Show("Mật khẩu cũ không đúng!");
-                            return;
-                        }
-
-                        if (txt_Mknew1.Text != txt_Mknew1.Text)  
-                        {
-                            MessageBox.Show("Mật khẩu mới không khớp!");
-                            return;
-                        }
-                        user.Password = txt_Mknew.Text;  
-                    }
-
-                    user.Roleid = Convert.ToInt64(cbo_Mavaitro.SelectedValue);
-                    user.Isactive = ck_Hoatdong.Checked;
-                    user.Isbanned = ck_Bikhoa.Checked;
-
-                    _userService.UpdateUser(user);
-                    MessageBox.Show("Cập nhật người dùng thành công!");
-                    LoadUsers();
-                }
-                else
-                {
-                    MessageBox.Show("Không tìm thấy người dùng để cập nhật!");
-                }
-            }
-        }
-
         private bool ValidateInput(bool isUpdateOrDelete = false)
         {
             if (isUpdateOrDelete && string.IsNullOrWhiteSpace(txt_Manguoidung.Text))
@@ -209,36 +282,12 @@ namespace QLBanGiay_Application.View
                 return false;
             }
 
-            if (!string.IsNullOrWhiteSpace(txt_Mknew.Text) && txt_Mknew.Text != txt_Mknew1.Text)
-            {
-                MessageBox.Show("Mật khẩu mới và nhập lại mật khẩu không khớp!");
-                return false;
-            }
-
             return true;
-        }
-
-        private void Btn_Them_Click(object? sender, EventArgs e)
-        {
-            if (ValidateInput())
-            {
-                var user = new User
-                {
-                    Username = txt_Tennguoidung.Text,
-                    Password = txt_Mknew.Text,
-                    Roleid = Convert.ToInt64(cbo_Mavaitro.SelectedValue),
-                    Isactive = ck_Hoatdong.Checked,
-                    Isbanned = ck_Bikhoa.Checked
-                };
-
-                _userService.AddUser(user);
-                MessageBox.Show("Thêm người dùng thành công!");
-                LoadUsers();
-            }
         }
 
         private void Frm_Users_Load(object? sender, EventArgs e)
         {
+            txt_Tennguoidung.Enabled = false;
             LoadUsers();
             LoadRoles();
         }
@@ -264,7 +313,7 @@ namespace QLBanGiay_Application.View
         }
         private void LoadRoles()
         {
-            var roles = _roleService.GetAllRoles(); 
+            var roles = _roleService.GetAllRoles();
 
             if (roles == null || !roles.Any())
             {
@@ -273,8 +322,8 @@ namespace QLBanGiay_Application.View
             }
 
             cbo_Mavaitro.DataSource = roles;
-            cbo_Mavaitro.DisplayMember = "RoleName";  
-            cbo_Mavaitro.ValueMember = "Roleid";    
+            cbo_Mavaitro.DisplayMember = "RoleName";
+            cbo_Mavaitro.ValueMember = "Roleid";
 
             cbo_Mavaitro.SelectedIndex = 0;
         }

@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\QLBanGiay.Models\QLBanGiay.Models.csproj" />
+    <ProjectReference Include="..\QLBanGIay_Control\QLBanGIay_Control.csproj" />
   </ItemGroup>
 
   <ItemGroup>

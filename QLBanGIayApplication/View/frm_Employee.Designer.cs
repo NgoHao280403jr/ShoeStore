@@ -123,7 +123,7 @@
             txt_Timkiem.Margin = new Padding(3, 4, 3, 4);
             txt_Timkiem.Name = "txt_Timkiem";
             txt_Timkiem.PasswordChar = '\0';
-            txt_Timkiem.PlaceholderText = "";
+            txt_Timkiem.PlaceholderText = "Tìm kiếm theo tên hoặc số điện thoại";
             txt_Timkiem.SelectedText = "";
             txt_Timkiem.ShadowDecoration.CustomizableEdges = customizableEdges2;
             txt_Timkiem.Size = new Size(372, 42);

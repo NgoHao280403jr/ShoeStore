@@ -41,7 +41,7 @@ namespace QLBanGiay_Application.View
 
                     this.Hide();
                     frmMain mainForm = new frmMain();
-                    frm_ProductSize mainForm = new frm_ProductSize();
+                    //frm_ProductSize mainForm = new frm_ProductSize();
                     mainForm.Show();
                 }
                 else

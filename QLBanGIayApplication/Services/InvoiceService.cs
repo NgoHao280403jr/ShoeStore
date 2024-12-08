@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using QLBanGiay_Application.Repository.IRepository;
 using QLBanGiay.Models.Models;
+using Microsoft.VisualBasic.Devices;
 
 namespace QLBanGiay_Application.Services
 {
@@ -47,9 +48,9 @@ namespace QLBanGiay_Application.Services
             return _invoiceRepository.GetInvoicesByEmployee(employeeId);
         }
 
-        public IEnumerable<Invoice> SearchInvoices(string phoneNumber, string paymentMethod)
+        public IEnumerable<Invoice> SearchInvoices(string keyword)
         {
-            return _invoiceRepository.SearchInvoices(phoneNumber, paymentMethod);
+            return _invoiceRepository.SearchInvoices(keyword);
         }
     }
 }

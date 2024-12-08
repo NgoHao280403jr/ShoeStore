@@ -66,7 +66,6 @@ namespace QLBanGiay_Application.View
                 var selectedEmployee = (Employee)dgv_danhsachnv.Rows[e.RowIndex].DataBoundItem;
                 var employee = _context.Employees.Include(c => c.User)
                                     .FirstOrDefault(c => c.Employeeid == selectedEmployee.Employeeid);
-
                 txt_Manhanvien.Text = selectedEmployee.Employeeid.ToString();
                 txt_Tennhanvien.Text = selectedEmployee.Employeename;
                 txt_DiaChi.Text = selectedEmployee.Address;
@@ -75,12 +74,13 @@ namespace QLBanGiay_Application.View
                 txt_SDT.Text = selectedEmployee.Phonenumber;
                 txt_TenTK.Text = employee.User.Username;
                 cmbGender.SelectedItem = selectedEmployee.Gender;
-
+                txt_TenTK.Enabled = false;
             }
         }
 
         private void Btn_Reset_Click(object? sender, EventArgs e)
         {
+            txt_TenTK.Enabled = true;
             txt_Manhanvien.Text = "";
             txt_Timkiem.Text = "";
             txt_Tennhanvien.Text = "";
@@ -149,12 +149,10 @@ namespace QLBanGiay_Application.View
             try
             {
                 _userService.AddUser(newUser);
-                _context.SaveChanges();
 
                 newEmployee.Userid = newUser.Userid;
 
                 _employeeService.AddEmployee(newEmployee);
-                _context.SaveChanges();
 
                 LoadEmployee();
                 MessageBox.Show("Thêm khách hàng thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

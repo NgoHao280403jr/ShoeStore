@@ -62,6 +62,7 @@ namespace QLBanGiay_Application.View
 
         private void Btn_Reset_Click(object? sender, EventArgs e)
         {
+            txt_TenTK.Enabled = true;
             txt_Makh.Text = "";
             txt_Timkiem.Text = "";
             txt_Tenkhachhang.Text = "";
@@ -90,7 +91,7 @@ namespace QLBanGiay_Application.View
                 txt_SDT.Text = selectedCustomer.Phonenumber;
                 txt_TenTK.Text = customer.User.Username;
                 cmbGender.SelectedItem = selectedCustomer.Gender;
-
+                txt_TenTK.Enabled = false;
             }
         }
 
@@ -139,6 +140,12 @@ namespace QLBanGiay_Application.View
                 return;
             }
 
+            if (!IsValidEmail(txt_Email.Text))
+            {
+                MessageBox.Show("Email không hợp lệ. Vui lòng nhập lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             bool emailExists = _context.Employees.Any(u => u.Email == txt_Email.Text.Trim());
             if (emailExists)
             {
@@ -162,19 +169,22 @@ namespace QLBanGiay_Application.View
                 Roleid = 2,
                 Isactive = true,
                 Isbanned = false,
-                Customer = newCustomer
             };
 
             try
             {
                 _userService.AddUser(newUser);
+
+                newCustomer.Userid = newUser.Userid;
+
                 _customerService.AddCustomer(newCustomer);
+
                 LoadCustomer();
                 MessageBox.Show("Thêm khách hàng thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi thêm khách hàng: {ex.Message}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Lỗi khi thêm khách hàng: {ex.Message}\n{ex.InnerException?.Message}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
