@@ -22,6 +22,6 @@ static class Program
         var userService = new UserService(userRepository);
 
         //Application.Run(new frm_Login(userService));
-        Application.Run(new frm_Invoice());
+        Application.Run(new frm_Main());
     }    
 }
