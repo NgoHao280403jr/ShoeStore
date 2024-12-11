@@ -13,17 +13,56 @@ namespace QLBanGiay.Repository
 			_context = context;
 		}
 
-		public async Task<List<Product>> GetProductsAsync(int page, int pageSize)
-		{
-			return await _context.Products
-				.Include(p => p.Category)
-				.ThenInclude(c => c.Parentcategory)
-				.Skip((page - 1) * pageSize)
-				.Take(pageSize)
-				.ToListAsync();
-		}
+        public async Task<List<Product>> GetProductsAsync(
+            int page,
+            int pageSize,
+            string sortBy,
+            string sortOrder,
+            long? parentCategoryId = null,
+            long? categoryId = null)
+        {
+            var query = _context.Products
+                .Include(p => p.Category)
+                .ThenInclude(c => c.Parentcategory)
+                .AsQueryable();
 
-		public async Task<int> GetTotalProductsAsync()
+            // Lọc theo danh mục cha
+            if (parentCategoryId.HasValue)
+            {
+                query = query.Where(p => p.Parentcategoryid == parentCategoryId.Value);
+            }
+
+            // Lọc theo danh mục con
+            if (categoryId.HasValue)
+            {
+                query = query.Where(p => p.Categoryid == categoryId.Value);
+            }
+
+            // Áp dụng sắp xếp
+            query = sortBy.ToLower() switch
+            {
+                "price" => sortOrder.ToLower() == "desc"
+                    ? query.OrderByDescending(p => p.Price)
+                    : query.OrderBy(p => p.Price),
+                "productname" => sortOrder.ToLower() == "desc"
+                    ? query.OrderByDescending(p => p.Productname)
+                    : query.OrderBy(p => p.Productname),
+                "discount" => sortOrder.ToLower() == "desc"
+                    ? query.OrderByDescending(p => p.Discount)
+                    : query.OrderBy(p => p.Discount),
+                _ => query.OrderBy(p => p.Productname) // Mặc định sắp xếp theo ProductName
+            };
+
+            // Phân trang
+            return await query
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+        }
+
+
+
+        public async Task<int> GetTotalProductsAsync()
 		{
 			return await _context.Products.CountAsync();
 		}
@@ -36,5 +75,30 @@ namespace QLBanGiay.Repository
 				.Include(p => p.ProductSizes) 
 				.FirstOrDefaultAsync(p => p.Productid == id); 
 		}
-	}
+        public async Task<List<Product>> SearchProductsAsync(string searchTerm, int page, int pageSize)
+        {
+            var query = _context.Products
+                .Where(p => EF.Functions.Like(p.Productname.ToLower(), $"%{searchTerm.ToLower()}%") ||
+                            (p.Category != null && EF.Functions.Like(p.Category.Categoryname.ToLower(), $"%{searchTerm.ToLower()}%")) ||
+                            (p.Category != null && p.Category.Parentcategory != null && EF.Functions.Like(p.Category.Parentcategory.Parentcategoryname.ToLower(), $"%{searchTerm.ToLower()}%")))
+                .Include(p => p.Category)
+                .ThenInclude(c => c.Parentcategory)
+                .AsQueryable();
+
+            return await query
+                .OrderBy(p => p.Productname)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+        }
+
+        public async Task<int> GetSearchTotalCountAsync(string searchTerm)
+        {
+            return await _context.Products
+                .CountAsync(p => p.Productname.Contains(searchTerm) ||
+                                 (p.Category != null && p.Category.Categoryname.Contains(searchTerm)) ||
+                                 (p.Category != null && p.Category.Parentcategory != null && p.Category.Parentcategory.Parentcategoryname.Contains(searchTerm)));
+        }
+
+    }
 }

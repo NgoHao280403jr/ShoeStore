@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using QLBanGiay.Models.Models;
+using System.Text;
 
 namespace QLBanGiay.Controllers
 {
@@ -25,7 +26,7 @@ namespace QLBanGiay.Controllers
             var user = _context.Users
                .FirstOrDefault(u => u.Username == model.Username);
 
-            if (user != null && BCrypt.Net.BCrypt.Verify(model.Password, user.Password))
+            if (user != null && HashPassword(model.Password)== user.Password)
             {
                 // Lưu trạng thái đăng nhập vào Session
                 HttpContext.Session.SetString("UserId", user.Userid.ToString());
@@ -51,6 +52,18 @@ namespace QLBanGiay.Controllers
             HttpContext.Session.Clear();
             return RedirectToAction("Login", "Account");
         }
-        
+        private string HashPassword(string password)
+        {
+            using (var sha256 = System.Security.Cryptography.SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                StringBuilder builder = new StringBuilder();
+                foreach (var b in bytes)
+                {
+                    builder.Append(b.ToString("x2"));
+                }
+                return builder.ToString();
+            }
+        }
     }
 }
