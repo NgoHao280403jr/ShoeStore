@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QLBanGiay_Application.View
+namespace QLBanGIay_Control
 {
     public partial class frm_OrderDetail : Form
     {
