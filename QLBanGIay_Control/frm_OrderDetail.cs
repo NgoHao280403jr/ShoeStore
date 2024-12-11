@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace QLBanGIay_Control
 {
-    public partial class frm_OrderDetail : Form
+    public partial class frm_Orderdetail : UserControl
     {
-        public frm_OrderDetail()
+        public frm_Orderdetail()
         {
             InitializeComponent();
         }
