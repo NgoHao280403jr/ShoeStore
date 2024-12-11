@@ -15,5 +15,7 @@ namespace QLBanGiay_Application.Repository.IRepository
         void AddOrderDetail(Orderdetail orderDetail);
         void UpdateOrderDetail(Orderdetail orderDetail);
         void DeleteOrderDetail(long orderId, long productId);
+        void DeleteAllOrderDetailsByOrderId(long orderId);
+        IEnumerable<Orderdetail> SearchOrderDetails(string keyword);
     }
 }
