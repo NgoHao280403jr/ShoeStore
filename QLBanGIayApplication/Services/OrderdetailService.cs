@@ -46,5 +46,14 @@ namespace QLBanGiay_Application.Services
         {
             _orderDetailRepository.DeleteOrderDetail(orderId, productId);
         }
+        public void DeleteAllInvoiceDetailsByInvoiceId(long orderId)
+        {
+            _orderDetailRepository.DeleteAllOrderDetailsByOrderId(orderId);
+        }
+
+        public IEnumerable<Orderdetail> SearchOrderDetails(string keyword)
+        {
+            return _orderDetailRepository.SearchOrderDetails(keyword);
+        }
     }
 }

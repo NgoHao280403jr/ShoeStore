@@ -55,11 +55,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frm_InvoiceDetail.cs">
-      <SubType>Form</SubType>
+    <Compile Include="frm_Orderdetail.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="frm_InvoiceDetail.Designer.cs">
-      <DependentUpon>frm_InvoiceDetail.cs</DependentUpon>
+    <Compile Include="frm_Orderdetail.Designer.cs">
+      <DependentUpon>frm_Orderdetail.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -69,8 +69,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="frm_InvoiceDetail.resx">
-      <DependentUpon>frm_InvoiceDetail.cs</DependentUpon>
+    <EmbeddedResource Include="frm_Orderdetail.resx">
+      <DependentUpon>frm_Orderdetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -79,6 +79,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

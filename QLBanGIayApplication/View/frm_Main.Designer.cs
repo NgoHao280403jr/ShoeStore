@@ -72,7 +72,7 @@
             btn_Qldanhmuc = new Guna.UI2.WinForms.Guna2Button();
             btn_Qlnguoidung = new Guna.UI2.WinForms.Guna2Button();
             btn_Qlkhachhang = new Guna.UI2.WinForms.Guna2Button();
-            guna2Button6 = new Guna.UI2.WinForms.Guna2Button();
+            btn_Dangxuat = new Guna.UI2.WinForms.Guna2Button();
             btn_Menu = new Guna.UI2.WinForms.Guna2Button();
             panelRight = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
@@ -93,7 +93,7 @@
             panelLeft.Controls.Add(btn_Qldanhmuc);
             panelLeft.Controls.Add(btn_Qlnguoidung);
             panelLeft.Controls.Add(btn_Qlkhachhang);
-            panelLeft.Controls.Add(guna2Button6);
+            panelLeft.Controls.Add(btn_Dangxuat);
             panelLeft.Controls.Add(btn_Menu);
             panelLeft.CustomizableEdges = customizableEdges27;
             panelLeft.FillColor = Color.CornflowerBlue;
@@ -122,7 +122,7 @@
             btn_Qlnhanvien.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btn_Qlnhanvien.Size = new Size(266, 45);
             btn_Qlnhanvien.TabIndex = 13;
-            btn_Qlnhanvien.Text = "Quản lý CTĐH";
+            btn_Qlnhanvien.Text = "Quản lý nhân viên";
             btn_Qlnhanvien.TextAlign = HorizontalAlignment.Right;
             // 
             // btn_Qlhdbh
@@ -335,25 +335,25 @@
             btn_Qlkhachhang.Text = "Quản lý khách hàng";
             btn_Qlkhachhang.TextAlign = HorizontalAlignment.Right;
             // 
-            // guna2Button6
+            // btn_Dangxuat
             // 
-            guna2Button6.CustomizableEdges = customizableEdges23;
-            guna2Button6.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button6.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button6.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button6.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button6.FillColor = Color.Goldenrod;
-            guna2Button6.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            guna2Button6.ForeColor = Color.White;
-            guna2Button6.Image = Properties.Resources.exit;
-            guna2Button6.ImageAlign = HorizontalAlignment.Left;
-            guna2Button6.ImageSize = new Size(40, 40);
-            guna2Button6.Location = new Point(0, 661);
-            guna2Button6.Name = "guna2Button6";
-            guna2Button6.ShadowDecoration.CustomizableEdges = customizableEdges24;
-            guna2Button6.Size = new Size(266, 56);
-            guna2Button6.TabIndex = 2;
-            guna2Button6.Text = "Đăng xuất";
+            btn_Dangxuat.CustomizableEdges = customizableEdges23;
+            btn_Dangxuat.DisabledState.BorderColor = Color.DarkGray;
+            btn_Dangxuat.DisabledState.CustomBorderColor = Color.DarkGray;
+            btn_Dangxuat.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btn_Dangxuat.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btn_Dangxuat.FillColor = Color.Goldenrod;
+            btn_Dangxuat.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_Dangxuat.ForeColor = Color.White;
+            btn_Dangxuat.Image = Properties.Resources.exit;
+            btn_Dangxuat.ImageAlign = HorizontalAlignment.Left;
+            btn_Dangxuat.ImageSize = new Size(40, 40);
+            btn_Dangxuat.Location = new Point(0, 661);
+            btn_Dangxuat.Name = "btn_Dangxuat";
+            btn_Dangxuat.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            btn_Dangxuat.Size = new Size(266, 56);
+            btn_Dangxuat.TabIndex = 2;
+            btn_Dangxuat.Text = "Đăng xuất";
             // 
             // btn_Menu
             // 
@@ -389,6 +389,7 @@
             guna2ImageButton1.BackgroundImage = Properties.Resources.bg;
             guna2ImageButton1.CheckedState.ImageSize = new Size(64, 64);
             guna2ImageButton1.HoverState.ImageSize = new Size(64, 64);
+            guna2ImageButton1.Image = (Image)resources.GetObject("guna2ImageButton1.Image");
             guna2ImageButton1.ImageOffset = new Point(0, 0);
             guna2ImageButton1.ImageRotate = 0F;
             guna2ImageButton1.Location = new Point(3, -10);
@@ -427,7 +428,7 @@
         private Guna.UI2.WinForms.Guna2Button btn_Qldanhmuc;
         private Guna.UI2.WinForms.Guna2Button btn_Qlnguoidung;
         private Guna.UI2.WinForms.Guna2Button btn_Qlkhachhang;
-        private Guna.UI2.WinForms.Guna2Button guna2Button6;
+        private Guna.UI2.WinForms.Guna2Button btn_Dangxuat;
         private Guna.UI2.WinForms.Guna2Button btn_Menu;
         private Guna.UI2.WinForms.Guna2CustomGradientPanel panelRight;
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;

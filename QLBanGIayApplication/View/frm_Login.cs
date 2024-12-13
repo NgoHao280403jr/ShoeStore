@@ -1,4 +1,5 @@
-﻿using QLBanGiay_Application.Services;
+﻿using QLBanGiay_Application.Repository.IRepository;
+using QLBanGiay_Application.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +15,9 @@ namespace QLBanGiay_Application.View
 {
     public partial class frm_Login : Form
     {
+        public static string LoggedInUsername { get; set; }
         private readonly UserService _userService;
+        private readonly IUserRepository _userRepository;
         public frm_Login(UserService userService)
         {
             InitializeComponent();
@@ -44,16 +47,28 @@ namespace QLBanGiay_Application.View
             {
                 if (_userService.ValidateLogin(username, password))
                 {
-                    MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    var user = _userService.GetAllUsers().FirstOrDefault(u => u.Username == username);
 
-                    this.Hide();
-                    frm_Main mainForm = new frm_Main();
-                    //frm_ProductSize mainForm = new frm_ProductSize();
-                    mainForm.Show();
-                    Form parentForm = this.FindForm(); 
-                    if (parentForm != null)
+                    if (user != null)
                     {
-                        parentForm.Hide();
+                        // Lưu tên người dùng vào LoggedInUsername
+                        LoggedInUsername = username;
+                        if (user.Roleid == 1) 
+                        {
+                            MessageBox.Show("Chào mừng Quản trị viên!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else if (user.Roleid == 2)
+                        {
+                            MessageBox.Show("Chào mừng Nhân viên!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+
+                        this.Hide();
+                        frm_Main mainForm = new frm_Main(_userService);
+                        mainForm.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không tìm thấy thông tin người dùng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else

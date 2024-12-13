@@ -17,6 +17,7 @@ namespace QLBanGiay_Application.View
 {
     public partial class frm_Products : Form
     {
+        private readonly UserService _userService;
         private readonly CategoryService _categoryService;
         private readonly ParentService _parentService;
         private readonly ProductService _productService;
@@ -39,6 +40,7 @@ namespace QLBanGiay_Application.View
             this.txt_Gia.KeyPress += Txt_Gia_KeyPress;
             this.txt_Gia.TextChanged += Txt_Gia_TextChanged;
             this.txt_Giamgia.KeyPress += Txt_Giamgia_KeyPress;
+            this.txt_Giamgia.TextChanged += Txt_Giamgia_TextChanged;
 
             _context = new QlShopBanGiayContext(); 
             _categoryService = new CategoryService(new CategoryRepository(_context));
@@ -46,10 +48,23 @@ namespace QLBanGiay_Application.View
             _productService = new ProductService(new ProductRepository(_context));
         }
 
+        private void Txt_Giamgia_TextChanged(object? sender, EventArgs e)
+        {
+            if (int.TryParse(txt_Giamgia.Text, out int discount))
+            {
+                if (discount > 50)
+                {
+                    MessageBox.Show("Giảm giá không thể lớn hơn 50%", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txt_Giamgia.Text = "50"; 
+                    txt_Giamgia.SelectionStart = txt_Giamgia.Text.Length;
+                }
+            }
+        }
+
         private void Btn_Thoat_Click(object? sender, EventArgs e)
         {
             this.Close();
-            frm_Main mainForm = new frm_Main();
+            frm_Main mainForm = new frm_Main(_userService);
             mainForm.Show();
         }
 
@@ -153,7 +168,7 @@ namespace QLBanGiay_Application.View
             }
 
             long productId = long.Parse(txt_Masp.Text);
-            var existingProduct = _productService.GetProductById(productId); // Lấy sản phẩm theo ID
+            var existingProduct = _productService.GetProductById(productId);
 
             if (existingProduct == null)
             {
@@ -173,7 +188,7 @@ namespace QLBanGiay_Application.View
             {
                 _productService.UpdateProduct(existingProduct);
                 _context.SaveChanges();
-                LoadProducts(); // Cập nhật lại danh sách sản phẩm
+                LoadProducts(); 
                 MessageBox.Show("Cập nhật sản phẩm thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
@@ -192,11 +207,19 @@ namespace QLBanGiay_Application.View
                 return;
             }
 
+            string productName = txt_Tensp.Text.Trim();  
+            var existingProduct = _productService.GetAllProducts().FirstOrDefault(p => p.Productname.ToLower() == productName);
+            if (existingProduct != null)
+            {
+                MessageBox.Show("Tên sản phẩm đã tồn tại. Vui lòng nhập tên khác.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             var newProduct = new Product
             {
-                Productname = txt_Tensp.Text.Trim(),
-                Price = decimal.TryParse(txt_Gia.Text, out var price) ? (long?)price : null, // Chuyển đổi rõ ràng
-                Discount = int.TryParse(txt_Giamgia.Text, out var discount) ? discount : (int?)null, // Chuyển đổi sang int
+                Productname = productName,
+                Price = decimal.TryParse(txt_Gia.Text, out var price) ? (long?)price : null,
+                Discount = int.TryParse(txt_Giamgia.Text, out var discount) ? discount : (int?)null,
                 Productdescription = txt_Mota.Text,
                 Isactive = ck_Hienthi.Checked,
                 Categoryid = (long?)cbo_Madmcon.SelectedValue,
@@ -263,7 +286,6 @@ namespace QLBanGiay_Application.View
             {
                 var selectedProduct = (Product)dgv_danhsachsp.Rows[e.RowIndex].DataBoundItem;
 
-                // Cập nhật thông tin sản phẩm lên các textbox
                 txt_Masp.Text = selectedProduct.Productid.ToString();
                 txt_Tensp.Text = selectedProduct.Productname;
                 txt_Gia.Text = selectedProduct.Price?.ToString("N0") ?? "0";
@@ -324,10 +346,9 @@ namespace QLBanGiay_Application.View
         {
             var keyword = txt_Timkiem.Text.Trim().ToLower();
 
-            // Tìm các sản phẩm trong cơ sở dữ liệu, chuyển Productname về chữ thường
             var products = _context.Products
                                    .Include(p => p.Category)
-                                   .Where(p => p.Productname.ToLower().Contains(keyword)) // Chuyển cả tên sản phẩm về chữ thường
+                                   .Where(p => p.Productname.ToLower().Contains(keyword)) 
                                    .OrderBy(p => p.Productid)
                                    .ToList();
 
@@ -483,6 +504,7 @@ namespace QLBanGiay_Application.View
             cbo_Madmcha.DisplayMember = "Parentcategoryname";
             cbo_Madmcha.ValueMember = "Parentcategoryid";
             cbo_Madmcha.SelectedIndex = -1;
+            cbo_Madmcha.DropDownHeight = 200;
         }
 
         private void LoadCategories()
@@ -492,6 +514,7 @@ namespace QLBanGiay_Application.View
             cbo_Madmcon.DisplayMember = "Categoryname";
             cbo_Madmcon.ValueMember = "Categoryid";
             cbo_Madmcon.SelectedIndex = -1;
+            cbo_Madmcha.DropDownHeight = 200;
         }
     }
 }

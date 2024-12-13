@@ -163,7 +163,7 @@ namespace QLBanGiay_Application.View
                     }
                     else
                     {
-                        ck_Bikhoa.Enabled = true;  // Nếu không phải admin, cho phép thay đổi
+                        ck_Bikhoa.Enabled = true;  
                     }
 
                     user.Isactive = ck_Hoatdong.Checked;
@@ -183,7 +183,7 @@ namespace QLBanGiay_Application.View
         private void Btn_Thoat_Click(object? sender, EventArgs e)
         {
             this.Close();
-            frm_Main mainForm = new frm_Main();
+            frm_Main mainForm = new frm_Main(_userService);
             mainForm.Show();
         }
         private void Dgv_danhsachnd_CellClick(object? sender, DataGridViewCellEventArgs e)

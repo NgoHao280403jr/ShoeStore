@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace QLBanGiay_Application.Repository
 {
-    public class OrderRepository
+    public class OrderRepository : IOrderRepository
     {
         private readonly QlShopBanGiayContext _context;
 
@@ -53,8 +53,7 @@ namespace QLBanGiay_Application.Repository
         {
             return _context.Orders
                 .Include(o => o.Customer)
-                .Where(o => o.Deliveryaddress.Contains(keyword) ||
-                            o.Phonenumber.Contains(keyword) ||
+                .Where(o => o.Phonenumber.Contains(keyword) ||
                             o.Customer.Customername.Contains(keyword))
                 .ToList();
         }
