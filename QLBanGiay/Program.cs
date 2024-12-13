@@ -28,7 +28,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<ProductService>();
-
+builder.Services.AddScoped<IProductCategoryRepository, ProductCategoryRepository>();
+builder.Services.AddScoped<ProductCategoryService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
