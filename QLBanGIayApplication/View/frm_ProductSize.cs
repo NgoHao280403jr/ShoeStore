@@ -17,6 +17,7 @@ namespace QLBanGiay_Application.View
 {
     public partial class frm_ProductSize : Form
     {
+        private readonly UserService _userService;
         private readonly QlShopBanGiayContext _context;
         private readonly ProductSizeService _productSizeService;
         private readonly ProductService _productService;
@@ -82,7 +83,7 @@ namespace QLBanGiay_Application.View
         private void Btn_Thoat_Click(object? sender, EventArgs e)
         {
             this.Close();
-            frm_Main mainForm = new frm_Main();
+            frm_Main mainForm = new frm_Main(_userService);
             mainForm.Show();
         }
 
@@ -133,16 +134,35 @@ namespace QLBanGiay_Application.View
         {
             if (ValidateInput())
             {
-                var productSize = new ProductSize
-                {
-                    ProductId = Convert.ToInt32(cbo_Masp.SelectedValue),
-                    Size = txt_Sosize.Text,
-                    Quantity = Convert.ToInt32(txt_Soluong.Text)
-                };
+                int productId = Convert.ToInt32(cbo_Masp.SelectedValue);
+                string size = txt_Sosize.Text;
+                int quantity = Convert.ToInt32(txt_Soluong.Text);
 
-                _productSizeService.AddProductSize(productSize);
-                MessageBox.Show("Thêm kích thước sản phẩm thành công!");
-                LoadProductSizes();
+                // Kiểm tra xem sản phẩm với số size này đã tồn tại chưa
+                var existingProductSize = _productSizeService.GetProductSizesByProductIdAndSize(productId, size);
+
+                if (existingProductSize != null)
+                {
+                    // Nếu sản phẩm và size đã tồn tại, cộng thêm số lượng
+                    existingProductSize.Quantity += quantity;
+                    _productSizeService.UpdateProductSize(existingProductSize);
+                    MessageBox.Show("Cập nhật số lượng kích thước sản phẩm thành công!");
+                }
+                else
+                {
+                    // Nếu chưa tồn tại, thêm mới sản phẩm
+                    var productSize = new ProductSize
+                    {
+                        ProductId = productId,
+                        Size = size,
+                        Quantity = quantity
+                    };
+
+                    _productSizeService.AddProductSize(productSize);
+                    MessageBox.Show("Thêm kích thước sản phẩm mới thành công!");
+                }
+
+                LoadProductSizes();  // Cập nhật lại danh sách kích thước sản phẩm
             }
         }
 

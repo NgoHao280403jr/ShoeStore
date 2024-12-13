@@ -16,6 +16,11 @@ namespace QLBanGiay_Application.Repository
         {
             _context = context;
         }
+        public ProductSize GetProductSizesByProductIdAndSize(int productId, string size)
+        {
+            return _context.ProductSizes
+                           .FirstOrDefault(ps => ps.ProductId == productId && ps.Size == size);
+        }
 
         public IEnumerable<ProductSize> GetAllProductSizes()
         {

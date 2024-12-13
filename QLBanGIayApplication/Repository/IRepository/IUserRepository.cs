@@ -16,7 +16,7 @@ namespace QLBanGiay_Application.Repository.IRepository
         void DeleteUser(long userId);
         User GetUserByUsername(string username); //mk chưa băm
         User GetUserByUsernameAndPassword(string username, string hashedPassword); //mk băm
-        IEnumerable<User> GetUsersByRole(long roleId);
+        IEnumerable<User> GetUsersByRole(long roleId);  
 
     }
 }

@@ -17,6 +17,7 @@ namespace QLBanGiay_Application.View
 {
     public partial class frm_Products : Form
     {
+        private readonly UserService _userService;
         private readonly CategoryService _categoryService;
         private readonly ParentService _parentService;
         private readonly ProductService _productService;
@@ -63,7 +64,7 @@ namespace QLBanGiay_Application.View
         private void Btn_Thoat_Click(object? sender, EventArgs e)
         {
             this.Close();
-            frm_Main mainForm = new frm_Main();
+            frm_Main mainForm = new frm_Main(_userService);
             mainForm.Show();
         }
 
@@ -167,7 +168,7 @@ namespace QLBanGiay_Application.View
             }
 
             long productId = long.Parse(txt_Masp.Text);
-            var existingProduct = _productService.GetProductById(productId); // Lấy sản phẩm theo ID
+            var existingProduct = _productService.GetProductById(productId);
 
             if (existingProduct == null)
             {
@@ -187,7 +188,7 @@ namespace QLBanGiay_Application.View
             {
                 _productService.UpdateProduct(existingProduct);
                 _context.SaveChanges();
-                LoadProducts(); // Cập nhật lại danh sách sản phẩm
+                LoadProducts(); 
                 MessageBox.Show("Cập nhật sản phẩm thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
@@ -206,8 +207,7 @@ namespace QLBanGiay_Application.View
                 return;
             }
 
-            // Kiểm tra xem tên sản phẩm đã tồn tại chưa
-            string productName = txt_Tensp.Text.Trim().ToLower();
+            string productName = txt_Tensp.Text.Trim();  
             var existingProduct = _productService.GetAllProducts().FirstOrDefault(p => p.Productname.ToLower() == productName);
             if (existingProduct != null)
             {

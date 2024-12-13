@@ -46,5 +46,10 @@ namespace QLBanGiay_Application.Services
         {
             return _productSizeRepository.GetProductSizeByCategory(productId);
         }
+
+        public ProductSize GetProductSizesByProductIdAndSize(int productId, string size)
+        {
+            return _productSizeRepository.GetProductSizesByProductIdAndSize(productId, size);
+        }
     }
 }

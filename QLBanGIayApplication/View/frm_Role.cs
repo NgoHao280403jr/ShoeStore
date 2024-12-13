@@ -17,6 +17,7 @@ namespace QLBanGiay_Application.View
 {
     public partial class frm_Role : Form
     {
+        private readonly UserService _userService;
         private readonly RoleService _roleService;
         private readonly QlShopBanGiayContext _context;
         public frm_Role()
@@ -37,7 +38,7 @@ namespace QLBanGiay_Application.View
         private void Btn_Thoat_Click(object? sender, EventArgs e)
         {
             this.Close();
-            frm_Main mainForm = new frm_Main();
+            frm_Main mainForm = new frm_Main(_userService);
             mainForm.Show();
         }
 

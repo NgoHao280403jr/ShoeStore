@@ -33,7 +33,7 @@ namespace QLBanGiay_Application.Services
                 if (IsPasswordHashed(user.Password))
                 {
                     string hashedPassword = HashPassword(password); // Băm mật khẩu nhập từ người dùng
-                    if (user.Password == hashedPassword && user.Roleid == 1) // Kiểm tra RoleId là admin
+                    if (user.Password == hashedPassword && (user.Roleid == 1 || user.Roleid == 2))
                     {
                         return true;
                     }
@@ -41,7 +41,7 @@ namespace QLBanGiay_Application.Services
                 else
                 {
                     // Nếu mật khẩu chưa băm, so sánh trực tiếp
-                    if (user.Password == password && user.Roleid == 1) // Kiểm tra RoleId là admin
+                    if (user.Password == password && (user.Roleid == 1 || user.Roleid == 2)) 
                     {
                         return true;
                     }

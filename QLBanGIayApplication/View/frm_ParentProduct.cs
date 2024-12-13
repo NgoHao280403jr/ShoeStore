@@ -17,6 +17,7 @@ namespace QLBanGiay_Application.View
 {
     public partial class frm_ParentProduct : Form
     {
+        private readonly UserService _userService;
         private readonly ParentService _parentService;
         private readonly ProductService _productService;
         private readonly CategoryService _categoryService;
@@ -45,7 +46,7 @@ namespace QLBanGiay_Application.View
         private void Btn_Thoat_Click(object? sender, EventArgs e)
         {
             this.Close();
-            frm_Main mainForm = new frm_Main();
+            frm_Main mainForm = new frm_Main(_userService);
             mainForm.Show();
         }
 
