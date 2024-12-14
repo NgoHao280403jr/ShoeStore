@@ -16,5 +16,6 @@ namespace QLBanGiay_Application.Repository.IRepository
         void DeleteProductSize(long productId);
         ProductSize GetProductSizesByProductIdAndSize(int productId, string size);
         IEnumerable<ProductSize> GetProductSizeByCategory(long productId);
+        void UpdateProductSizeQuantity(long productId, int quantityChange);
     }
 }

@@ -1,4 +1,5 @@
-﻿using QLBanGiay.Models.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using QLBanGiay.Models.Models;
 using QLBanGiay_Application.Repository.IRepository;
 using System;
 using System.Collections.Generic;
@@ -40,6 +41,13 @@ namespace QLBanGiay_Application.Repository
 
         public void UpdateOrderDetail(Orderdetail orderDetail)
         {
+            var existingOrderDetail = _context.Orderdetails
+                                      .FirstOrDefault(od => od.Orderdetailid == orderDetail.Orderdetailid);
+
+            if (existingOrderDetail != null)
+            {
+                _context.Entry(existingOrderDetail).State = EntityState.Detached;
+            }
             _context.Orderdetails.Update(orderDetail);
             _context.SaveChanges();
         }
