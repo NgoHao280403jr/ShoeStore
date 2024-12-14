@@ -53,11 +53,11 @@ namespace QLBanGiay_Application.View
             txt_Madm.Text = "";
             txt_Timkiem.Text = "";
             txt_Sdt.Text = "";
-            cbo_Khachhang.SelectedIndex = -1;
             txt_Diachigiao.Text = "";
-            cbo_Phuongthuctt.SelectedIndex = -1;
-            cbo_Trangthaidh.SelectedIndex = -1;
-            cbo_Trangthaitt.SelectedIndex = -1;
+            LoadPaymentmethod();
+            LoadCustomer();
+            LoadStatusPaymentmethod();
+            LoadStatusOrder();
             date_Dat.Value = DateTime.Now;
             date_Giao.Value = DateTime.Now;
             LoadOrder();
@@ -103,10 +103,10 @@ namespace QLBanGiay_Application.View
                 txt_Diachigiao.Text = selectedOrder.Deliveryaddress;
                 if (selectedOrder.Ordertime.HasValue)
                 {
-					date_Dat.Value = selectedOrder.Ordertime.Value.ToDateTime(TimeOnly.MinValue);
+                    date_Dat.Value = selectedOrder.Ordertime.Value.ToDateTime(TimeOnly.MinValue);
 
-				}
-				else
+                }
+                else
                 {
                     date_Dat.Value = DateTime.Now;
                 }
@@ -358,8 +358,8 @@ namespace QLBanGiay_Application.View
                     Phonenumber = phoneNumber,
                     Deliveryaddress = deliveryAddress,
                     Paymentmethod = paymentMethod,
-					Ordertime = DateOnly.FromDateTime(orderTime),
-					Expecteddeliverytime = expectedDeliveryTime,
+                    Ordertime = DateOnly.FromDateTime(orderTime),
+                    Expecteddeliverytime = expectedDeliveryTime,
                     Orderstatus = orderStatus,
                     Paymentstatus = paymentStatus,
                     Iscart = false
@@ -429,8 +429,8 @@ namespace QLBanGiay_Application.View
                 existingOrder.Phonenumber = phoneNumber;
                 existingOrder.Deliveryaddress = deliveryAddress;
                 existingOrder.Paymentmethod = paymentMethod;
-				existingOrder.Ordertime = orderTime != null ? DateOnly.FromDateTime(orderTime) : null;
-				existingOrder.Expecteddeliverytime = expectedDeliveryTime;
+                existingOrder.Ordertime = orderTime != null ? DateOnly.FromDateTime(orderTime) : null;
+                existingOrder.Expecteddeliverytime = expectedDeliveryTime;
                 existingOrder.Orderstatus = orderStatus;
                 existingOrder.Paymentstatus = paymentStatus;
 
