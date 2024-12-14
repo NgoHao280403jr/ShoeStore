@@ -19,12 +19,11 @@ namespace QLBanGiay_Application.Repository
 
         public IEnumerable<Productcategory> GetAllCategories()
         {
-            return _context.Productcategories.ToList(); // Truy vấn tất cả danh mục từ cơ sở dữ liệu
+            return _context.Productcategories.ToList(); 
         }
 
         public List<Productcategory> GetCategoriesByParentCategoryId(long parentCategoryId)
         {
-            // Giả sử bảng Category có trường Parentcategoryid
             return _context.Productcategories
                            .Where(c => c.Parentcategoryid == parentCategoryId)
                            .ToList();
@@ -33,13 +32,13 @@ namespace QLBanGiay_Application.Repository
 
         public Productcategory GetCategoryById(long categoryId)
         {
-            return _context.Productcategories.FirstOrDefault(c => c.Categoryid == categoryId); // Tìm danh mục theo ID
+            return _context.Productcategories.FirstOrDefault(c => c.Categoryid == categoryId);
         }
 
         public void AddCategory(Productcategory category)
         {
-            _context.Productcategories.Add(category); // Thêm danh mục vào cơ sở dữ liệu
-            _context.SaveChanges(); // Lưu thay đổi
+            _context.Productcategories.Add(category); 
+            _context.SaveChanges(); 
         }
 
         public void UpdateCategory(Productcategory category)
@@ -49,7 +48,7 @@ namespace QLBanGiay_Application.Repository
             {
                 existingCategory.Categoryname = category.Categoryname;
                 existingCategory.Parentcategoryid = category.Parentcategoryid;
-                _context.SaveChanges(); // Lưu thay đổi
+                _context.SaveChanges(); 
             }
         }
 
@@ -58,8 +57,8 @@ namespace QLBanGiay_Application.Repository
             var category = GetCategoryById(categoryId);
             if (category != null)
             {
-                _context.Productcategories.Remove(category); // Xóa danh mục khỏi cơ sở dữ liệu
-                _context.SaveChanges(); // Lưu thay đổi
+                _context.Productcategories.Remove(category); 
+                _context.SaveChanges(); 
             }
         }
     }

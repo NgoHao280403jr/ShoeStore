@@ -46,11 +46,34 @@ namespace QLBanGiay_Application.Repository
         public void DeleteParentCategory(long parentCategoryId)
         {
             var category = GetParentCategoryById(parentCategoryId);
+
             if (category != null)
             {
-                _context.Parentproductcategories.Remove(category); // Xóa danh mục cha
-                _context.SaveChanges(); // Lưu thay đổi
+                var childCategories = _context.Productcategories.Where(c => c.Parentcategoryid == parentCategoryId).ToList();
+                foreach (var childCategory in childCategories)
+                {
+                    var relatedProducts = _context.Products.Where(p => p.Categoryid == childCategory.Categoryid).ToList();
+                    foreach (var product in relatedProducts)
+                    {
+                        _context.Products.Remove(product);
+                    }
+
+                    _context.Productcategories.Remove(childCategory);
+                }
+                var productsInParentCategory = _context.Products.Where(p => p.Parentcategoryid == parentCategoryId).ToList();
+                foreach (var product in productsInParentCategory)
+                {
+                    _context.Products.Remove(product); 
+                }
+
+                _context.Parentproductcategories.Remove(category); 
+                _context.SaveChanges(); 
+            }
+            else
+            {
+                throw new Exception("Danh mục cha không tồn tại.");
             }
         }
+
     }
 }

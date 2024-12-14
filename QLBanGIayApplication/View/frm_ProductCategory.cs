@@ -53,36 +53,56 @@ namespace QLBanGiay_Application.View
         {
             if (long.TryParse(txt_Madm.Text, out long categoryId))
             {
-                // Kiểm tra xem có sản phẩm nào thuộc danh mục này không
-                var relatedProducts = _productService.GetProductsByCategory(categoryId);
+                var confirmResult = MessageBox.Show("Bạn có chắc chắn muốn xóa danh mục này cùng với các danh mục con và sản phẩm liên quan không?",
+                                                    "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-                if (relatedProducts.Any())
+                if (confirmResult == DialogResult.Yes)
                 {
-                    // Hiển thị thông báo cho người dùng
-                    var result = MessageBox.Show("Danh mục này có sản phẩm liên quan. Bạn có muốn xóa tất cả sản phẩm liên quan không?",
-                                                  "Thông báo",
-                                                  MessageBoxButtons.YesNo,
-                                                  MessageBoxIcon.Warning);
-                    if (result == DialogResult.Yes)
+                    using (var transaction = _context.Database.BeginTransaction())
                     {
-                        // Xóa tất cả sản phẩm liên quan trước
-                        foreach (var product in relatedProducts)
+                        try
                         {
-                            long productId = product.Productid; 
-                            _productService.DeleteProduct(productId);
+                            // Lấy danh sách sản phẩm liên quan đến danh mục này
+                            var relatedProducts = _productService.GetProductsByCategory(categoryId);
+
+                            if (relatedProducts.Any())
+                            {
+                                var result = MessageBox.Show("Danh mục này có sản phẩm liên quan. Bạn có muốn xóa tất cả sản phẩm liên quan không?",
+                                                              "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                                if (result == DialogResult.Yes)
+                                {
+                                    // Xóa tất cả sản phẩm liên quan trước
+                                    foreach (var product in relatedProducts)
+                                    {
+                                        _productService.DeleteProduct(product.Productid);
+                                    }
+                                }
+                            }
+                            var childCategories = _categoryService.GetCategoriesByParentCategoryId(categoryId);
+                            foreach (var childCategory in childCategories)
+                            {
+                                _categoryService.DeleteCategory(childCategory.Categoryid); 
+                            }
+                            _categoryService.DeleteCategory(categoryId);
+                            _context.SaveChanges();
+
+                            // Cam kết giao dịch
+                            transaction.Commit();
+
+                            // Tải lại danh sách danh mục sau khi xóa
+                            LoadCategories();
+
+                            // Hiển thị thông báo thành công
+                            MessageBox.Show("Xóa danh mục thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        catch (Exception ex)
+                        {
+                            // Rollback nếu có lỗi xảy ra
+                            transaction.Rollback();
+                            MessageBox.Show($"Đã xảy ra lỗi khi xóa: {ex.Message}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
-                    else
-                    {
-                        return; // Ngừng hàm nếu người dùng không muốn xóa
-                    }
                 }
-
-                // Tiến hành xóa danh mục
-                _categoryService.DeleteCategory(categoryId);
-                _context.SaveChanges(); // Lưu thay đổi vào cơ sở dữ liệu
-                LoadCategories(); // Tải lại danh sách sau khi xóa
-                MessageBox.Show("Xóa danh mục thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
