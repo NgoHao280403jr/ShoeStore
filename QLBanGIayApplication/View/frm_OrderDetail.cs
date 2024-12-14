@@ -22,7 +22,7 @@ namespace QLBanGiay_Application.View
         private readonly ProductService _productService;
         private readonly ProductSizeService _productSizeService;
         private readonly QlShopBanGiayContext _context;
-        public frm_OrderDetail(UserService userService)
+       public frm_OrderDetail(UserService userService)
         {
             InitializeComponent();
             btn_Them.Click += Btn_Them_Click;
@@ -67,12 +67,17 @@ namespace QLBanGiay_Application.View
         {
             if (e.RowIndex >= 0)
             {
-                DataGridViewRow row = dgv_OD.Rows[e.RowIndex];
-                cbbMaHD.SelectedItem = row.Cells["Orderid"].Value.ToString();
-                cbbMaSP.SelectedValue = row.Cells["Productid"].Value.ToString();
-                cbbSize.SelectedItem = row.Cells["Size"].Value.ToString();
-                txtSL.Value = decimal.Parse(row.Cells["Quantity"].Value.ToString());
-                txtGiaSP.Text = row.Cells["Unitprice"].Value.ToString();
+                var selectedOrderDetail = (Orderdetail)dgv_OD.Rows[e.RowIndex].DataBoundItem;
+                txtMaCTHD.Text = selectedOrderDetail.Orderdetailid.ToString();
+                cbbMaHD.SelectedItem = selectedOrderDetail.Order;
+                cbbMaSP.SelectedValue = selectedOrderDetail.Productid;
+                cbbSize.SelectedValue = selectedOrderDetail.Size;
+                txtSL.Value = decimal.Parse(selectedOrderDetail.Quantity.ToString());
+                txtGiaSP.Text = selectedOrderDetail.Unitprice.ToString();
+            }
+            else
+            {
+                MessageBox.Show("Chua co o nao duoc chon");
             }
         }
 
@@ -82,6 +87,13 @@ namespace QLBanGiay_Application.View
             {
                 var orderDetails = _orderDetailService.GetAllOrderDetails();
                 dgv_OD.DataSource = orderDetails.ToList();
+                dgv_OD.Columns["Orderdetailid"].HeaderText = "Mã chi tiết đơn hàng";
+                dgv_OD.Columns["Orderid"].HeaderText = "Mã đơn hàng";
+                dgv_OD.Columns["Productid"].HeaderText = "Mã sản phẩm";
+                dgv_OD.Columns["Size"].HeaderText = "Kích thước";
+                dgv_OD.Columns["Quantity"].HeaderText = "Số lượng";
+                dgv_OD.Columns["Unitprice"].HeaderText = "Đơn giá";
+                dgv_OD.Columns["Subtotal"].HeaderText = "Thành tiền";
             }
             catch (Exception ex)
             {
@@ -96,16 +108,19 @@ namespace QLBanGiay_Application.View
                 cbbMaHD.DataSource = orders;
                 cbbMaHD.DisplayMember = "Orderid";
                 cbbMaHD.ValueMember = "Orderid";
+                cbbMaHD.SelectedIndex = -1;
 
                 var products = _productService.GetAllProducts().ToList();
                 cbbMaSP.DataSource = products;
                 cbbMaSP.DisplayMember = "Productname";
-                cbbMaSP.ValueMember = "Productid"; 
+                cbbMaSP.ValueMember = "Productid";
+                cbbMaSP.SelectedIndex = -1;
 
-                var productSize= _productSizeService.GetAllProductSizes().Distinct().ToList();
+                var productSize = _productSizeService.GetAllProductSizes().ToList();
                 cbbSize.DataSource = productSize;
                 cbbSize.DisplayMember = "Size";
-                cbbSize.ValueMember = "ProductSizeId";
+                cbbSize.ValueMember = "Size";
+                cbbSize.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
@@ -114,25 +129,67 @@ namespace QLBanGiay_Application.View
         }
         private void Btn_Thoat_Click(object? sender, EventArgs e)
         {
+            frm_Main main = new frm_Main(_userService); 
             this.Close();
+            main.ShowDialog();
         }
 
         private void Btn_Capnhat_Click(object? sender, EventArgs e)
         {
             try
             {
+                if (string.IsNullOrEmpty(txtMaCTHD.Text) ||
+                    cbbMaHD.SelectedItem == null ||
+                    cbbMaSP.SelectedValue == null ||
+                    cbbSize.SelectedValue == null)
+                {
+                    MessageBox.Show("Vui lòng điền đầy đủ thông tin để cập nhật chi tiết đơn hàng.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                long orderDetailId = 0;
+                long orderId = 0;
+                long productId = 0;
+                double unitPrice = 0.0;
+
+                if (!long.TryParse(txtMaCTHD.Text, out orderDetailId))
+                {
+                    MessageBox.Show("Mã chi tiết đơn hàng không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (!long.TryParse(cbbMaHD.SelectedValue.ToString(), out orderId))
+                {
+                    MessageBox.Show("Mã đơn hàng không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (!long.TryParse(cbbMaSP.SelectedValue.ToString(), out productId))
+                {
+                    MessageBox.Show("Mã sản phẩm không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (!double.TryParse(txtGiaSP.Text, out unitPrice))
+                {
+                    MessageBox.Show("Giá sản phẩm không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 var orderDetail = new Orderdetail
                 {
-                    Orderdetailid = long.Parse(txtMaCTHD.Text),
-                    Orderid = long.Parse(cbbMaHD.SelectedItem.ToString()),
-                    Productid = long.Parse(cbbMaSP.SelectedValue.ToString()),
+                    Orderdetailid = orderDetailId,
+                    Orderid = orderId,
+                    Productid = productId,
                     Size = cbbSize.SelectedValue.ToString(),
                     Quantity = (int)txtSL.Value,
-                    Unitprice = double.Parse(txtGiaSP.Text)
+                    Unitprice = unitPrice
                 };
 
                 _orderDetailService.UpdateOrderDetail(orderDetail);
+
                 MessageBox.Show("Cập nhật chi tiết đơn hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 LoadOrderDetails();
             }
             catch (Exception ex)
@@ -147,12 +204,20 @@ namespace QLBanGiay_Application.View
             {
                 if (dgv_OD.SelectedRows.Count > 0)
                 {
-                    var orderId = long.Parse(dgv_OD.SelectedRows[0].Cells["Orderid"].Value.ToString());
-                    var productId = long.Parse(dgv_OD.SelectedRows[0].Cells["Productid"].Value.ToString());
+                    var confirmResult = MessageBox.Show("Bạn có chắc chắn muốn xóa chi tiết đơn hàng?",
+                                                        "Xác nhận",
+                                                        MessageBoxButtons.YesNo,
+                                                        MessageBoxIcon.Question);
 
-                    _orderDetailService.DeleteOrderDetail(orderId, productId);
-                    MessageBox.Show("Xóa chi tiết đơn hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadOrderDetails();
+                    if (confirmResult == DialogResult.Yes)
+                    {
+                        var orderId = long.Parse(dgv_OD.SelectedRows[0].Cells["Orderid"].Value.ToString());
+                        var productId = long.Parse(dgv_OD.SelectedRows[0].Cells["Productid"].Value.ToString());
+
+                        _orderDetailService.DeleteOrderDetail(orderId, productId);
+                        MessageBox.Show("Xóa chi tiết đơn hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoadOrderDetails();
+                    }
                 }
                 else
                 {
@@ -169,23 +234,38 @@ namespace QLBanGiay_Application.View
         {
             try
             {
+                if (cbbMaHD.SelectedValue == null || cbbMaSP.SelectedValue == null || cbbSize.SelectedValue == null)
+                {
+                    MessageBox.Show("Vui lòng chọn đầy đủ thông tin cho chi tiết đơn hàng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 var orderDetail = new Orderdetail
                 {
-                    Orderid = long.Parse(cbbMaHD.SelectedItem.ToString()),
-                    Productid = long.Parse(cbbMaSP.SelectedValue.ToString()),
-                    Size = cbbSize.SelectedValue.ToString(),
+                    Orderid = long.TryParse(cbbMaHD.SelectedValue.ToString(), out var orderid) ? orderid : 0, 
+                    Productid = long.TryParse(cbbMaSP.SelectedValue.ToString(), out var productid) ? productid : 0, 
+                    Size = cbbSize.SelectedValue.ToString(), 
                     Quantity = (int)txtSL.Value,
-                    Unitprice = double.Parse(txtGiaSP.Text)
+                    Unitprice = double.TryParse(txtGiaSP.Text, out var unitprice) ? unitprice : 0.0 
                 };
 
+                if (orderDetail.Orderid == 0 || orderDetail.Productid == 0 || orderDetail.Unitprice == 0)
+                {
+                    MessageBox.Show("Dữ liệu không hợp lệ. Vui lòng kiểm tra lại thông tin đã nhập.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 _orderDetailService.AddOrderDetail(orderDetail);
+
                 MessageBox.Show("Thêm chi tiết đơn hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 LoadOrderDetails();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Lỗi khi thêm chi tiết đơn hàng: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
     }
 }

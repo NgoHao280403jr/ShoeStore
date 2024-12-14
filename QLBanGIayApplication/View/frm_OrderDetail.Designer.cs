@@ -320,9 +320,9 @@
             guna2HtmlLabel2.ForeColor = SystemColors.Desktop;
             guna2HtmlLabel2.Location = new Point(30, 242);
             guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            guna2HtmlLabel2.Size = new Size(124, 30);
+            guna2HtmlLabel2.Size = new Size(94, 30);
             guna2HtmlLabel2.TabIndex = 3;
-            guna2HtmlLabel2.Text = "Mã sản phẩm:";
+            guna2HtmlLabel2.Text = "Sản phẩm:";
             // 
             // guna2HtmlLabel1
             // 
@@ -461,11 +461,11 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dgv_OD.DefaultCellStyle = dataGridViewCellStyle3;
             dgv_OD.GridColor = Color.FromArgb(231, 229, 255);
-            dgv_OD.Location = new Point(12, 37);
+            dgv_OD.Location = new Point(6, 37);
             dgv_OD.Name = "dgv_OD";
             dgv_OD.RowHeadersVisible = false;
             dgv_OD.RowHeadersWidth = 51;
-            dgv_OD.Size = new Size(667, 657);
+            dgv_OD.Size = new Size(667, 455);
             dgv_OD.TabIndex = 0;
             dgv_OD.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             dgv_OD.ThemeStyle.AlternatingRowsStyle.Font = null;

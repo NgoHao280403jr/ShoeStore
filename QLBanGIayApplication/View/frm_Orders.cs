@@ -11,6 +11,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Element;
+using System.IO;
+using Npgsql;
 
 namespace QLBanGiay_Application.View
 {
@@ -33,12 +38,18 @@ namespace QLBanGiay_Application.View
             this.dgv_danhsachdh.CellClick += Dgv_danhsachdh_CellClick;
             this.btn_Datlai.Click += Btn_Datlai_Click;
             this.btn_Thoat.Click += Btn_Thoat_Click;
+            this.btn_Xuathd.Click += Btn_Xuathd_Click;
 
             _context = new QlShopBanGiayContext();
             _CustomerService = new CustomerService(new CustomerRepository(_context));
             _orderService = new OrderService(new OrderRepository(_context));
             _orderdetailService = new OrderdetailService(new OrderdetailRepository(_context));
             _userService = userService;
+        }
+
+        private void Btn_Xuathd_Click(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void Btn_Thoat_Click(object? sender, EventArgs e)

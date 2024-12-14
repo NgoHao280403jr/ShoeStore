@@ -34,8 +34,25 @@ namespace QLBanGiay_Application.Repository
 
         public void UpdateInvoice(PurchaseInvoice purchaseInvoice)
         {
-            _context.PurchaseInvoices.Update(purchaseInvoice);
-            _context.SaveChanges();
+            try
+            {
+                var existingInvoice = _context.PurchaseInvoices
+                                              .FirstOrDefault(p => p.InvoiceId == purchaseInvoice.InvoiceId);
+
+                if (existingInvoice != null)
+                {
+                    _context.Entry(existingInvoice).CurrentValues.SetValues(purchaseInvoice);
+                }
+                else
+                {
+                    _context.PurchaseInvoices.Update(purchaseInvoice);
+                }
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi cập nhật hóa đơn mua hàng: " + ex.Message);
+            }
         }
 
         public void DeleteInvoice(long invoiceId)
