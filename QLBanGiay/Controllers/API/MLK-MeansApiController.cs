@@ -65,56 +65,58 @@ namespace QLBanGiay.Controllers.API
             return Ok(result);
         }
 
-        [HttpGet("recommend/{productId}")]
-        public IActionResult GetRecommendations(long productId, int numberOfClusters = 5)
-        {
-            var products = _context.Products
-                .Include(p => p.Category)
-                .Include(p => p.Category.Parentcategory)
-                .Where(p => p.Isactive)
-                .Select(p => new
-                {
-                    p.Productid,
-                    p.Productname,
-                    p.Image,
-                    p.Price,
-                    p.Discount,
-                    ParentCategoryId = p.Parentcategoryid ?? 0,
-                    CategoryId = p.Categoryid ?? 0
-                })
-                .ToList();
+		[HttpGet("recommend/{productId}")]
+		public IActionResult GetRecommendations(long productId, int numberOfClusters = 5)
+		{
+			var products = _context.Products
+				.Include(p => p.Category)
+				.Include(p => p.Category.Parentcategory)
+				.Where(p => p.Isactive)
+				.Select(p => new
+				{
+					p.Productid,
+					p.Productname,
+					p.Image,
+					p.Price,
+					p.Discount,
+					ParentCategoryId = p.Parentcategoryid ?? 0,
+					CategoryId = p.Categoryid ?? 0
+				})
+				.ToList();
 
-            if (!products.Any())
-                return BadRequest("Không có sản phẩm nào để gợi ý.");
+			if (!products.Any())
+				return BadRequest("Không có sản phẩm nào để gợi ý.");
 
-            // Chuẩn bị dữ liệu cho K-Means
-            double[][] data = products
-                .Select(p => new double[]
-                {
-                    (double)p.Price,
-                    (double)p.Discount,
-                    (double)p.ParentCategoryId,
-                    (double)p.CategoryId
-                })
-                .ToArray();
+			// Chuẩn bị dữ liệu cho K-Means
+			double[][] data = products
+				.Select(p => new double[]
+				{
+			(double)p.Price,
+			(double)p.Discount,
+			(double)p.ParentCategoryId,
+			(double)p.CategoryId
+				})
+				.ToArray();
 
-            // Áp dụng K-Means
-            KMeans kmeans = new KMeans(numberOfClusters);
-            int[] clusters = kmeans.Learn(data).Decide(data);
+			// Áp dụng K-Means
+			KMeans kmeans = new KMeans(numberOfClusters);
+			int[] clusters = kmeans.Learn(data).Decide(data);
 
-            // Tìm sản phẩm cần gợi ý
-            var productIndex = products.FindIndex(p => p.Productid == productId);
-            if (productIndex == -1)
-                return NotFound("Sản phẩm không tồn tại.");
+			// Tìm sản phẩm cần gợi ý
+			var productIndex = products.FindIndex(p => p.Productid == productId);
+			if (productIndex == -1)
+				return NotFound("Sản phẩm không tồn tại.");
 
-            int targetCluster = clusters[productIndex];
+			int targetCluster = clusters[productIndex];
 
-            // Lấy các sản phẩm trong cùng cụm, trừ sản phẩm hiện tại
-            var recommendations = products
-                .Where((p, i) => clusters[i] == targetCluster && p.Productid != productId)
-                .ToList();
+			// Lấy các sản phẩm trong cùng cụm, trừ sản phẩm hiện tại
+			var recommendations = products
+				.Where((p, i) => clusters[i] == targetCluster && p.Productid != productId)
+				.Take(4) // Chỉ lấy 4 sản phẩm
+				.ToList();
 
-            return Ok(recommendations);
-        }
-    }
+			return Ok(recommendations);
+		}
+
+	}
 }
