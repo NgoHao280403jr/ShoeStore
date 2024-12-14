@@ -1,4 +1,10 @@
-﻿<div class="colorlib-product">
+﻿@using Microsoft.AspNetCore.Http
+@{
+    var username = Context.Session.GetString("Username");
+    var userid = Context.Session.GetString("UserId");
+}
+
+<div class="colorlib-product">
 	<div class="container">
 		<div class="row row-pb-lg">
 			<div class="col-sm-10 offset-md-1">
@@ -18,6 +24,9 @@
 				</div>
 			</div>
 		</div>
+		<div class="row row-pb-lg" id="order-list">
+			
+		</div>
 		<div class="row">
 			<div class="col-sm-10 offset-sm-1 text-center">
 				<p class="icon-addcart"><span><i class="icon-check"></i></span></p>
@@ -30,3 +39,81 @@
 		</div>
 	</div>
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Gọi API
+        var customerId = '@userid'; // Đảm bảo Razor render thành chuỗi hợp lệ
+        fetch(`https://localhost:7063/api/OrderApi/api/orders/${customerId}`)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Failed to fetch orders");
+                }
+                return response.json();
+            })
+            .then((data) => {
+                renderOrders(data);
+            })
+            .catch((error) => {
+                console.error("Error fetching orders:", error);
+                document.querySelector("#order-list").innerHTML = `
+            <div class="col-12 text-center">
+              <p class="text-danger">Unable to load orders. Please try again later.</p>
+            </div>
+          `;
+            });
+
+        // Render orders vào giao diện
+        function renderOrders(orders) {
+            const container = document.querySelector("#order-list");
+            container.innerHTML = ""; // Xóa nội dung cũ
+
+            if (orders.length === 0) {
+                container.innerHTML = `
+            <div class="col-12 text-center">
+              <p>No orders found.</p>
+            </div>
+          `;
+                return;
+            }
+
+            orders.forEach((order) => {
+                const orderHtml = `
+            <div class="col-md-12">
+              <div class="order-summary mb-4 p-3 border rounded">
+                <h4>Order #${order.orderId}</h4>
+                <p>Status: <strong>${order.orderStatus}</strong> | Payment: <strong>${order.paymentStatus}</strong></p>
+                <p>Total Amount: <strong>${order.totalAmount.toLocaleString()} VND</strong></p>
+                    <hr>
+                <div class="product-list">
+                  ${order.products
+                        .map(
+                            (product) => `
+                    <div class="product-item mb-3">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <p>Product: <strong>${product.productName}</strong></p>
+                          <p>Size: ${product.size}</p>
+                        </div>
+                        <div class="col-md-6">
+                          <p>Quantity: ${product.quantity}</p>
+                          <p>Unit Price: ${product.unitPrice.toLocaleString()} VND</p>
+                          <p>Subtotal: <strong>${product.subTotal.toLocaleString()} VND</strong></p>
+                        </div>
+                      </div>
+                          <hr>
+                    </div>
+                  `
+                        )
+                        .join("")}
+                </div>                   
+              </div>
+            </div>
+          `;
+
+                container.insertAdjacentHTML("beforeend", orderHtml);
+            });
+        }
+    });
+
+
+</script>
