@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QLBanGiay.DTO;
 using QLBanGiay.Models.Models;
+using System.Text;
 
 namespace QLBanGiay.Controllers.API
 {
@@ -40,7 +41,7 @@ namespace QLBanGiay.Controllers.API
             var user = new User
             {
                 Username = request.Username,
-                Password = BCrypt.Net.BCrypt.HashPassword(request.Password),
+                Password = HashPassword(request.Password),
                 Roleid = 3, // ID Role mặc định cho khách hàng
                 Isactive = true,
                 Isbanned = false
@@ -64,6 +65,19 @@ namespace QLBanGiay.Controllers.API
             await _dbContext.SaveChangesAsync();
 
             return Ok(new { Message = "Registration successful!" });
+        }
+        private string HashPassword(string password)
+        {
+            using (var sha256 = System.Security.Cryptography.SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                StringBuilder builder = new StringBuilder();
+                foreach (var b in bytes)
+                {
+                    builder.Append(b.ToString("x2"));
+                }
+                return builder.ToString();
+            }
         }
     }
 }

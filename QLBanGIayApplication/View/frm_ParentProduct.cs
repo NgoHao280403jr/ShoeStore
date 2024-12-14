@@ -73,7 +73,7 @@ namespace QLBanGiay_Application.View
         {
             if (long.TryParse(txt_Madm.Text, out long categoryId))
             {
-                var confirmResult = MessageBox.Show("Bạn có chắc chắn muốn xóa danh mục này cùng với các danh mục con không?",
+                var confirmResult = MessageBox.Show("Bạn có chắc chắn muốn xóa danh mục này cùng với các danh mục con và sản phẩm liên quan không?",
                                                     "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (confirmResult == DialogResult.Yes)
@@ -82,32 +82,41 @@ namespace QLBanGiay_Application.View
                     {
                         try
                         {
-                            // Lấy và xóa tất cả sản phẩm thuộc danh mục này
-                            var relatedProducts = _productService.GetProductsByCategory(categoryId);
-                            if (relatedProducts.Any())
-                            {                              
-                                var result = MessageBox.Show("Danh mục này có sản phẩm liên quan. Bạn có muốn xóa tất cả sản phẩm liên quan không?",
-                                                              "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                                if (result == DialogResult.Yes)
+                            var parentCategory = _parentService.GetParentCategoryById(categoryId);
+                            if (parentCategory == null)
+                            {
+                                MessageBox.Show("Danh mục cha không tồn tại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return; 
+                            }
+                            var childCategories = _context.Productcategories.Where(c => c.Parentcategoryid == categoryId).ToList();
+
+                            foreach (var childCategory in childCategories)
+                            {
+                                var relatedProducts = _context.Products.Where(p => p.Categoryid == childCategory.Categoryid).ToList();
+                                foreach (var product in relatedProducts)
                                 {
-                                    foreach (var product in relatedProducts)
-                                    {
-                                        _productService.DeleteProduct(product.Productid);
-                                    }
+                                    _context.Products.Remove(product);
                                 }
+
+                                _context.Productcategories.Remove(childCategory); 
                             }
 
-                            // Xóa danh mục cha
-                            _categoryService.DeleteCategory(categoryId);
+                            var productsInParentCategory = _context.Products.Where(p => p.Parentcategoryid == categoryId).ToList();
+                            foreach (var product in productsInParentCategory)
+                            {
+                                _context.Products.Remove(product); 
+                            }
+                            _context.Parentproductcategories.Remove(parentCategory);
                             _context.SaveChanges();
                             transaction.Commit();
-
-                            LoadParentCategories(); 
+                            LoadParentCategories();
+                            MessageBox.Show("Xóa danh mục thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         catch (Exception ex)
                         {
                             transaction.Rollback();
-                            MessageBox.Show($"Đã xảy ra lỗi khi xóa: {ex.Message}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show($"Đã xảy ra lỗi khi xóa: {ex.Message}\n{ex.InnerException?.Message}",
+                                            "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }

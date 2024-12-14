@@ -13,42 +13,47 @@ namespace QLBanGiay.Services
 			_productRepository = productRepository;
 		}
 
-		public async Task<object> GetProductsAsync(int page, int pageSize)
-		{
-			var totalItems = await _productRepository.GetTotalProductsAsync();
-			var products = await _productRepository.GetProductsAsync(page, pageSize);
+        public async Task<object> GetProductsAsync(
+             int page,
+             int pageSize,
+             string sortBy = "",
+             string sortOrder = "",
+             long? parentCategoryId = null,
+             long? categoryId = null)
+        {
+            var totalItems = await _productRepository.GetTotalProductsAsync();
+            var products = await _productRepository.GetProductsAsync(page, pageSize, sortBy, sortOrder, parentCategoryId, categoryId);
 
-			var data = products.Select(p => new
-			{
-				ProductId = p.Productid,
-				ProductName = p.Productname,
-				p.Price,
-				p.Discount,
-				p.Image,
-				IsActive = p.Isactive,
-				Category = p.Category == null ? null : new
-				{
-					CategoryId = p.Category.Categoryid,
-					CategoryName = p.Category.Categoryname,
-					ParentCategory = p.Category.Parentcategory == null ? null : new
-					{
-						ParentCategoryId = p.Category.Parentcategory.Parentcategoryid,
-						ParentCategoryName = p.Category.Parentcategory.Parentcategoryname
-					}
-				}
-			});
+            var data = products.Select(p => new
+            {
+                ProductId = p.Productid,
+                ProductName = p.Productname,
+                p.Price,
+                p.Discount,
+                p.Image,
+                IsActive = p.Isactive,
+                Category = p.Category == null ? null : new
+                {
+                    CategoryId = p.Category.Categoryid,
+                    CategoryName = p.Category.Categoryname,
+                    ParentCategory = p.Category.Parentcategory == null ? null : new
+                    {
+                        ParentCategoryId = p.Category.Parentcategory.Parentcategoryid,
+                        ParentCategoryName = p.Category.Parentcategory.Parentcategoryname
+                    }
+                }
+            });
 
-			return new
-			{
-				Data = data,
-				CurrentPage = page,
-				PageSize = pageSize,
-				TotalPages = (int)Math.Ceiling(totalItems / (double)pageSize),
-				TotalItems = totalItems
-			};
-		}
-
-		public async Task<object> GetProductByIdAsync(int id)
+            return new
+            {
+                Data = data,
+                CurrentPage = page,
+                PageSize = pageSize,
+                TotalPages = (int)Math.Ceiling(totalItems / (double)pageSize),
+                TotalItems = totalItems
+            };
+        }
+        public async Task<object> GetProductByIdAsync(int id)
 		{
 			var product = await _productRepository.GetProductByIdAsync(id);
 
@@ -80,6 +85,50 @@ namespace QLBanGiay.Services
 				}).ToList()
 			};
 		}
+        public async Task<object> SearchProductsAsync(string searchTerm, int page, int pageSize)
+        {
+            if (string.IsNullOrWhiteSpace(searchTerm))
+            {
+                return new
+                {
+                    Data = new List<object>(),
+                    CurrentPage = page,
+                    PageSize = pageSize,
+                    TotalPages = 0,
+                    TotalItems = 0
+                };
+            }
 
-	}
+            var totalItems = await _productRepository.GetSearchTotalCountAsync(searchTerm);
+            var products = await _productRepository.SearchProductsAsync(searchTerm, page, pageSize);
+
+            var data = products.Select(p => new
+            {
+                ProductId = p.Productid,
+                ProductName = p.Productname,
+                p.Price,
+                p.Discount,
+                p.Image,
+                Category = p.Category == null ? null : new
+                {
+                    CategoryId = p.Category.Categoryid,
+                    CategoryName = p.Category.Categoryname,
+                    ParentCategory = p.Category.Parentcategory == null ? null : new
+                    {
+                        ParentCategoryId = p.Category.Parentcategory.Parentcategoryid,
+                        ParentCategoryName = p.Category.Parentcategory.Parentcategoryname
+                    }
+                }
+            });
+
+            return new
+            {
+                Data = data,
+                CurrentPage = page,
+                PageSize = pageSize,
+                TotalPages = (int)Math.Ceiling(totalItems / (double)pageSize),
+                TotalItems = totalItems
+            };
+        }
+    }
 }

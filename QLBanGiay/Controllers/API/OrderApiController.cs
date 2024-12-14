@@ -36,7 +36,8 @@ namespace QLBanGiay.Controllers.API
 				{
 					Customerid = customerId,
 					Ordertime = DateOnly.FromDateTime(DateTime.Now),
-					Orderstatus = "Cart",
+                    //Ordertime = DateOnly.FromDateTime(DateTime.Now).ToDateTime(TimeOnly.MinValue),
+                    Orderstatus = "Cart",
 					Paymentstatus = "Not Paid",
 					Iscart = true
 				};
