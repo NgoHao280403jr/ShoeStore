@@ -26,6 +26,7 @@ public partial class QlShopBanGiayContext : DbContext
     public virtual DbSet<Order> Orders { get; set; }
 
     public virtual DbSet<Orderdetail> Orderdetails { get; set; }
+    public virtual DbSet<PurchaseInvoice> PurchaseInvoices { get; set; }
 
     public virtual DbSet<Parentproductcategory> Parentproductcategories { get; set; }
 
@@ -42,7 +43,7 @@ public partial class QlShopBanGiayContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=QL_ShopBanGiay;User ID=postgres;Password=230104;");
+        => optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=QL_ShopBanGiay;User ID=postgres;Password=123;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -401,6 +402,54 @@ public partial class QlShopBanGiayContext : DbContext
                 .HasForeignKey(d => d.Roleid)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_user_role");
+        });
+        modelBuilder.Entity<PurchaseInvoice>(entity =>
+        {
+            entity.HasKey(e => e.InvoiceId).HasName("PK_PurchaseInvoice");
+
+            entity.ToTable("PurchaseInvoice");
+
+            entity.Property(e => e.InvoiceId)
+                .HasColumnName("InvoiceId")
+                .ValueGeneratedOnAdd();
+
+            entity.Property(e => e.ProductId)
+                .HasColumnName("ProductId")
+                .IsRequired();
+
+            entity.Property(e => e.Quantity)
+                .HasColumnName("Quantity")
+                .IsRequired()
+                .HasDefaultValue(1);
+
+            entity.Property(e => e.UnitPrice)
+                .HasColumnName("UnitPrice")
+                .IsRequired()
+                .HasDefaultValue(0.0);
+
+            entity.Property(e => e.TotalPrice)
+                .HasColumnName("TotalPrice")
+                .HasComputedColumnSql("[Quantity] * [UnitPrice]");
+
+            entity.Property(e => e.ImportDate)
+                .HasColumnName("ImportDate")
+                .HasDefaultValueSql("GETDATE()");
+
+            entity.Property(e => e.EmployeeId)
+                .HasColumnName("EmployeeId")
+                .IsRequired();
+
+            entity.HasOne(e => e.Product)
+                .WithMany(p => p.PurchaseInvoices)
+                .HasForeignKey(e => e.ProductId)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("FK_PurchaseInvoice_Product");
+
+            entity.HasOne(e => e.Employee)
+                .WithMany(emp => emp.PurchaseInvoices)
+                .HasForeignKey(e => e.EmployeeId)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("FK_PurchaseInvoice_Employee");
         });
 
         OnModelCreatingPartial(modelBuilder);

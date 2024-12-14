@@ -34,7 +34,7 @@ namespace QLBanGiay_Application.View
 
         private void Btn_Qlhdbh_Click(object? sender, EventArgs e)
         {
-            frm_Invoice mainForm = new frm_Invoice();
+            frm_Orders mainForm = new frm_Orders();
             mainForm.Show();
             Form parentForm = this.FindForm();
             if (parentForm != null)

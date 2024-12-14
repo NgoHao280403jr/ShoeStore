@@ -20,7 +20,7 @@ static class Program
         var dbContext = new QlShopBanGiayContext(); 
         var userRepository = new UserRepository(dbContext);
         var userService = new UserService(userRepository);
-        Application.Run(new frm_Main());
-        Application.Run(new frm_Orders());
+        //Application.Run(new frm_Main());
+        Application.Run(new frm_OrderDetail());
     }    
 }

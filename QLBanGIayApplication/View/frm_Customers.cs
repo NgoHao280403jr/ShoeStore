@@ -34,10 +34,18 @@ namespace QLBanGiay_Application.View
             this.dgv_danhsachkh.CellClick += Dgv_danhsachkh_CellClick;
             this.txt_Email.KeyPress += Txt_Email_KeyPress;
             this.txt_SDT.KeyPress += Txt_SDT_KeyPress;
+            this.btn_Thoat.Click += Btn_Thoat_Click;
 
             _context = new QlShopBanGiayContext();
             _customerService = new CustomerService(new CustomerRepository(_context));
             _userService = new UserService(new UserRepository(_context));
+        }
+
+        private void Btn_Thoat_Click(object? sender, EventArgs e)
+        {
+            this.Close();
+            frm_Main mainForm = new frm_Main();
+            mainForm.Show();
         }
 
         private void Txt_SDT_KeyPress(object? sender, KeyPressEventArgs e)
@@ -45,6 +53,11 @@ namespace QLBanGiay_Application.View
             char inputChar = e.KeyChar;
 
             if (!char.IsDigit(inputChar) && inputChar != 8)
+            {
+                e.Handled = true;
+            }
+
+            if (txt_SDT.Text.Length >= 10 && inputChar != 8)
             {
                 e.Handled = true;
             }

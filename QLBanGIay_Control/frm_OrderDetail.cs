@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QLBanGiay_Application.Repository;
 
 namespace QLBanGIay_Control
 {
@@ -15,6 +16,21 @@ namespace QLBanGIay_Control
         public frm_Orderdetail()
         {
             InitializeComponent();
+        }
+
+        private void btn_Capnhat_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Xuathd_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Thoat_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
