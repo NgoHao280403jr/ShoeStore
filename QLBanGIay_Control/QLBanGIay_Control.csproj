@@ -38,7 +38,7 @@
       <HintPath>..\QLBanGIayApplication\bin\Debug\net8.0-windows\QLBanGiay.Models.dll</HintPath>
     </Reference>
     <Reference Include="QLBanGiay_Application">
-      <HintPath>..\QLBanGIayApplication\bin\Debug\net8.0-windows\QLBanGiay_Application.dll</HintPath>
+      <HintPath>..\QLBanGIayApplication\obj\Debug\net8.0-windows\QLBanGiay_Application.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
