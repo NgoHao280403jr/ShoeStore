@@ -173,7 +173,9 @@
 									else
 									{
 										<li><a href="@Url.Action("Logout", "Account")">Log Out</a></li>
+										<li><a href="@Url.Action("OrderComplete", "Cart")">Order placed</a></li>
 									}
+									
 								</ul>
 							</li>
 						</ul>
@@ -219,7 +221,7 @@
             @RenderBody()
         </main>
     </div>
-
+	<hr>
 	<footer id="colorlib-footer" role="contentinfo">
         <div class="container">
             &copy; 2024 - QLBanGiay - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
