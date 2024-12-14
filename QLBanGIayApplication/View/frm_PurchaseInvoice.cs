@@ -91,7 +91,7 @@ namespace QLBanGiay_Application.View
                 };
 
                 _purchaseInvoiceService.AddInvoice(invoice);
-                _productSizeService.UpdateProductSizeQuantity(invoice.ProductId, invoice.Quantity);
+                //_productSizeService.UpdateProductSizeQuantity(invoice.ProductId, invoice.Quantity);
 
                 MessageBox.Show("Hóa đơn đã được thêm thành công.");
                 LoadDataGridView();
@@ -130,7 +130,7 @@ namespace QLBanGiay_Application.View
 
                 // Tính toán sự thay đổi số lượng và cập nhật
                 var quantityDifference = invoice.Quantity - oldInvoice.Quantity;
-                _productSizeService.UpdateProductSizeQuantity(invoice.ProductId, quantityDifference);
+                //_productSizeService.UpdateProductSizeQuantity(invoice.ProductId, quantityDifference);
 
                 MessageBox.Show("Hóa đơn đã được cập nhật thành công.");
                 LoadDataGridView();
@@ -162,7 +162,7 @@ namespace QLBanGiay_Application.View
                 if (confirmResult == DialogResult.Yes)
                 {
                     _purchaseInvoiceService.DeleteInvoice(invoiceId);
-                    _productSizeService.UpdateProductSizeQuantity(oldInvoice.ProductId, -oldInvoice.Quantity);
+                    //_productSizeService.UpdateProductSizeQuantity(oldInvoice.ProductId, -oldInvoice.Quantity);
 
                     MessageBox.Show("Hóa đơn đã được xóa thành công.");
                     LoadDataGridView();

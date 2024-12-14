@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.WebSockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -71,7 +72,7 @@ namespace QLBanGiay_Application.View
                 txtMaCTHD.Text = selectedOrderDetail.Orderdetailid.ToString();
                 cbbMaHD.SelectedItem = selectedOrderDetail.Order;
                 cbbMaSP.SelectedValue = selectedOrderDetail.Productid;
-                cbbSize.SelectedValue = selectedOrderDetail.Size;
+                cbbSize.SelectedItem = selectedOrderDetail.Size.ToString();
                 txtSL.Value = decimal.Parse(selectedOrderDetail.Quantity.ToString());
                 txtGiaSP.Text = selectedOrderDetail.Unitprice.ToString();
             }
@@ -116,10 +117,9 @@ namespace QLBanGiay_Application.View
                 cbbMaSP.ValueMember = "Productid";
                 cbbMaSP.SelectedIndex = -1;
 
-                var productSize = _productSizeService.GetAllProductSizes().ToList();
-                cbbSize.DataSource = productSize;
-                cbbSize.DisplayMember = "Size";
-                cbbSize.ValueMember = "Size";
+                var sizes = Enumerable.Range(20, 25).Select(size => size.ToString()).ToList();
+
+                cbbSize.DataSource = sizes;
                 cbbSize.SelectedIndex = -1;
             }
             catch (Exception ex)
@@ -176,6 +176,7 @@ namespace QLBanGiay_Application.View
                     return;
                 }
 
+                var oderDetailOld = _orderDetailService.GetOrderDetaiById(orderDetailId);
                 var orderDetail = new Orderdetail
                 {
                     Orderdetailid = orderDetailId,
@@ -187,7 +188,9 @@ namespace QLBanGiay_Application.View
                 };
 
                 _orderDetailService.UpdateOrderDetail(orderDetail);
-
+                var quantityDifference =  oderDetailOld.Quantity - orderDetail.Quantity ;
+                int quantity = quantityDifference ?? 0;
+                _productSizeService.UpdateProductSizeQuantity(orderDetail.Productid,orderDetail.Size, quantity);
                 MessageBox.Show("Cập nhật chi tiết đơn hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 LoadOrderDetails();
@@ -213,8 +216,11 @@ namespace QLBanGiay_Application.View
                     {
                         var orderId = long.Parse(dgv_OD.SelectedRows[0].Cells["Orderid"].Value.ToString());
                         var productId = long.Parse(dgv_OD.SelectedRows[0].Cells["Productid"].Value.ToString());
-
+                        var orderDetailId = long.Parse(dgv_OD.SelectedRows[0].Cells["Orderdetailid"].Value.ToString());
+                        var orderDetail = _orderDetailService.GetOrderDetaiById(orderDetailId);
                         _orderDetailService.DeleteOrderDetail(orderId, productId);
+                        int quantity = orderDetail.Quantity ?? 0;
+                        _productSizeService.UpdateProductSizeQuantity(orderDetail.Productid, orderDetail.Size, -quantity);
                         MessageBox.Show("Xóa chi tiết đơn hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadOrderDetails();
                     }
@@ -256,7 +262,8 @@ namespace QLBanGiay_Application.View
                 }
 
                 _orderDetailService.AddOrderDetail(orderDetail);
-
+                int quantity = orderDetail.Quantity ?? 0;
+                _productSizeService.UpdateProductSizeQuantity(orderDetail.Productid,orderDetail.Size, quantity);
                 MessageBox.Show("Thêm chi tiết đơn hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 LoadOrderDetails();

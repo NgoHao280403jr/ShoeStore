@@ -55,5 +55,9 @@ namespace QLBanGiay_Application.Services
         {
             return _orderDetailRepository.SearchOrderDetails(keyword);
         }
+        public Orderdetail GetOrderDetaiById(long orderDetailId)
+        {
+            return _orderDetailRepository.GetOrderDetaiById(orderDetailId);
+        }
     }
 }

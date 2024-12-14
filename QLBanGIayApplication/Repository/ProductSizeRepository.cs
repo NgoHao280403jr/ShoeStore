@@ -60,9 +60,10 @@ namespace QLBanGiay_Application.Repository
             return _context.ProductSizes.Where(ps => ps.ProductId == productId).ToList();
         }
 
-        public void UpdateProductSizeQuantity(long productId, int quantityChange)
+        public void UpdateProductSizeQuantity(long productId, string size, int quantityChange)
         {
-            var productSize = _context.ProductSizes.FirstOrDefault(ps => ps.ProductId == productId);
+            var productSize = _context.ProductSizes.FirstOrDefault(ps => ps.ProductId == productId && ps.Size == size);
+
             if (productSize != null)
             {
                 productSize.Quantity += quantityChange;
@@ -77,8 +78,9 @@ namespace QLBanGiay_Application.Repository
             }
             else
             {
-                throw new InvalidOperationException("Sản phẩm không tồn tại trong ProductSize.");
+                throw new InvalidOperationException("Sản phẩm không tồn tại với productId và size đã cho.");
             }
         }
+
     }
 }

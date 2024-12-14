@@ -12,6 +12,7 @@ namespace QLBanGiay_Application.Repository.IRepository
         IEnumerable<Orderdetail> GetAllOrderDetails();
         IEnumerable<Orderdetail> GetOrderDetailsByOrderId(long orderId);
         Orderdetail GetOrderDetail(long orderId, long productId);
+        Orderdetail GetOrderDetaiById(long orderDetailId);
         void AddOrderDetail(Orderdetail orderDetail);
         void UpdateOrderDetail(Orderdetail orderDetail);
         void DeleteOrderDetail(long orderId, long productId);

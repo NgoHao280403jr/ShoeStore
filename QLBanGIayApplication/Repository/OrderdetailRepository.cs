@@ -74,5 +74,9 @@ namespace QLBanGiay_Application.Repository
         {
             return _context.Orderdetails.Where(id => id.Product.Productname.Contains(keyword)).ToList();
         }
+        public Orderdetail GetOrderDetaiById(long orderDetailId)
+        {
+            return _context.Orderdetails.Where(id => id.Orderdetailid == orderDetailId).FirstOrDefault();
+        }
     }
 }
