@@ -83,7 +83,7 @@ namespace QLBanGiay_Application.View
 
         private void Btn_Qlsize_Click(object? sender, EventArgs e)
         {
-            frm_ProductSize mainForm = new frm_ProductSize();
+            frm_ProductSize mainForm = new frm_ProductSize(_userService);
             mainForm.Show();
             Form parentForm = this.FindForm();
             if (parentForm != null)
@@ -132,7 +132,7 @@ namespace QLBanGiay_Application.View
 
             if (user != null && user.Roleid == 1)
             {
-                frm_Role roleForm = new frm_Role();
+                frm_Role roleForm = new frm_Role(_userService);
                 roleForm.Show();
                 Form parentForm = this.FindForm();
                 if (parentForm != null)
@@ -159,7 +159,7 @@ namespace QLBanGiay_Application.View
 
             if (user != null && user.Roleid == 1) 
             {
-                frm_Employee employeeForm = new frm_Employee();
+                frm_Employee employeeForm = new frm_Employee(_userService);
                 employeeForm.Show();
                 Form parentForm = this.FindForm();
                 if (parentForm != null)
@@ -175,7 +175,7 @@ namespace QLBanGiay_Application.View
 
         private void Btn_Qlkhachhang_Click(object? sender, EventArgs e)
         {
-            frm_Customers mainForm = new frm_Customers();
+            frm_Customers mainForm = new frm_Customers(_userService);
             mainForm.Show();
             Form parentForm = this.FindForm();
             if (parentForm != null)
@@ -186,7 +186,7 @@ namespace QLBanGiay_Application.View
 
         private void Btn_Qldanhmuc2_Click(object? sender, EventArgs e)
         {
-            frm_ProductCategory mainForm = new frm_ProductCategory();
+            frm_ProductCategory mainForm = new frm_ProductCategory(_userService);
             mainForm.Show();
             Form parentForm = this.FindForm();
             if (parentForm != null)
@@ -197,7 +197,7 @@ namespace QLBanGiay_Application.View
 
         private void Btn_Qldanhmuc_Click(object? sender, EventArgs e)
         {
-            frm_ParentProduct mainForm = new frm_ParentProduct();
+            frm_ParentProduct mainForm = new frm_ParentProduct(_userService);
             mainForm.Show();
             Form parentForm = this.FindForm();
             if (parentForm != null)
@@ -208,7 +208,7 @@ namespace QLBanGiay_Application.View
 
         private void Btn_Qlsanpham_Click(object? sender, EventArgs e)
         {
-            frm_Products mainForm = new frm_Products();
+            frm_Products mainForm = new frm_Products(_userService);
             mainForm.Show();
             Form parentForm = this.FindForm();
             if (parentForm != null)

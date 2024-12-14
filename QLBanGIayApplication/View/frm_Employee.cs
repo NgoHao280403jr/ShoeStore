@@ -21,7 +21,7 @@ namespace QLBanGiay_Application.View
         private readonly EmployeeService _employeeService;
         private readonly QlShopBanGiayContext _context;
         private List<Employee> customer;
-        public frm_Employee()
+        public frm_Employee(UserService userService)
         {
             InitializeComponent();
 
@@ -37,6 +37,7 @@ namespace QLBanGiay_Application.View
             _context = new QlShopBanGiayContext();
             _employeeService = new EmployeeService(new EmployeeRepository(_context));
             _userService = new UserService(new UserRepository(_context));
+            _userService = userService;
         }
 
         private void Txt_SDT_KeyPress(object? sender, KeyPressEventArgs e)

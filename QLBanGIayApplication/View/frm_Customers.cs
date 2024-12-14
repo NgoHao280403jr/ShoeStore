@@ -23,7 +23,7 @@ namespace QLBanGiay_Application.View
         private readonly CustomerService _customerService;
         private readonly QlShopBanGiayContext _context;
         private List<Customer> customer;
-        public frm_Customers()
+        public frm_Customers(UserService userService)
         {
             InitializeComponent();
             this.Load += Frm_Customers_Load;
@@ -38,6 +38,7 @@ namespace QLBanGiay_Application.View
             _context = new QlShopBanGiayContext();
             _customerService = new CustomerService(new CustomerRepository(_context));
             _userService = new UserService(new UserRepository(_context));
+            _userService = userService;
         }
 
         private void Txt_SDT_KeyPress(object? sender, KeyPressEventArgs e)

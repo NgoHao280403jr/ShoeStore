@@ -23,7 +23,7 @@ namespace QLBanGiay_Application.View
         private readonly CategoryService _categoryService;
         private List<Parentproductcategory> parents;
         private readonly QlShopBanGiayContext _context;
-        public frm_ParentProduct()
+        public frm_ParentProduct(UserService userService)
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -41,6 +41,7 @@ namespace QLBanGiay_Application.View
             _parentService = new ParentService(new ParentCategoryRepository(_context));
             _productService = new ProductService(new ProductRepository(_context));
             _categoryService = new CategoryService(new CategoryRepository(_context));
+            _userService = userService;
         }
 
         private void Btn_Thoat_Click(object? sender, EventArgs e)
