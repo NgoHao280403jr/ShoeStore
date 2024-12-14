@@ -22,7 +22,7 @@ namespace QLBanGiay_Application.View
         private readonly ProductSizeService _productSizeService;
         private readonly ProductService _productService;
         private ProductSize _lastSelectedRow;
-        public frm_ProductSize()
+        public frm_ProductSize(UserService userService)
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -37,7 +37,8 @@ namespace QLBanGiay_Application.View
             this.txt_Soluong.KeyPress += Txt_Soluong_KeyPress;
             _context = new QlShopBanGiayContext();
             _productSizeService = new ProductSizeService(new ProductSizeRepository(_context));  
-            _productService = new ProductService(new ProductRepository(_context)); 
+            _productService = new ProductService(new ProductRepository(_context));
+            _userService = userService;
         }
 
         private void Txt_Soluong_KeyPress(object? sender, KeyPressEventArgs e)

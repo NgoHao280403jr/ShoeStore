@@ -24,4 +24,5 @@ public partial class Employee
     public virtual ICollection<Invoice> Invoices { get; set; } = new List<Invoice>();
 
     public virtual User User { get; set; } = null!;
+    public virtual ICollection<PurchaseInvoice> PurchaseInvoices { get; set; } = new List<PurchaseInvoice>();
 }

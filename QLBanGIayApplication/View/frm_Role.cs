@@ -20,7 +20,7 @@ namespace QLBanGiay_Application.View
         private readonly UserService _userService;
         private readonly RoleService _roleService;
         private readonly QlShopBanGiayContext _context;
-        public frm_Role()
+        public frm_Role(UserService userService)
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -33,6 +33,7 @@ namespace QLBanGiay_Application.View
             this.btn_Thoat.Click += Btn_Thoat_Click;
             _context = new QlShopBanGiayContext();
             _roleService = new RoleService(new RoleRepository(_context));
+            _userService = userService;
         }
 
         private void Btn_Thoat_Click(object? sender, EventArgs e)

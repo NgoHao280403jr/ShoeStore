@@ -24,7 +24,7 @@ namespace QLBanGiay_Application.View
         private string _imageFileName;
         private List<Product> categories;
         private readonly QlShopBanGiayContext _context;
-        public frm_Products()
+        public frm_Products(UserService userService)
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -46,6 +46,7 @@ namespace QLBanGiay_Application.View
             _categoryService = new CategoryService(new CategoryRepository(_context));
             _parentService = new ParentService(new ParentCategoryRepository(_context));
             _productService = new ProductService(new ProductRepository(_context));
+            _userService = userService;
         }
 
         private void Txt_Giamgia_TextChanged(object? sender, EventArgs e)

@@ -301,7 +301,7 @@
             txt_Giamgia.PlaceholderText = "";
             txt_Giamgia.SelectedText = "";
             txt_Giamgia.ShadowDecoration.CustomizableEdges = customizableEdges11;
-            txt_Giamgia.Size = new Size(194, 42);
+            txt_Giamgia.Size = new Size(224, 42);
             txt_Giamgia.TabIndex = 12;
             // 
             // guna2HtmlLabel6
@@ -363,7 +363,7 @@
             cbo_Madmcon.Location = new Point(245, 159);
             cbo_Madmcon.Name = "cbo_Madmcon";
             cbo_Madmcon.ShadowDecoration.CustomizableEdges = customizableEdges15;
-            cbo_Madmcon.Size = new Size(194, 36);
+            cbo_Madmcon.Size = new Size(224, 36);
             cbo_Madmcon.TabIndex = 8;
             // 
             // guna2HtmlLabel4
@@ -425,7 +425,7 @@
             txt_Tensp.PlaceholderText = "";
             txt_Tensp.SelectedText = "";
             txt_Tensp.ShadowDecoration.CustomizableEdges = customizableEdges19;
-            txt_Tensp.Size = new Size(232, 42);
+            txt_Tensp.Size = new Size(222, 42);
             txt_Tensp.TabIndex = 4;
             // 
             // guna2HtmlLabel2
