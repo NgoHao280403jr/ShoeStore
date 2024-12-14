@@ -405,51 +405,57 @@ public partial class QlShopBanGiayContext : DbContext
         });
         modelBuilder.Entity<PurchaseInvoice>(entity =>
         {
-            entity.HasKey(e => e.InvoiceId).HasName("PK_PurchaseInvoice");
+            entity.HasKey(e => e.InvoiceId).HasName("purchaseinvoice_pkey");
 
-            entity.ToTable("PurchaseInvoice");
+            entity.ToTable("purchaseinvoice");
 
             entity.Property(e => e.InvoiceId)
-                .HasColumnName("InvoiceId")
+                .HasColumnName("invoiceid")
                 .ValueGeneratedOnAdd();
 
             entity.Property(e => e.ProductId)
-                .HasColumnName("ProductId")
+                .HasColumnName("productid")
                 .IsRequired();
+            entity.Property(e => e.ProductSizeId)
+                .HasColumnName("productsizeid");
 
             entity.Property(e => e.Quantity)
-                .HasColumnName("Quantity")
+                .HasColumnName("quantity")
                 .IsRequired()
                 .HasDefaultValue(1);
 
             entity.Property(e => e.UnitPrice)
-                .HasColumnName("UnitPrice")
+                .HasColumnName("unitprice")
                 .IsRequired()
                 .HasDefaultValue(0.0);
 
             entity.Property(e => e.TotalPrice)
-                .HasColumnName("TotalPrice")
-                .HasComputedColumnSql("[Quantity] * [UnitPrice]");
+                .HasColumnName("totalprice")
+                .HasComputedColumnSql("[quantity] * [unitprice]");
 
             entity.Property(e => e.ImportDate)
-                .HasColumnName("ImportDate")
-                .HasDefaultValueSql("GETDATE()");
+                .HasColumnName("importdate");
 
             entity.Property(e => e.EmployeeId)
-                .HasColumnName("EmployeeId")
+                .HasColumnName("employeeid")
                 .IsRequired();
 
             entity.HasOne(e => e.Product)
                 .WithMany(p => p.PurchaseInvoices)
                 .HasForeignKey(e => e.ProductId)
                 .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("FK_PurchaseInvoice_Product");
+                .HasConstraintName("fk_purchaseinvoice_product");
 
             entity.HasOne(e => e.Employee)
                 .WithMany(emp => emp.PurchaseInvoices)
                 .HasForeignKey(e => e.EmployeeId)
                 .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("FK_PurchaseInvoice_Employee");
+                .HasConstraintName("fk_purchaseinvoice_employee");
+            entity.HasOne(e => e.ProductSize)
+                .WithMany(ps => ps.PurchaseInvoices)
+                .HasForeignKey(e => e.ProductSizeId)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("fk_purchaseinvoice_productsize");
         });
 
         OnModelCreatingPartial(modelBuilder);

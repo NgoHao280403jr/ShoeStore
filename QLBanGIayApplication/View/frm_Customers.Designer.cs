@@ -179,7 +179,6 @@
             txt_TenTK.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
             txt_TenTK.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             txt_TenTK.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            txt_TenTK.Enabled = false;
             txt_TenTK.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txt_TenTK.Font = new Font("Segoe UI", 9F);
             txt_TenTK.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
@@ -401,7 +400,6 @@
             txt_Makh.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
             txt_Makh.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             txt_Makh.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            txt_Makh.Enabled = false;
             txt_Makh.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txt_Makh.Font = new Font("Segoe UI", 9F);
             txt_Makh.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
@@ -410,7 +408,6 @@
             txt_Makh.Name = "txt_Makh";
             txt_Makh.PasswordChar = '\0';
             txt_Makh.PlaceholderText = "";
-            txt_Makh.ReadOnly = true;
             txt_Makh.SelectedText = "";
             txt_Makh.ShadowDecoration.CustomizableEdges = customizableEdges19;
             txt_Makh.Size = new Size(193, 42);
@@ -507,7 +504,7 @@
             btn_Capnhat.ShadowDecoration.CustomizableEdges = customizableEdges27;
             btn_Capnhat.Size = new Size(180, 56);
             btn_Capnhat.TabIndex = 1;
-            btn_Capnhat.Text = "Cập nhật";
+            btn_Capnhat.Text = "Đặt lại";
             // 
             // groupBox4
             // 

@@ -14,5 +14,6 @@ public partial class ProductSize
     public int? Quantity { get; set; }
 
     public virtual Product? Product { get; set; }
+    public ICollection<PurchaseInvoice> PurchaseInvoices { get; set; }
 
 }

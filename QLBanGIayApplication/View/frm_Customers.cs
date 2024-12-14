@@ -100,7 +100,14 @@ namespace QLBanGiay_Application.View
                 txt_Makh.Text = selectedCustomer.Customerid.ToString();
                 txt_Tenkhachhang.Text = selectedCustomer.Customername;
                 txt_DiaChi.Text = selectedCustomer.Address;
-                dtpBirthdate.Value = selectedCustomer.Birthdate?.ToDateTime(TimeOnly.MinValue) ?? DateTime.Now;
+                if (selectedCustomer.Birthdate.HasValue)
+                {
+                    dtpBirthdate.Value = selectedCustomer.Birthdate.Value.Date;
+                }
+                else
+                {
+                    dtpBirthdate.Value = DateTime.Now;
+                }
                 txt_Email.Text = selectedCustomer.Email;
                 txt_SDT.Text = selectedCustomer.Phonenumber;
                 txt_TenTK.Text = customer.User.Username;
@@ -128,7 +135,7 @@ namespace QLBanGiay_Application.View
             }
 
             customer.Customername = txt_Tenkhachhang.Text.Trim();
-            customer.Birthdate = DateOnly.FromDateTime(dtpBirthdate.Value);
+            customer.Birthdate = DateTime.SpecifyKind(dtpBirthdate.Value, DateTimeKind.Utc);
             customer.Gender = (string?)cmbGender.SelectedItem;
             customer.Address = txt_DiaChi.Text;
             customer.Phonenumber = txt_SDT.Text;
@@ -169,8 +176,9 @@ namespace QLBanGiay_Application.View
 
             var newCustomer = new Customer
             {
+                Customerid = long.Parse(txt_Makh.Text),
                 Customername = txt_Tenkhachhang.Text.Trim(),
-                Birthdate = DateOnly.FromDateTime(dtpBirthdate.Value),
+                Birthdate = DateTime.SpecifyKind(dtpBirthdate.Value, DateTimeKind.Utc),
                 Gender = (string?)cmbGender.SelectedItem,
                 Address = txt_DiaChi.Text,
                 Phonenumber = txt_SDT.Text,
