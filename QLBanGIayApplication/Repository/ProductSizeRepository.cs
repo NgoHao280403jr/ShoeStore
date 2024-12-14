@@ -59,5 +59,26 @@ namespace QLBanGiay_Application.Repository
         {
             return _context.ProductSizes.Where(ps => ps.ProductId == productId).ToList();
         }
+
+        public void UpdateProductSizeQuantity(long productId, int quantityChange)
+        {
+            var productSize = _context.ProductSizes.FirstOrDefault(ps => ps.ProductId == productId);
+            if (productSize != null)
+            {
+                productSize.Quantity += quantityChange;
+
+                if (productSize.Quantity < 0)
+                {
+                    throw new InvalidOperationException("Số lượng sản phẩm không thể âm.");
+                }
+
+                _context.ProductSizes.Update(productSize);
+                _context.SaveChanges();
+            }
+            else
+            {
+                throw new InvalidOperationException("Sản phẩm không tồn tại trong ProductSize.");
+            }
+        }
     }
 }

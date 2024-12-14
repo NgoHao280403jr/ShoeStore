@@ -244,6 +244,7 @@ namespace QLBanGiay_Application.View
             btn_Qlctdh.Visible = false;
             btn_Qlhdbh.Visible = false;
             btn_Qlsize.Visible = false;
+            btn_Qldonnhap.Visible = false;
         }
         private void ShowMenuButtons()
         {
@@ -258,11 +259,23 @@ namespace QLBanGiay_Application.View
             btn_Qlctdh.Visible = true;
             btn_Qlhdbh.Visible = true;
             btn_Qlsize.Visible = true;
+            btn_Qldonnhap.Visible=true;
         }
 
         private void frm_Main_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_Qldonnhap_Click(object sender, EventArgs e)
+        {
+            frm_PurchaseInvoice mainForm = new frm_PurchaseInvoice();
+            mainForm.Show();
+            Form parentForm = this.FindForm();
+            if (parentForm != null)
+            {
+                parentForm.Hide();
+            }
         }
     }
 }

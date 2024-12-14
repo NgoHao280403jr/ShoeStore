@@ -11,7 +11,7 @@ namespace QLBanGiay.Models.Models
         public long InvoiceId { get; set; }
 
         public long ProductId { get; set; }
-
+        public long ProductSizeId { get; set; }
         public int Quantity { get; set; }
 
         public double UnitPrice { get; set; }
@@ -25,6 +25,7 @@ namespace QLBanGiay.Models.Models
         public virtual Product Product { get; set; } = null!;
 
         public virtual Employee Employee { get; set; } = null!;
+        public virtual ProductSize ProductSize { get; set; } = null!;
 
     }
 }

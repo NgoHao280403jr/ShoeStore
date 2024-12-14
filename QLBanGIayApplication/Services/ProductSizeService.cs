@@ -51,5 +51,9 @@ namespace QLBanGiay_Application.Services
         {
             return _productSizeRepository.GetProductSizesByProductIdAndSize(productId, size);
         }
+        public void UpdateProductSizeQuantity(long productId, int quantityChange)
+        {
+            _productSizeRepository.UpdateProductSizeQuantity(productId, quantityChange);
+        }
     }
 }
