@@ -42,7 +42,7 @@ namespace QLBanGiay_Application.View
         private void Btn_Dangxuat_Click(object? sender, EventArgs e)
         {
             this.Close();
-            IUserRepository userRepository = new UserRepository(new QlShopBanGiayContext()); 
+            IUserRepository userRepository = new UserRepository(new QlShopBanGiayContext());
             UserService userService = new UserService(userRepository);
             frm_Login login = new frm_Login(userService);
             login.Show();
@@ -50,7 +50,7 @@ namespace QLBanGiay_Application.View
 
         private void Btn_Qlhdbh_Click(object? sender, EventArgs e)
         {
-            frm_Invoice mainForm = new frm_Invoice();
+            frm_Orders mainForm = new frm_Orders(_userService);
             mainForm.Show();
             Form parentForm = this.FindForm();
             if (parentForm != null)
@@ -61,18 +61,18 @@ namespace QLBanGiay_Application.View
 
         private void Btn_Qlctdh_Click(object? sender, EventArgs e)
         {
-            //frm_OrderDetail mainForm = new frm_OrderDetail();
-            //mainForm.Show();
-            //Form parentForm = this.FindForm();
-            //if (parentForm != null)
-            //{
-            //    parentForm.Hide();
-             //}
+            frm_OrderDetail mainForm = new frm_OrderDetail(_userService);
+            mainForm.Show();
+            Form parentForm = this.FindForm();
+            if (parentForm != null)
+            {
+                parentForm.Hide();
+            }
         }
 
         private void Btn_Qldonhang_Click(object? sender, EventArgs e)
         {
-            frm_Orders mainForm = new frm_Orders();
+            frm_Orders mainForm = new frm_Orders(_userService);
             mainForm.Show();
             Form parentForm = this.FindForm();
             if (parentForm != null)
@@ -148,7 +148,7 @@ namespace QLBanGiay_Application.View
 
         private void Btn_Qlnhanvien_Click(object? sender, EventArgs e)
         {
-            string username = frm_Login.LoggedInUsername; 
+            string username = frm_Login.LoggedInUsername;
             if (string.IsNullOrEmpty(username))
             {
                 MessageBox.Show("Bạn cần đăng nhập trước khi truy cập vào chức năng này!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -157,7 +157,7 @@ namespace QLBanGiay_Application.View
 
             var user = _userService.GetAllUsers().FirstOrDefault(u => u.Username == username);
 
-            if (user != null && user.Roleid == 1) 
+            if (user != null && user.Roleid == 1)
             {
                 frm_Employee employeeForm = new frm_Employee(_userService);
                 employeeForm.Show();

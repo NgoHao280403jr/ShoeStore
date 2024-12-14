@@ -33,6 +33,7 @@ namespace QLBanGiay_Application.View
             this.dgv_danhsachnv.CellClick += Dgv_danhsachnv_CellClick;
             this.txt_Email.KeyPress += Txt_Email_KeyPress;
             this.txt_SDT.KeyPress += Txt_SDT_KeyPress;
+            this.btn_Thoat.Click += Btn_Thoat_Click;
 
             _context = new QlShopBanGiayContext();
             _employeeService = new EmployeeService(new EmployeeRepository(_context));
@@ -40,11 +41,22 @@ namespace QLBanGiay_Application.View
             _userService = userService;
         }
 
+        private void Btn_Thoat_Click(object? sender, EventArgs e)
+        {
+            this.Close();
+            frm_Main mainForm = new frm_Main(_userService);
+            mainForm.Show();
+        }
+
         private void Txt_SDT_KeyPress(object? sender, KeyPressEventArgs e)
         {
             char inputChar = e.KeyChar;
 
             if (!char.IsDigit(inputChar) && inputChar != 8)
+            {
+                e.Handled = true;
+            }
+            if (txt_SDT.Text.Length >= 10 && inputChar != 8)
             {
                 e.Handled = true;
             }

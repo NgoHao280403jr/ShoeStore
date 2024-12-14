@@ -16,9 +16,9 @@ public partial class Order
 
 	public string? Paymentmethod { get; set; }
 
-	public DateOnly? Ordertime { get; set; }
+	public DateTime? Ordertime { get; set; }
 
-	public DateOnly? Expecteddeliverytime { get; set; }
+	public DateTime? Expecteddeliverytime { get; set; }
 
 	public string? Orderstatus { get; set; }
 

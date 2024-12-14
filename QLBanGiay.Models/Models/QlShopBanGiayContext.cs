@@ -26,6 +26,7 @@ public partial class QlShopBanGiayContext : DbContext
     public virtual DbSet<Order> Orders { get; set; }
 
     public virtual DbSet<Orderdetail> Orderdetails { get; set; }
+    public virtual DbSet<PurchaseInvoice> PurchaseInvoices { get; set; }
 
     public virtual DbSet<Parentproductcategory> Parentproductcategories { get; set; }
 
@@ -401,6 +402,54 @@ public partial class QlShopBanGiayContext : DbContext
                 .HasForeignKey(d => d.Roleid)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_user_role");
+        });
+        modelBuilder.Entity<PurchaseInvoice>(entity =>
+        {
+            entity.HasKey(e => e.InvoiceId).HasName("PK_PurchaseInvoice");
+
+            entity.ToTable("PurchaseInvoice");
+
+            entity.Property(e => e.InvoiceId)
+                .HasColumnName("InvoiceId")
+                .ValueGeneratedOnAdd();
+
+            entity.Property(e => e.ProductId)
+                .HasColumnName("ProductId")
+                .IsRequired();
+
+            entity.Property(e => e.Quantity)
+                .HasColumnName("Quantity")
+                .IsRequired()
+                .HasDefaultValue(1);
+
+            entity.Property(e => e.UnitPrice)
+                .HasColumnName("UnitPrice")
+                .IsRequired()
+                .HasDefaultValue(0.0);
+
+            entity.Property(e => e.TotalPrice)
+                .HasColumnName("TotalPrice")
+                .HasComputedColumnSql("[Quantity] * [UnitPrice]");
+
+            entity.Property(e => e.ImportDate)
+                .HasColumnName("ImportDate")
+                .HasDefaultValueSql("GETDATE()");
+
+            entity.Property(e => e.EmployeeId)
+                .HasColumnName("EmployeeId")
+                .IsRequired();
+
+            entity.HasOne(e => e.Product)
+                .WithMany(p => p.PurchaseInvoices)
+                .HasForeignKey(e => e.ProductId)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("FK_PurchaseInvoice_Product");
+
+            entity.HasOne(e => e.Employee)
+                .WithMany(emp => emp.PurchaseInvoices)
+                .HasForeignKey(e => e.EmployeeId)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("FK_PurchaseInvoice_Employee");
         });
 
         OnModelCreatingPartial(modelBuilder);

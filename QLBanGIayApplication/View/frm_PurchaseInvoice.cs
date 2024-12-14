@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace QLBanGiay_Application.View
 {
-    public partial class frm_InvoiceDetail : Form
+    public partial class frm_PurchaseInvoice : Form
     {
-        public frm_InvoiceDetail()
+        public frm_PurchaseInvoice()
         {
             InitializeComponent();
         }
