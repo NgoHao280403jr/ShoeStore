@@ -16,13 +16,14 @@ namespace QLBanGiay_Application.View
 {
     public partial class frm_ProductCategory : Form
     {
+        private readonly UserService _userService;
         private readonly CategoryService _categoryService;
         private readonly ParentService _parentService;
         private readonly ProductService _productService;
         private List<Productcategory> categories;
         private readonly QlShopBanGiayContext _context;
 
-        public frm_ProductCategory()
+        public frm_ProductCategory(UserService userService)
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -38,12 +39,13 @@ namespace QLBanGiay_Application.View
             _categoryService = new CategoryService(new CategoryRepository(_context));
             _productService = new ProductService(new ProductRepository(_context));
             _parentService = new ParentService(new ParentCategoryRepository(_context));
+            _userService = userService;
         }
 
         private void Btn_Thoat_Click(object? sender, EventArgs e)
         {
             this.Close();
-            frm_Main mainForm = new frm_Main();
+            frm_Main mainForm = new frm_Main(_userService);
             mainForm.Show();
         }
 

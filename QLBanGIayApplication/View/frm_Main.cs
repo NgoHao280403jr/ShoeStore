@@ -1,4 +1,8 @@
-﻿using System;
+﻿using QLBanGiay.Models.Models;
+using QLBanGiay_Application.Repository.IRepository;
+using QLBanGiay_Application.Repository;
+using QLBanGiay_Application.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,8 +16,9 @@ namespace QLBanGiay_Application.View
 {
     public partial class frm_Main : Form
     {
+        private readonly UserService _userService;
         private bool isMenuOpen = false;
-        public frm_Main()
+        public frm_Main(UserService userService)
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -29,12 +34,23 @@ namespace QLBanGiay_Application.View
             this.btn_Qldonhang.Click += Btn_Qldonhang_Click;
             this.btn_Qlctdh.Click += Btn_Qlctdh_Click;
             this.btn_Qlhdbh.Click += Btn_Qlhdbh_Click;
+            this.btn_Dangxuat.Click += Btn_Dangxuat_Click;
+            _userService = userService;
             HideMenuButtons();
+        }
+
+        private void Btn_Dangxuat_Click(object? sender, EventArgs e)
+        {
+            this.Close();
+            IUserRepository userRepository = new UserRepository(new QlShopBanGiayContext());
+            UserService userService = new UserService(userRepository);
+            frm_Login login = new frm_Login(userService);
+            login.Show();
         }
 
         private void Btn_Qlhdbh_Click(object? sender, EventArgs e)
         {
-            frm_Invoice mainForm = new frm_Invoice();
+            frm_Orders mainForm = new frm_Orders(_userService);
             mainForm.Show();
             Form parentForm = this.FindForm();
             if (parentForm != null)
@@ -45,7 +61,7 @@ namespace QLBanGiay_Application.View
 
         private void Btn_Qlctdh_Click(object? sender, EventArgs e)
         {
-            frm_OrderDetail mainForm = new frm_OrderDetail();
+            frm_OrderDetail mainForm = new frm_OrderDetail(_userService);
             mainForm.Show();
             Form parentForm = this.FindForm();
             if (parentForm != null)
@@ -56,7 +72,7 @@ namespace QLBanGiay_Application.View
 
         private void Btn_Qldonhang_Click(object? sender, EventArgs e)
         {
-            frm_Orders mainForm = new frm_Orders();
+            frm_Orders mainForm = new frm_Orders(_userService);
             mainForm.Show();
             Form parentForm = this.FindForm();
             if (parentForm != null)
@@ -67,7 +83,7 @@ namespace QLBanGiay_Application.View
 
         private void Btn_Qlsize_Click(object? sender, EventArgs e)
         {
-            frm_ProductSize mainForm = new frm_ProductSize();
+            frm_ProductSize mainForm = new frm_ProductSize(_userService);
             mainForm.Show();
             Form parentForm = this.FindForm();
             if (parentForm != null)
@@ -78,40 +94,88 @@ namespace QLBanGiay_Application.View
 
         private void Btn_Qlnguoidung_Click(object? sender, EventArgs e)
         {
-            frm_Users mainForm = new frm_Users();
-            mainForm.Show();
-            Form parentForm = this.FindForm();
-            if (parentForm != null)
+            string username = frm_Login.LoggedInUsername;
+            if (string.IsNullOrEmpty(username))
             {
-                parentForm.Hide();
+                MessageBox.Show("Bạn cần đăng nhập trước khi truy cập vào chức năng này!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var user = _userService.GetAllUsers().FirstOrDefault(u => u.Username == username);
+
+            if (user != null && user.Roleid == 1)
+            {
+                frm_Users usersForm = new frm_Users();
+                usersForm.Show();
+                Form parentForm = this.FindForm();
+                if (parentForm != null)
+                {
+                    parentForm.Hide();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Bạn không có quyền truy cập vào chức năng này!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
         private void Btn_Qlquyen_Click(object? sender, EventArgs e)
         {
-            frm_Role mainForm = new frm_Role();
-            mainForm.Show();
-            Form parentForm = this.FindForm();
-            if (parentForm != null)
+            string username = frm_Login.LoggedInUsername;
+            if (string.IsNullOrEmpty(username))
             {
-                parentForm.Hide();
+                MessageBox.Show("Bạn cần đăng nhập trước khi truy cập vào chức năng này!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var user = _userService.GetAllUsers().FirstOrDefault(u => u.Username == username);
+
+            if (user != null && user.Roleid == 1)
+            {
+                frm_Role roleForm = new frm_Role(_userService);
+                roleForm.Show();
+                Form parentForm = this.FindForm();
+                if (parentForm != null)
+                {
+                    parentForm.Hide();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Bạn không có quyền truy cập vào chức năng này!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
         private void Btn_Qlnhanvien_Click(object? sender, EventArgs e)
         {
-            frm_Employee mainForm = new frm_Employee();
-            mainForm.Show();
-            Form parentForm = this.FindForm();
-            if (parentForm != null)
+            string username = frm_Login.LoggedInUsername;
+            if (string.IsNullOrEmpty(username))
             {
-                parentForm.Hide();
+                MessageBox.Show("Bạn cần đăng nhập trước khi truy cập vào chức năng này!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var user = _userService.GetAllUsers().FirstOrDefault(u => u.Username == username);
+
+            if (user != null && user.Roleid == 1)
+            {
+                frm_Employee employeeForm = new frm_Employee(_userService);
+                employeeForm.Show();
+                Form parentForm = this.FindForm();
+                if (parentForm != null)
+                {
+                    parentForm.Hide();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Bạn không có quyền truy cập vào chức năng này!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
         private void Btn_Qlkhachhang_Click(object? sender, EventArgs e)
         {
-            frm_Customers mainForm = new frm_Customers();
+            frm_Customers mainForm = new frm_Customers(_userService);
             mainForm.Show();
             Form parentForm = this.FindForm();
             if (parentForm != null)
@@ -122,7 +186,7 @@ namespace QLBanGiay_Application.View
 
         private void Btn_Qldanhmuc2_Click(object? sender, EventArgs e)
         {
-            frm_ProductCategory mainForm = new frm_ProductCategory();
+            frm_ProductCategory mainForm = new frm_ProductCategory(_userService);
             mainForm.Show();
             Form parentForm = this.FindForm();
             if (parentForm != null)
@@ -133,7 +197,7 @@ namespace QLBanGiay_Application.View
 
         private void Btn_Qldanhmuc_Click(object? sender, EventArgs e)
         {
-            frm_ParentProduct mainForm = new frm_ParentProduct();
+            frm_ParentProduct mainForm = new frm_ParentProduct(_userService);
             mainForm.Show();
             Form parentForm = this.FindForm();
             if (parentForm != null)
@@ -144,7 +208,7 @@ namespace QLBanGiay_Application.View
 
         private void Btn_Qlsanpham_Click(object? sender, EventArgs e)
         {
-            frm_Products mainForm = new frm_Products();
+            frm_Products mainForm = new frm_Products(_userService);
             mainForm.Show();
             Form parentForm = this.FindForm();
             if (parentForm != null)

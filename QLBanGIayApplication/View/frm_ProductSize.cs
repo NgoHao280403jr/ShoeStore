@@ -17,10 +17,12 @@ namespace QLBanGiay_Application.View
 {
     public partial class frm_ProductSize : Form
     {
+        private readonly UserService _userService;
         private readonly QlShopBanGiayContext _context;
         private readonly ProductSizeService _productSizeService;
         private readonly ProductService _productService;
-        public frm_ProductSize()
+        private ProductSize _lastSelectedRow;
+        public frm_ProductSize(UserService userService)
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -29,32 +31,63 @@ namespace QLBanGiay_Application.View
             this.btn_Them.Click += Btn_Them_Click;
             this.btn_Capnhat.Click += Btn_Capnhat_Click;
             this.btn_Xoa.Click += Btn_Xoa_Click;
-            this.dgv_Sizes.CellClick += Dgv_Sizes_CellClick;
+            this.dgv_Sizes.SelectionChanged += Dgv_Sizes_SelectionChanged;
             this.btn_Thoat.Click += Btn_Thoat_Click;
+            this.txt_Sosize.KeyPress += Txt_Sosize_KeyPress;
+            this.txt_Soluong.KeyPress += Txt_Soluong_KeyPress;
             _context = new QlShopBanGiayContext();
             _productSizeService = new ProductSizeService(new ProductSizeRepository(_context));  
-            _productService = new ProductService(new ProductRepository(_context)); 
+            _productService = new ProductService(new ProductRepository(_context));
+            _userService = userService;
+        }
+
+        private void Txt_Soluong_KeyPress(object? sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
+            {
+                e.Handled = true; 
+            }
+        }
+
+        private void Txt_Sosize_KeyPress(object? sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)8) 
+            {
+                e.Handled = true;  
+            }
+        }
+
+        private void Dgv_Sizes_SelectionChanged(object? sender, EventArgs e)
+        {
+            if (dgv_Sizes.SelectedRows.Count > 0)
+            {
+                var selectedRow = dgv_Sizes.SelectedRows[0].DataBoundItem as ProductSize;
+
+                if (selectedRow != null && selectedRow != _lastSelectedRow)
+                {
+                    txt_Masize.Text = selectedRow.ProductSizeId.ToString();
+                    cbo_Masp.SelectedValue = selectedRow.ProductId;  
+                    txt_Sosize.Text = selectedRow.Size;
+                    txt_Soluong.Text = selectedRow.Quantity.ToString();
+                    _lastSelectedRow = selectedRow;
+                }
+            }
+            else
+            {
+                txt_Masize.Clear();
+                txt_Sosize.Clear();
+                txt_Soluong.Clear();
+                cbo_Masp.SelectedIndex = -1;
+            }
         }
 
         private void Btn_Thoat_Click(object? sender, EventArgs e)
         {
             this.Close();
-            frm_Main mainForm = new frm_Main();
+            frm_Main mainForm = new frm_Main(_userService);
             mainForm.Show();
         }
 
-        private void Dgv_Sizes_CellClick(object? sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                var selectedRow = dgv_Sizes.Rows[e.RowIndex];
-                int productSizeId = Convert.ToInt32(selectedRow.Cells["MãKíchThước"].Value);
-
-                txt_Masize.Text = productSizeId.ToString();
-                txt_Sosize.Text = selectedRow.Cells["KíchThước"].Value.ToString();
-                txt_Soluong.Text = selectedRow.Cells["SốLượng"].Value.ToString();
-            }
-        }
 
         private void Btn_Xoa_Click(object? sender, EventArgs e)
         {
@@ -102,16 +135,35 @@ namespace QLBanGiay_Application.View
         {
             if (ValidateInput())
             {
-                var productSize = new ProductSize
-                {
-                    ProductId = Convert.ToInt32(cbo_Masp.SelectedValue),
-                    Size = txt_Sosize.Text,
-                    Quantity = Convert.ToInt32(txt_Soluong.Text)
-                };
+                int productId = Convert.ToInt32(cbo_Masp.SelectedValue);
+                string size = txt_Sosize.Text;
+                int quantity = Convert.ToInt32(txt_Soluong.Text);
 
-                _productSizeService.AddProductSize(productSize);
-                MessageBox.Show("Thêm kích thước sản phẩm thành công!");
-                LoadProductSizes();
+                // Kiểm tra xem sản phẩm với số size này đã tồn tại chưa
+                var existingProductSize = _productSizeService.GetProductSizesByProductIdAndSize(productId, size);
+
+                if (existingProductSize != null)
+                {
+                    // Nếu sản phẩm và size đã tồn tại, cộng thêm số lượng
+                    existingProductSize.Quantity += quantity;
+                    _productSizeService.UpdateProductSize(existingProductSize);
+                    MessageBox.Show("Cập nhật số lượng kích thước sản phẩm thành công!");
+                }
+                else
+                {
+                    // Nếu chưa tồn tại, thêm mới sản phẩm
+                    var productSize = new ProductSize
+                    {
+                        ProductId = productId,
+                        Size = size,
+                        Quantity = quantity
+                    };
+
+                    _productSizeService.AddProductSize(productSize);
+                    MessageBox.Show("Thêm kích thước sản phẩm mới thành công!");
+                }
+
+                LoadProductSizes();  // Cập nhật lại danh sách kích thước sản phẩm
             }
         }
 
@@ -129,6 +181,12 @@ namespace QLBanGiay_Application.View
                 return false;
             }
 
+            if (!int.TryParse(txt_Sosize.Text, out int size) || size < 39 || size > 45)
+            {
+                MessageBox.Show("Kích thước phải nằm trong khoảng từ 39 đến 45!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
             if (string.IsNullOrWhiteSpace(txt_Soluong.Text) || !int.TryParse(txt_Soluong.Text, out _))
             {
                 MessageBox.Show("Vui lòng nhập số lượng hợp lệ!");
@@ -137,6 +195,7 @@ namespace QLBanGiay_Application.View
 
             return true;
         }
+
 
         private void Btn_Timkiem_Click(object? sender, EventArgs e)
         {
@@ -158,47 +217,75 @@ namespace QLBanGiay_Application.View
             }
         }
 
+        private void LoadProductsIntoComboBox()
+        {
+            var products = _productService.GetAllProducts();
+
+            if (products != null && products.Any())
+            {
+                cbo_Masp.DataSource = products;
+                cbo_Masp.DisplayMember = "ProductName";
+                cbo_Masp.ValueMember = "ProductId";
+                cbo_Masp.DropDownHeight = 200; 
+            }
+        }
+
         private void Frm_ProductSize_Load(object? sender, EventArgs e)
         {
             LoadProductsIntoComboBox();
             LoadProductSizes();
         }
 
-        private void LoadProductsIntoComboBox()
-        {
-            var products = _productService.GetAllProducts(); 
 
-            if (products != null && products.Any())
-            {
-                cbo_Masp.DataSource = products;
-                cbo_Masp.DisplayMember = "ProductName";
-                cbo_Masp.ValueMember = "ProductId"; 
-            }
-        }
         private void LoadProductSizes()
         {
             var productSizes = _productSizeService.GetAllProductSizes();
 
-            if (productSizes == null || !productSizes.Any())
+            if (productSizes != null && productSizes.Any())
+            {
+                BindingSource bindingSource = new BindingSource { DataSource = productSizes };
+                dgv_Sizes.DataSource = bindingSource;
+
+                dgv_Sizes.Columns.Clear();
+
+                dgv_Sizes.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "ProductSizeId", 
+                    HeaderText = "Mã Size",
+                    Width = 100
+                });
+                dgv_Sizes.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "ProductId",
+                    HeaderText = "Sản phẩm",
+                    Width = 100
+                });
+
+                dgv_Sizes.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "Size", 
+                    HeaderText = "Kích Thước",
+                    Width = 150
+                });
+
+                dgv_Sizes.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "Quantity", 
+                    HeaderText = "Số Lượng",
+                    Width = 100
+                });
+
+                dgv_Sizes.ColumnHeadersHeight = 30;
+                dgv_Sizes.ReadOnly = true;
+                dgv_Sizes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                dgv_Sizes.AllowUserToAddRows = false;
+                dgv_Sizes.AllowUserToDeleteRows = false;
+            }
+            else
             {
                 dgv_Sizes.DataSource = null;
-                MessageBox.Show("Không có kích thước sản phẩm nào trong hệ thống!");
-                return;
+                MessageBox.Show("Không có kích thước nào để hiển thị.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
-            var productSizeList = productSizes.Select(ps => new
-            {
-                MãKíchThước = ps.ProductSizeId,
-                KíchThước = ps.Size,
-                SốLượng = ps.Quantity
-            }).ToList();
-
-            dgv_Sizes.DataSource = productSizeList;
-
-            dgv_Sizes.Columns[0].HeaderText = "Mã Kích Thước";
-            dgv_Sizes.Columns[1].HeaderText = "Kích Thước";
-            dgv_Sizes.Columns[2].HeaderText = "Số Lượng";
         }
-
     }
 }

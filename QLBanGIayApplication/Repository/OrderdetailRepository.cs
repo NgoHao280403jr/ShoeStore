@@ -53,5 +53,18 @@ namespace QLBanGiay_Application.Repository
                 _context.SaveChanges();
             }
         }
+        public void DeleteAllOrderDetailsByOrderId(long orderId)
+        {
+            var orderDetail = _context.Orderdetails.Where(id => id.Orderid == orderId).ToList();
+            if (orderDetail.Any())
+            {
+                _context.Orderdetails.RemoveRange(orderDetail);
+                _context.SaveChanges();
+            }
+        }
+        public IEnumerable<Orderdetail> SearchOrderDetails(string keyword)
+        {
+            return _context.Orderdetails.Where(id => id.Product.Productname.Contains(keyword)).ToList();
+        }
     }
 }

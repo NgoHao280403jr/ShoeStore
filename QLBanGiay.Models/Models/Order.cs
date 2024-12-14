@@ -18,7 +18,7 @@ public partial class Order
 
 	public DateOnly? Ordertime { get; set; }
 
-	public DateOnly? Expecteddeliverytime { get; set; }
+	public DateTime? Expecteddeliverytime { get; set; }
 
 	public string? Orderstatus { get; set; }
 

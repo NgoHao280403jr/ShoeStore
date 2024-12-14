@@ -28,11 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_Main));
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges29 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges30 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -57,9 +54,14 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges30 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges32 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges33 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges31 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges29 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_Main));
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             panelLeft = new Guna.UI2.WinForms.Guna2GradientPanel();
             btn_Qlnhanvien = new Guna.UI2.WinForms.Guna2Button();
             btn_Qlhdbh = new Guna.UI2.WinForms.Guna2Button();
@@ -72,16 +74,18 @@
             btn_Qldanhmuc = new Guna.UI2.WinForms.Guna2Button();
             btn_Qlnguoidung = new Guna.UI2.WinForms.Guna2Button();
             btn_Qlkhachhang = new Guna.UI2.WinForms.Guna2Button();
-            guna2Button6 = new Guna.UI2.WinForms.Guna2Button();
+            btn_Dangxuat = new Guna.UI2.WinForms.Guna2Button();
             btn_Menu = new Guna.UI2.WinForms.Guna2Button();
             panelRight = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
+            btn_Qldonnhap = new Guna.UI2.WinForms.Guna2Button();
             panelLeft.SuspendLayout();
             panelRight.SuspendLayout();
             SuspendLayout();
             // 
             // panelLeft
             // 
+            panelLeft.Controls.Add(btn_Qldonnhap);
             panelLeft.Controls.Add(btn_Qlnhanvien);
             panelLeft.Controls.Add(btn_Qlhdbh);
             panelLeft.Controls.Add(btn_Qlctdh);
@@ -93,20 +97,20 @@
             panelLeft.Controls.Add(btn_Qldanhmuc);
             panelLeft.Controls.Add(btn_Qlnguoidung);
             panelLeft.Controls.Add(btn_Qlkhachhang);
-            panelLeft.Controls.Add(guna2Button6);
+            panelLeft.Controls.Add(btn_Dangxuat);
             panelLeft.Controls.Add(btn_Menu);
-            panelLeft.CustomizableEdges = customizableEdges27;
+            panelLeft.CustomizableEdges = customizableEdges29;
             panelLeft.FillColor = Color.CornflowerBlue;
             panelLeft.FillColor2 = Color.Cyan;
             panelLeft.Location = new Point(12, 2);
             panelLeft.Name = "panelLeft";
-            panelLeft.ShadowDecoration.CustomizableEdges = customizableEdges28;
+            panelLeft.ShadowDecoration.CustomizableEdges = customizableEdges30;
             panelLeft.Size = new Size(266, 717);
             panelLeft.TabIndex = 6;
             // 
             // btn_Qlnhanvien
             // 
-            btn_Qlnhanvien.CustomizableEdges = customizableEdges1;
+            btn_Qlnhanvien.CustomizableEdges = customizableEdges3;
             btn_Qlnhanvien.DisabledState.BorderColor = Color.DarkGray;
             btn_Qlnhanvien.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_Qlnhanvien.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -117,17 +121,17 @@
             btn_Qlnhanvien.Image = (Image)resources.GetObject("btn_Qlnhanvien.Image");
             btn_Qlnhanvien.ImageAlign = HorizontalAlignment.Left;
             btn_Qlnhanvien.ImageSize = new Size(50, 50);
-            btn_Qlnhanvien.Location = new Point(0, 579);
+            btn_Qlnhanvien.Location = new Point(0, 566);
             btn_Qlnhanvien.Name = "btn_Qlnhanvien";
-            btn_Qlnhanvien.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btn_Qlnhanvien.ShadowDecoration.CustomizableEdges = customizableEdges4;
             btn_Qlnhanvien.Size = new Size(266, 45);
             btn_Qlnhanvien.TabIndex = 13;
-            btn_Qlnhanvien.Text = "Quản lý CTĐH";
+            btn_Qlnhanvien.Text = "Quản lý nhân viên";
             btn_Qlnhanvien.TextAlign = HorizontalAlignment.Right;
             // 
             // btn_Qlhdbh
             // 
-            btn_Qlhdbh.CustomizableEdges = customizableEdges3;
+            btn_Qlhdbh.CustomizableEdges = customizableEdges5;
             btn_Qlhdbh.DisabledState.BorderColor = Color.DarkGray;
             btn_Qlhdbh.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_Qlhdbh.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -138,9 +142,9 @@
             btn_Qlhdbh.Image = (Image)resources.GetObject("btn_Qlhdbh.Image");
             btn_Qlhdbh.ImageAlign = HorizontalAlignment.Left;
             btn_Qlhdbh.ImageSize = new Size(50, 50);
-            btn_Qlhdbh.Location = new Point(0, 528);
+            btn_Qlhdbh.Location = new Point(0, 515);
             btn_Qlhdbh.Name = "btn_Qlhdbh";
-            btn_Qlhdbh.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            btn_Qlhdbh.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btn_Qlhdbh.Size = new Size(266, 45);
             btn_Qlhdbh.TabIndex = 12;
             btn_Qlhdbh.Text = "Hóa đơn bán hàng";
@@ -148,7 +152,7 @@
             // 
             // btn_Qlctdh
             // 
-            btn_Qlctdh.CustomizableEdges = customizableEdges5;
+            btn_Qlctdh.CustomizableEdges = customizableEdges7;
             btn_Qlctdh.DisabledState.BorderColor = Color.DarkGray;
             btn_Qlctdh.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_Qlctdh.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -159,9 +163,9 @@
             btn_Qlctdh.Image = (Image)resources.GetObject("btn_Qlctdh.Image");
             btn_Qlctdh.ImageAlign = HorizontalAlignment.Left;
             btn_Qlctdh.ImageSize = new Size(50, 50);
-            btn_Qlctdh.Location = new Point(0, 477);
+            btn_Qlctdh.Location = new Point(0, 464);
             btn_Qlctdh.Name = "btn_Qlctdh";
-            btn_Qlctdh.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            btn_Qlctdh.ShadowDecoration.CustomizableEdges = customizableEdges8;
             btn_Qlctdh.Size = new Size(266, 45);
             btn_Qlctdh.TabIndex = 11;
             btn_Qlctdh.Text = "Quản lý CTĐH";
@@ -169,7 +173,7 @@
             // 
             // btn_Qldonhang
             // 
-            btn_Qldonhang.CustomizableEdges = customizableEdges7;
+            btn_Qldonhang.CustomizableEdges = customizableEdges9;
             btn_Qldonhang.DisabledState.BorderColor = Color.DarkGray;
             btn_Qldonhang.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_Qldonhang.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -180,9 +184,9 @@
             btn_Qldonhang.Image = (Image)resources.GetObject("btn_Qldonhang.Image");
             btn_Qldonhang.ImageAlign = HorizontalAlignment.Left;
             btn_Qldonhang.ImageSize = new Size(50, 50);
-            btn_Qldonhang.Location = new Point(0, 426);
+            btn_Qldonhang.Location = new Point(0, 413);
             btn_Qldonhang.Name = "btn_Qldonhang";
-            btn_Qldonhang.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            btn_Qldonhang.ShadowDecoration.CustomizableEdges = customizableEdges10;
             btn_Qldonhang.Size = new Size(266, 45);
             btn_Qldonhang.TabIndex = 10;
             btn_Qldonhang.Text = "Quản lý đơn hàng";
@@ -190,7 +194,7 @@
             // 
             // btn_Qlquyen
             // 
-            btn_Qlquyen.CustomizableEdges = customizableEdges9;
+            btn_Qlquyen.CustomizableEdges = customizableEdges11;
             btn_Qlquyen.DisabledState.BorderColor = Color.DarkGray;
             btn_Qlquyen.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_Qlquyen.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -201,9 +205,9 @@
             btn_Qlquyen.Image = (Image)resources.GetObject("btn_Qlquyen.Image");
             btn_Qlquyen.ImageAlign = HorizontalAlignment.Left;
             btn_Qlquyen.ImageSize = new Size(50, 50);
-            btn_Qlquyen.Location = new Point(0, 375);
+            btn_Qlquyen.Location = new Point(0, 362);
             btn_Qlquyen.Name = "btn_Qlquyen";
-            btn_Qlquyen.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            btn_Qlquyen.ShadowDecoration.CustomizableEdges = customizableEdges12;
             btn_Qlquyen.Size = new Size(266, 45);
             btn_Qlquyen.TabIndex = 9;
             btn_Qlquyen.Text = "Quản lý quyền";
@@ -211,7 +215,7 @@
             // 
             // btn_Qlsize
             // 
-            btn_Qlsize.CustomizableEdges = customizableEdges11;
+            btn_Qlsize.CustomizableEdges = customizableEdges13;
             btn_Qlsize.DisabledState.BorderColor = Color.DarkGray;
             btn_Qlsize.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_Qlsize.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -222,9 +226,9 @@
             btn_Qlsize.Image = (Image)resources.GetObject("btn_Qlsize.Image");
             btn_Qlsize.ImageAlign = HorizontalAlignment.Left;
             btn_Qlsize.ImageSize = new Size(50, 50);
-            btn_Qlsize.Location = new Point(0, 222);
+            btn_Qlsize.Location = new Point(0, 209);
             btn_Qlsize.Name = "btn_Qlsize";
-            btn_Qlsize.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            btn_Qlsize.ShadowDecoration.CustomizableEdges = customizableEdges14;
             btn_Qlsize.Size = new Size(266, 45);
             btn_Qlsize.TabIndex = 8;
             btn_Qlsize.Text = "Quản lý size giày";
@@ -232,7 +236,7 @@
             // 
             // btn_Qlsanpham
             // 
-            btn_Qlsanpham.CustomizableEdges = customizableEdges13;
+            btn_Qlsanpham.CustomizableEdges = customizableEdges15;
             btn_Qlsanpham.DisabledState.BorderColor = Color.DarkGray;
             btn_Qlsanpham.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_Qlsanpham.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -243,9 +247,9 @@
             btn_Qlsanpham.Image = (Image)resources.GetObject("btn_Qlsanpham.Image");
             btn_Qlsanpham.ImageAlign = HorizontalAlignment.Left;
             btn_Qlsanpham.ImageSize = new Size(50, 50);
-            btn_Qlsanpham.Location = new Point(0, 171);
+            btn_Qlsanpham.Location = new Point(0, 158);
             btn_Qlsanpham.Name = "btn_Qlsanpham";
-            btn_Qlsanpham.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            btn_Qlsanpham.ShadowDecoration.CustomizableEdges = customizableEdges16;
             btn_Qlsanpham.Size = new Size(266, 45);
             btn_Qlsanpham.TabIndex = 7;
             btn_Qlsanpham.Text = "Quản lý sản phẩm";
@@ -253,7 +257,7 @@
             // 
             // btn_Qldanhmuc2
             // 
-            btn_Qldanhmuc2.CustomizableEdges = customizableEdges15;
+            btn_Qldanhmuc2.CustomizableEdges = customizableEdges17;
             btn_Qldanhmuc2.DisabledState.BorderColor = Color.DarkGray;
             btn_Qldanhmuc2.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_Qldanhmuc2.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -264,9 +268,9 @@
             btn_Qldanhmuc2.Image = (Image)resources.GetObject("btn_Qldanhmuc2.Image");
             btn_Qldanhmuc2.ImageAlign = HorizontalAlignment.Left;
             btn_Qldanhmuc2.ImageSize = new Size(50, 50);
-            btn_Qldanhmuc2.Location = new Point(0, 116);
+            btn_Qldanhmuc2.Location = new Point(0, 107);
             btn_Qldanhmuc2.Name = "btn_Qldanhmuc2";
-            btn_Qldanhmuc2.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            btn_Qldanhmuc2.ShadowDecoration.CustomizableEdges = customizableEdges18;
             btn_Qldanhmuc2.Size = new Size(266, 45);
             btn_Qldanhmuc2.TabIndex = 6;
             btn_Qldanhmuc2.Text = "Quản lý danh mục 2";
@@ -274,7 +278,7 @@
             // 
             // btn_Qldanhmuc
             // 
-            btn_Qldanhmuc.CustomizableEdges = customizableEdges17;
+            btn_Qldanhmuc.CustomizableEdges = customizableEdges19;
             btn_Qldanhmuc.DisabledState.BorderColor = Color.DarkGray;
             btn_Qldanhmuc.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_Qldanhmuc.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -285,9 +289,9 @@
             btn_Qldanhmuc.Image = (Image)resources.GetObject("btn_Qldanhmuc.Image");
             btn_Qldanhmuc.ImageAlign = HorizontalAlignment.Left;
             btn_Qldanhmuc.ImageSize = new Size(50, 50);
-            btn_Qldanhmuc.Location = new Point(0, 65);
+            btn_Qldanhmuc.Location = new Point(0, 56);
             btn_Qldanhmuc.Name = "btn_Qldanhmuc";
-            btn_Qldanhmuc.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            btn_Qldanhmuc.ShadowDecoration.CustomizableEdges = customizableEdges20;
             btn_Qldanhmuc.Size = new Size(266, 45);
             btn_Qldanhmuc.TabIndex = 5;
             btn_Qldanhmuc.Text = "Quản lý danh mục";
@@ -295,7 +299,7 @@
             // 
             // btn_Qlnguoidung
             // 
-            btn_Qlnguoidung.CustomizableEdges = customizableEdges19;
+            btn_Qlnguoidung.CustomizableEdges = customizableEdges21;
             btn_Qlnguoidung.DisabledState.BorderColor = Color.DarkGray;
             btn_Qlnguoidung.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_Qlnguoidung.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -306,9 +310,9 @@
             btn_Qlnguoidung.Image = (Image)resources.GetObject("btn_Qlnguoidung.Image");
             btn_Qlnguoidung.ImageAlign = HorizontalAlignment.Left;
             btn_Qlnguoidung.ImageSize = new Size(50, 50);
-            btn_Qlnguoidung.Location = new Point(0, 273);
+            btn_Qlnguoidung.Location = new Point(0, 260);
             btn_Qlnguoidung.Name = "btn_Qlnguoidung";
-            btn_Qlnguoidung.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            btn_Qlnguoidung.ShadowDecoration.CustomizableEdges = customizableEdges22;
             btn_Qlnguoidung.Size = new Size(266, 45);
             btn_Qlnguoidung.TabIndex = 4;
             btn_Qlnguoidung.Text = "Quản lý người dùng";
@@ -316,7 +320,7 @@
             // 
             // btn_Qlkhachhang
             // 
-            btn_Qlkhachhang.CustomizableEdges = customizableEdges21;
+            btn_Qlkhachhang.CustomizableEdges = customizableEdges23;
             btn_Qlkhachhang.DisabledState.BorderColor = Color.DarkGray;
             btn_Qlkhachhang.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_Qlkhachhang.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -327,37 +331,37 @@
             btn_Qlkhachhang.Image = (Image)resources.GetObject("btn_Qlkhachhang.Image");
             btn_Qlkhachhang.ImageAlign = HorizontalAlignment.Left;
             btn_Qlkhachhang.ImageSize = new Size(50, 50);
-            btn_Qlkhachhang.Location = new Point(0, 324);
+            btn_Qlkhachhang.Location = new Point(0, 311);
             btn_Qlkhachhang.Name = "btn_Qlkhachhang";
-            btn_Qlkhachhang.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            btn_Qlkhachhang.ShadowDecoration.CustomizableEdges = customizableEdges24;
             btn_Qlkhachhang.Size = new Size(266, 45);
             btn_Qlkhachhang.TabIndex = 3;
             btn_Qlkhachhang.Text = "Quản lý khách hàng";
             btn_Qlkhachhang.TextAlign = HorizontalAlignment.Right;
             // 
-            // guna2Button6
+            // btn_Dangxuat
             // 
-            guna2Button6.CustomizableEdges = customizableEdges23;
-            guna2Button6.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button6.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button6.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button6.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button6.FillColor = Color.Goldenrod;
-            guna2Button6.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            guna2Button6.ForeColor = Color.White;
-            guna2Button6.Image = Properties.Resources.exit;
-            guna2Button6.ImageAlign = HorizontalAlignment.Left;
-            guna2Button6.ImageSize = new Size(40, 40);
-            guna2Button6.Location = new Point(0, 661);
-            guna2Button6.Name = "guna2Button6";
-            guna2Button6.ShadowDecoration.CustomizableEdges = customizableEdges24;
-            guna2Button6.Size = new Size(266, 56);
-            guna2Button6.TabIndex = 2;
-            guna2Button6.Text = "Đăng xuất";
+            btn_Dangxuat.CustomizableEdges = customizableEdges25;
+            btn_Dangxuat.DisabledState.BorderColor = Color.DarkGray;
+            btn_Dangxuat.DisabledState.CustomBorderColor = Color.DarkGray;
+            btn_Dangxuat.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btn_Dangxuat.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btn_Dangxuat.FillColor = Color.Goldenrod;
+            btn_Dangxuat.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_Dangxuat.ForeColor = Color.White;
+            btn_Dangxuat.Image = Properties.Resources.exit;
+            btn_Dangxuat.ImageAlign = HorizontalAlignment.Left;
+            btn_Dangxuat.ImageSize = new Size(40, 40);
+            btn_Dangxuat.Location = new Point(0, 668);
+            btn_Dangxuat.Name = "btn_Dangxuat";
+            btn_Dangxuat.ShadowDecoration.CustomizableEdges = customizableEdges26;
+            btn_Dangxuat.Size = new Size(266, 49);
+            btn_Dangxuat.TabIndex = 2;
+            btn_Dangxuat.Text = "Đăng xuất";
             // 
             // btn_Menu
             // 
-            btn_Menu.CustomizableEdges = customizableEdges25;
+            btn_Menu.CustomizableEdges = customizableEdges27;
             btn_Menu.DisabledState.BorderColor = Color.DarkGray;
             btn_Menu.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_Menu.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -370,17 +374,17 @@
             btn_Menu.ImageSize = new Size(50, 50);
             btn_Menu.Location = new Point(0, 0);
             btn_Menu.Name = "btn_Menu";
-            btn_Menu.ShadowDecoration.CustomizableEdges = customizableEdges26;
+            btn_Menu.ShadowDecoration.CustomizableEdges = customizableEdges28;
             btn_Menu.Size = new Size(266, 59);
             btn_Menu.TabIndex = 1;
             // 
             // panelRight
             // 
             panelRight.Controls.Add(guna2ImageButton1);
-            panelRight.CustomizableEdges = customizableEdges30;
+            panelRight.CustomizableEdges = customizableEdges32;
             panelRight.Location = new Point(284, 12);
             panelRight.Name = "panelRight";
-            panelRight.ShadowDecoration.CustomizableEdges = customizableEdges31;
+            panelRight.ShadowDecoration.CustomizableEdges = customizableEdges33;
             panelRight.Size = new Size(1061, 707);
             panelRight.TabIndex = 7;
             // 
@@ -389,14 +393,36 @@
             guna2ImageButton1.BackgroundImage = Properties.Resources.bg;
             guna2ImageButton1.CheckedState.ImageSize = new Size(64, 64);
             guna2ImageButton1.HoverState.ImageSize = new Size(64, 64);
+            guna2ImageButton1.Image = (Image)resources.GetObject("guna2ImageButton1.Image");
             guna2ImageButton1.ImageOffset = new Point(0, 0);
             guna2ImageButton1.ImageRotate = 0F;
             guna2ImageButton1.Location = new Point(3, -10);
             guna2ImageButton1.Name = "guna2ImageButton1";
             guna2ImageButton1.PressedState.ImageSize = new Size(64, 64);
-            guna2ImageButton1.ShadowDecoration.CustomizableEdges = customizableEdges29;
+            guna2ImageButton1.ShadowDecoration.CustomizableEdges = customizableEdges31;
             guna2ImageButton1.Size = new Size(1049, 714);
             guna2ImageButton1.TabIndex = 0;
+            // 
+            // btn_Qldonnhap
+            // 
+            btn_Qldonnhap.CustomizableEdges = customizableEdges1;
+            btn_Qldonnhap.DisabledState.BorderColor = Color.DarkGray;
+            btn_Qldonnhap.DisabledState.CustomBorderColor = Color.DarkGray;
+            btn_Qldonnhap.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btn_Qldonnhap.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btn_Qldonnhap.FillColor = Color.Teal;
+            btn_Qldonnhap.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_Qldonnhap.ForeColor = Color.White;
+            btn_Qldonnhap.Image = (Image)resources.GetObject("btn_Qldonnhap.Image");
+            btn_Qldonnhap.ImageAlign = HorizontalAlignment.Left;
+            btn_Qldonnhap.ImageSize = new Size(50, 50);
+            btn_Qldonnhap.Location = new Point(0, 617);
+            btn_Qldonnhap.Name = "btn_Qldonnhap";
+            btn_Qldonnhap.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btn_Qldonnhap.Size = new Size(266, 45);
+            btn_Qldonnhap.TabIndex = 14;
+            btn_Qldonnhap.Text = "Quản lý đơn nhập";
+            btn_Qldonnhap.TextAlign = HorizontalAlignment.Right;
             // 
             // frm_Main
             // 
@@ -427,9 +453,10 @@
         private Guna.UI2.WinForms.Guna2Button btn_Qldanhmuc;
         private Guna.UI2.WinForms.Guna2Button btn_Qlnguoidung;
         private Guna.UI2.WinForms.Guna2Button btn_Qlkhachhang;
-        private Guna.UI2.WinForms.Guna2Button guna2Button6;
+        private Guna.UI2.WinForms.Guna2Button btn_Dangxuat;
         private Guna.UI2.WinForms.Guna2Button btn_Menu;
         private Guna.UI2.WinForms.Guna2CustomGradientPanel panelRight;
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
+        private Guna.UI2.WinForms.Guna2Button btn_Qldonnhap;
     }
 }
