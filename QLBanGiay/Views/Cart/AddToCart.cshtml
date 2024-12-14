@@ -49,6 +49,11 @@
 			
 		</div>
 		<div class="row row-pb-lg">
+			<div class="col-sm-2 text-center">
+				<p><a href="@Url.Action("AllProduct", "Product")" class="btn btn-primary">Continue shopping</a></p>
+			</div>
+		</div>
+		<div class="row row-pb-lg">
 			<div class="col-md-12">
 				<div class="total-wrap">
 					<div class="row">
@@ -63,7 +68,7 @@
 							</div>					
 						</div>	
 						<div class="col-sm-2 text-center">
-							<p><a href="@Url.Action("CheckOut", "Cart")" class="btn btn-primary">Đặt hàng</a></p>
+							<p><a href="@Url.Action("CheckOut", "Cart")" class="btn btn-primary">Order</a></p>
 						</div>
 					</div>
 				</div>
@@ -75,51 +80,8 @@
 				<h2>Related Products</h2>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-md-3 col-lg-3 mb-4 text-center">
-				<div class="product-entry border">
-					<a href="#" class="prod-img">
-						<img src="images/item-1.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
-					</a>
-					<div class="desc">
-						<h2><a href="#">Women's Boots Shoes Maca</a></h2>
-						<span class="price">$139.00</span>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3 col-lg-3 mb-4 text-center">
-				<div class="product-entry border">
-					<a href="#" class="prod-img">
-						<img src="images/item-2.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
-					</a>
-					<div class="desc">
-						<h2><a href="#">Women's Minam Meaghan</a></h2>
-						<span class="price">$139.00</span>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3 col-lg-3 mb-4 text-center">
-				<div class="product-entry border">
-					<a href="#" class="prod-img">
-						<img src="images/item-3.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
-					</a>
-					<div class="desc">
-						<h2><a href="#">Men's Taja Commissioner</a></h2>
-						<span class="price">$139.00</span>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3 col-lg-3 mb-4 text-center">
-				<div class="product-entry border">
-					<a href="#" class="prod-img">
-						<img src="images/item-4.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
-					</a>
-					<div class="desc">
-						<h2><a href="#">Russ Men's Sneakers</a></h2>
-						<span class="price">$139.00</span>
-					</div>
-				</div>
-			</div>
+		<div class="row" id="recommended-products">
+			
 		</div>
 	</div>
 </div>
@@ -306,5 +268,56 @@
 				});
 		}
 	});
-	
+
+	async function getRecommendedProducts(productId) {
+		const url = `https://localhost:7063/api/MLK_MeansApi/recommend/${productId}`;
+
+		try {
+			const response = await fetch(url);
+			const products = await response.json(); // Giả sử API trả về một mảng sản phẩm
+			console.log('Dữ liệu sản phẩm nhận được:', products);
+			// Tạo HTML cho mỗi sản phẩm gợi ý
+			const productContainer = document.getElementById('recommended-products'); // Đảm bảo có div này trong HTML
+			productContainer.innerHTML = ''; // Xóa dữ liệu cũ trước khi thêm sản phẩm mới
+
+			products.forEach(product => {
+				const productHtml = `
+						<div class="col-lg-3 col-md-6 mb-4">
+							<div class="card h-100">
+								<div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+									 style="height: 313px; position: relative; overflow: hidden;"
+									 data-mdb-ripple-color="light">
+									<img src="/images/${product.image}" style="width: 100%; height: 100%; object-fit: cover;" alt="${product.productname}" />
+									<a href="/Product/DetailProduct?id=${product.productid}">
+										<div class="mask" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+											<div class="d-flex justify-content-start align-items-end h-100">
+												${product.discount > 0 ? `<h5><span class="badge bg-danger ms-2">-${product.discount}%</span></h5>` : ''}
+											</div>
+										</div>
+									</a>
+								</div>
+
+								<div class="card-body d-flex flex-column justify-content-between">
+									<a href="/Product/DetailProduct?id=${product.productid}" class="text-reset">
+										<h5 class="card-title mb-3">${product.productname}</h5>
+									</a>									
+									<h6 class="mb-3">
+										${product.discount > 0 ?
+						`<s>${product.price} VNĐ</s>
+											 <strong class="ms-2 text-danger">${(product.price * (1 - product.discount / 100)).toFixed(2)} VNĐ</strong>` :
+						`<s>${product.price} VNĐ</s>`
+					}
+									</h6>
+								</div>
+							</div>
+						</div>
+					`;
+				productContainer.innerHTML += productHtml;
+			});
+		} catch (error) {
+			console.error('Error fetching recommended products:', error);
+		}
+	}
+	// Giả sử bạn có một sản phẩm ID để lấy gợi ý
+	getRecommendedProducts(@ViewBag.ProductId); // Thay thế 123 bằng ID sản phẩm thực tế
 </script>

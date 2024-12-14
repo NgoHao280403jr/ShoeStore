@@ -184,25 +184,27 @@
 							<div id="colorlib-logo"><a href="index.html">Footwear</a></div>
 						</div>
 						<div class="col-sm-5 col-md-3">
-							<form action="#" class="search-wrap">
+							<form id="search-form" method="get" action="/Product/AllProduct" class="search-wrap">
 								<div class="form-group">
-									<input type="search" class="form-control search" placeholder="Search">
-									<button class="btn btn-primary submit-search text-center" type="submit"><i class="icon-search"></i></button>
+									<input type="search" name="searchTerm" class="form-control search" id="search-input" placeholder="Search">
+									<button class="btn btn-primary submit-search text-center" type="submit">
+										<i class="icon-search"></i>
+									</button>
 								</div>
 							</form>
+
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-sm-12 text-left menu-1">
 							<ul>
-								<li class="active"><a href="index.html">Home</a></li>
+								<li class="active"><a asp-controller="Home" asp-action="Index">Home</a></li>
 								<li class="custom-dropdown" id="custom-categories-menu">
-									<a href="#">Categories</a>
+									<a href="#">Brand</a>
 									<ul class="custom-dropdown-menu-1" id="custom-categories-dropdown"></ul>
-								</li>
-								<li><a href="women.html">Women</a></li>
-								<li><a href="about.html">About</a></li>
-								<li><a href="contact.html">Contact</a></li>
+								</li>								
+								<li><a href="/Home/About">About</a></li>
+								<li><a href="/Home/Contact">Contact</a></li>
 								<li class="cart"><a href="@Url.Action("AddToCart", "Cart")"><i class="icon-shopping-cart"></i> Cart</a></li>
 								
 							</ul>
@@ -338,7 +340,10 @@
 				data.forEach(parentCategory => {
 					const parentLi = document.createElement('li');
 					parentLi.classList.add('custom-dropdown-1');
-					parentLi.innerHTML = `<a href="#">${parentCategory.parentName}</a>`;
+
+					// Đường dẫn cho danh mục cha
+					const parentHref = `/Product/AllProduct?parentCategoryId=${parentCategory.parentId}`;
+					parentLi.innerHTML = `<a href="${parentHref}">${parentCategory.parentName}</a>`;
 
 					// Nếu danh mục cha có danh mục con
 					if (parentCategory.categories && parentCategory.categories.length > 0) {
@@ -348,7 +353,11 @@
 						// Duyệt qua danh mục con
 						parentCategory.categories.forEach(childCategory => {
 							const childLi = document.createElement('li');
-							childLi.innerHTML = `<a href="/category/${childCategory.categoryId}">${childCategory.categoryName}</a>`;
+
+							// Đường dẫn cho danh mục con
+							const childHref = `/Product/AllProduct?parentCategoryId=${parentCategory.parentId}&categoryId=${childCategory.categoryId}`;
+							childLi.innerHTML = `<a href="${childHref}">${childCategory.categoryName}</a>`;
+
 							childUl.appendChild(childLi);
 						});
 

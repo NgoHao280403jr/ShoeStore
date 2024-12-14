@@ -132,7 +132,7 @@
 			.then(response => response.json())
 			.then(data => {
 				alert(data.message); // Show success message
-				window.location.href = '/Cart/AddToCart';
+				window.location.href = `/Cart/AddToCart?productId=${productId}`;
 			})
 			.catch(error => {
 				console.error('Error:', error);

@@ -22,9 +22,12 @@ namespace QLBanGiay.Controllers.API
             string sortBy = "",
             string sortOrder = "",
             long? parentCategoryId = null,
-            long? categoryId = null)
+            long? categoryId = null,
+			decimal? priceMin = null,
+			 decimal? priceMax = null,
+             string searchTerm="")
         {
-            var result = await _productService.GetProductsAsync(page, pageSize, sortBy, sortOrder, parentCategoryId, categoryId);
+            var result = await _productService.GetProductsAsync(page, pageSize, sortBy, sortOrder, parentCategoryId, categoryId,priceMin,priceMax,searchTerm);
             return Ok(result);
         }
 

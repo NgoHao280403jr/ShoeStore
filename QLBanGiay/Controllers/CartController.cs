@@ -6,8 +6,9 @@ namespace QLBanGiay.Controllers
 	[AuthorizeUser]
 	public class CartController : Controller
 	{
-		public IActionResult AddToCart()
+		public IActionResult AddToCart(int productId)
 		{
+			ViewBag.ProductId = productId;
 			return View();
 		}
 		public IActionResult CheckOut()

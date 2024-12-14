@@ -8,21 +8,24 @@
             <div class="col-lg-2">
                 <div class="border p-3 rounded mb-4">
                     <h5>Filter by Price (VNĐ)</h5>
-                    <div class="mb-4">
-                        <span id="price-min-value" class="d-block mt-2">Price Min: 200</span>
-                        <input type="range" class="form-range" name="price-min" id="price-min" value="200000" min="0" max="10000000">
-                    </div>
-                    <div class="mb-4">
-                        <span id="price-max-value" class="d-block mt-2">Price Max: 800</span>
-                        <input type="range" class="form-range" name="price-max" id="price-max" value="800000" min="0" max="10000000">
-                    </div>                                         
+                    <form id="filter-form" method="get" action="/Product/AllProduct">
+                        <div class="mb-4">
+                            <span id="price-min-value" class="d-block mt-2">Price Min: 100000</span>
+                            <input type="range" class="form-range" name="priceMin" id="price-min" value="100000" min="0" max="10000000">
+                        </div>
+                        <div class="mb-4">
+                            <span id="price-max-value" class="d-block mt-2">Price Max: 800000</span>
+                            <input type="range" class="form-range" name="priceMax" id="price-max" value="800000" min="0" max="10000000">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Filter</button>
+                    </form>
                 </div>
 
                 <div class="border p-3 rounded">
                     <h5>Sort Products</h5>
-                    <form method="get" action="/sort_products">
+                    <form id="filter-form" method="get" action="/Product/AllProduct">
                         <div class="mb-3">
-                            <select name="sort" class="form-select">
+                            <select name="sortOrder" class="form-select">
                                 <option value="asc">Price: Low to High</option>
                                 <option value="desc">Price: High to Low</option>                               
                             </select>
@@ -33,7 +36,7 @@
             </div>
 
             <!-- Main content for products -->
-            <div class="col-lg-10">
+            <div class="col-lg-10" id="product-list">
                 <div class="row">
                     @foreach (var product in Model)
                     {
@@ -120,4 +123,30 @@
     document.getElementById('price-max').addEventListener('input', function () {
         document.getElementById('price-max-value').textContent = `Price Max: ${this.value}`;
     });
+    const filterForm = document.getElementById("filter-form");
+
+    // Lắng nghe sự kiện thay đổi trên thanh trượt và các điều kiện lọc khác
+    filterForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const minPrice = document.getElementById("price-min").value;
+        const maxPrice = document.getElementById("price-max").value;
+        const sortBy = document.querySelector("[name='sortBy']").value;
+        const sortOrder = document.querySelector("[name='sortOrder']").value;
+        const categoryId = document.querySelector("[name='parentCategoryId']").value;
+        const categoryId = document.querySelector("[name='categoryId']").value; // nếu có
+
+        // Xây dựng URL mới với các tham số
+        const url = new URL(window.location.href);
+        url.searchParams.set("priceMin", minPrice);
+        url.searchParams.set("priceMax", maxPrice);
+        url.searchParams.set("sortBy", sortBy);
+        url.searchParams.set("sortOrder", sortOrder);
+        url.searchParams.set("parentCategoryId", categoryId); // Nếu có
+        url.searchParams.set("categoryId", categoryId); // Nếu có
+
+        // Điều hướng đến URL mới
+        window.location.href = url.toString();
+    });
+
 </script>

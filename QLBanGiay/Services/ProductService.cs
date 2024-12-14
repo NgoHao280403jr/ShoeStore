@@ -19,10 +19,13 @@ namespace QLBanGiay.Services
              string sortBy = "",
              string sortOrder = "",
              long? parentCategoryId = null,
-             long? categoryId = null)
+             long? categoryId = null,
+			 decimal? priceMin = null,
+			 decimal? priceMax = null,
+             string searchTerm="")
         {
-            var totalItems = await _productRepository.GetTotalProductsAsync();
-            var products = await _productRepository.GetProductsAsync(page, pageSize, sortBy, sortOrder, parentCategoryId, categoryId);
+            var totalItems = await _productRepository.GetTotalProductsAsync(parentCategoryId,categoryId, priceMin, priceMax, searchTerm);
+            var products = await _productRepository.GetProductsAsync(page, pageSize, sortBy, sortOrder, parentCategoryId, categoryId,priceMin,priceMax,searchTerm);
 
             var data = products.Select(p => new
             {
