@@ -13,58 +13,101 @@ namespace QLBanGiay.Repository
 			_context = context;
 		}
 
-        public async Task<List<Product>> GetProductsAsync(
-            int page,
-            int pageSize,
-            string sortBy,
-            string sortOrder,
-            long? parentCategoryId = null,
-            long? categoryId = null)
-        {
-            var query = _context.Products
-                .Include(p => p.Category)
-                .ThenInclude(c => c.Parentcategory)
-                .AsQueryable();
-
-            // Lọc theo danh mục cha
-            if (parentCategoryId.HasValue)
-            {
-                query = query.Where(p => p.Parentcategoryid == parentCategoryId.Value);
-            }
-
-            // Lọc theo danh mục con
-            if (categoryId.HasValue)
-            {
-                query = query.Where(p => p.Categoryid == categoryId.Value);
-            }
-
-            // Áp dụng sắp xếp
-            query = sortBy.ToLower() switch
-            {
-                "price" => sortOrder.ToLower() == "desc"
-                    ? query.OrderByDescending(p => p.Price)
-                    : query.OrderBy(p => p.Price),
-                "productname" => sortOrder.ToLower() == "desc"
-                    ? query.OrderByDescending(p => p.Productname)
-                    : query.OrderBy(p => p.Productname),
-                "discount" => sortOrder.ToLower() == "desc"
-                    ? query.OrderByDescending(p => p.Discount)
-                    : query.OrderBy(p => p.Discount),
-                _ => query.OrderBy(p => p.Productname) // Mặc định sắp xếp theo ProductName
-            };
-
-            // Phân trang
-            return await query
-                .Skip((page - 1) * pageSize)
-                .Take(pageSize)
-                .ToListAsync();
-        }
-
-
-
-        public async Task<int> GetTotalProductsAsync()
+		public async Task<List<Product>> GetProductsAsync(
+			int page,
+			int pageSize,
+			string sortBy,
+			string sortOrder,
+			long? parentCategoryId = null,
+			long? categoryId = null,
+			decimal? priceMin = null,
+			decimal? priceMax = null,
+            string searchTerm="")
 		{
-			return await _context.Products.CountAsync();
+			var query = _context.Products
+				.Include(p => p.Category)
+				.ThenInclude(c => c.Parentcategory)
+				.AsQueryable();
+
+			// Lọc theo danh mục cha
+			if (parentCategoryId.HasValue)
+			{
+				query = query.Where(p => p.Parentcategoryid == parentCategoryId.Value);
+			}
+
+			// Lọc theo danh mục con
+			if (categoryId.HasValue)
+			{
+				query = query.Where(p => p.Categoryid == categoryId.Value);
+			}
+
+			// Lọc theo giá
+			if (priceMin.HasValue)
+			{
+				query = query.Where(p => p.Price >= priceMin.Value);
+			}
+
+			if (priceMax.HasValue)
+			{
+				query = query.Where(p => p.Price <= priceMax.Value);
+			}
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+				query = query.Where(p => p.Productname.ToLower().Contains(searchTerm.ToLower()));
+
+			}
+
+			// Áp dụng sắp xếp
+			query = sortBy.ToLower() switch
+			{
+				"price" => sortOrder.ToLower() == "desc"
+					? query.OrderByDescending(p => p.Price)
+					: query.OrderBy(p => p.Price),
+				_ => query.OrderBy(p => p.Productname) // Mặc định sắp xếp theo ProductName
+			};
+
+			// Phân trang
+			return await query
+				.Skip((page - 1) * pageSize)
+				.Take(pageSize)
+				.ToListAsync();
+		}
+
+		public async Task<int> GetTotalProductsAsync(
+	         long? parentCategoryId = null,
+	         long? categoryId = null,
+			 decimal? priceMin = null,
+			decimal? priceMax = null,
+			string searchTerm = "")
+		{
+			var query = _context.Products.AsQueryable();
+
+			// Lọc theo danh mục cha
+			if (parentCategoryId.HasValue)
+			{
+				query = query.Where(p => p.Parentcategoryid == parentCategoryId.Value);
+			}
+
+			// Lọc theo danh mục con
+			if (categoryId.HasValue)
+			{
+				query = query.Where(p => p.Categoryid == categoryId.Value);
+			}
+			if (priceMin.HasValue)
+			{
+				query = query.Where(p => p.Price >= priceMin.Value);
+			}
+
+			if (priceMax.HasValue)
+			{
+				query = query.Where(p => p.Price <= priceMax.Value);
+			}
+			if (!string.IsNullOrEmpty(searchTerm))
+			{
+				query = query.Where(p => p.Productname.ToLower().Contains(searchTerm.ToLower()));
+
+			}
+			return await query.CountAsync();  // Trả về tổng số sản phẩm sau khi áp dụng các bộ lọc
 		}
 
 		public async Task<Product> GetProductByIdAsync(int id)

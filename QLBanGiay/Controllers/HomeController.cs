@@ -11,8 +11,7 @@ namespace QLBanGiay.Controllers
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-        }
-		[AuthorizeUser]
+        }		
 		public IActionResult Index()
         {
             return View();
@@ -22,8 +21,15 @@ namespace QLBanGiay.Controllers
         {
             return View();
         }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+		public IActionResult About()
+		{
+			return View();
+		}
+		public IActionResult Contact()
+		{
+			return View();
+		}
+		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         
         public IActionResult Error()
         {
