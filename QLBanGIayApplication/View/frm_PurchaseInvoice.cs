@@ -25,7 +25,8 @@ namespace QLBanGiay_Application.View
         public frm_PurchaseInvoice()
         {
             InitializeComponent();
-            _context = new QlShopBanGiayContext();
+			this.StartPosition = FormStartPosition.CenterScreen;
+			_context = new QlShopBanGiayContext();
             _productService = new ProductService(new ProductRepository(_context));
             _productSizeService = new ProductSizeService(new ProductSizeRepository(_context));
             _purchaseInvoiceService = new PurchaseInvoiceService(new PurchaseInvoiceRepository(_context));
@@ -43,8 +44,9 @@ namespace QLBanGiay_Application.View
             cbo_Product.DataSource = products;
             cbo_Product.DisplayMember = "ProductName";
             cbo_Product.ValueMember = "ProductId";
+			cbo_Product.DropDownHeight = 200;
 
-            var employees = _employeeService.GetAllEmployees();
+			var employees = _employeeService.GetAllEmployees();
             cbo_Employee.DataSource = employees;
             cbo_Employee.DisplayMember = "EmployeeName";
             cbo_Employee.ValueMember = "EmployeeId";
@@ -53,7 +55,8 @@ namespace QLBanGiay_Application.View
             cbb_Size.DataSource = size;
             cbb_Size.DisplayMember = "ProductSizeId";   
             cbb_Size.ValueMember = "ProductSizeId";
-        }
+			cbb_Size.DropDownHeight = 200;
+		}
 
         private void LoadDataGridView()
         {
@@ -117,38 +120,80 @@ namespace QLBanGiay_Application.View
                 cbb_Size.SelectedValue = Convert.ToInt64(selectedRow.Cells["ProductSizeId"].Value);
             }
         }
-        private void btn_Them_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                var productSizeId = Convert.ToInt64(cbb_Size.SelectedValue);
+		private void btn_Them_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				// Kiểm tra và lấy ProductSizeId
+				if (cbb_Size.SelectedValue == null || !long.TryParse(cbb_Size.SelectedValue.ToString(), out var productSizeId))
+				{
+					MessageBox.Show("Vui lòng chọn kích thước sản phẩm hợp lệ.");
+					return;
+				}
 
-                var invoice = new PurchaseInvoice
-                {
-                    ProductId = (long)cbo_Product.SelectedValue,
-                    ProductSizeId = productSizeId, 
-                    EmployeeId = (long)cbo_Employee.SelectedValue,
-                    Quantity = int.Parse(txt_Quantity.Text),
-                    UnitPrice = double.Parse(txt_UnitPrice.Text),
-                    TotalPrice = double.Parse(txt_TotalPrice.Text),
-                    ImportDate = DateTime.SpecifyKind(dtp_ImportDate.Value, DateTimeKind.Utc),
-                };
+				// Lấy các giá trị và kiểm tra tính hợp lệ
+				if (cbo_Product.SelectedValue == null || !long.TryParse(cbo_Product.SelectedValue.ToString(), out var productId))
+				{
+					MessageBox.Show("Vui lòng chọn sản phẩm hợp lệ.");
+					return;
+				}
 
-                var productsize = _productSizeService.GetProductSizeById(productSizeId); 
-                _purchaseInvoiceService.AddInvoice(invoice);
+				if (cbo_Employee.SelectedValue == null || !long.TryParse(cbo_Employee.SelectedValue.ToString(), out var employeeId))
+				{
+					MessageBox.Show("Vui lòng chọn nhân viên hợp lệ.");
+					return;
+				}
 
-                _productSizeService.UpdateProductSizeQuantity(invoice.ProductId, productsize.Size, invoice.Quantity);
+				if (!int.TryParse(txt_Quantity.Text, out var quantity) || quantity <= 0)
+				{
+					MessageBox.Show("Vui lòng nhập số lượng hợp lệ.");
+					return;
+				}
 
-                MessageBox.Show("Hàng đã được thêm thành công.");
-                LoadDataGridView();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi khi nhập hàng: {ex}");
-            }
-        }
+				if (!double.TryParse(txt_UnitPrice.Text, out var unitPrice) || unitPrice <= 0)
+				{
+					MessageBox.Show("Vui lòng nhập đơn giá hợp lệ.");
+					return;
+				}
 
-        private void btn_Capnhat_Click(object sender, EventArgs e)
+				// Tính tổng giá tự động
+				var totalPrice = quantity * unitPrice;
+
+				// Tạo đối tượng hóa đơn
+				var invoice = new PurchaseInvoice
+				{
+					ProductId = productId,
+					ProductSizeId = productSizeId,
+					EmployeeId = employeeId,
+					Quantity = quantity,
+					UnitPrice = unitPrice,
+					TotalPrice = totalPrice, // Tự động gán tổng giá
+					ImportDate = DateTime.SpecifyKind(dtp_ImportDate.Value, DateTimeKind.Utc),
+				};
+
+				// Lấy thông tin kích thước sản phẩm
+				var productsize = _productSizeService.GetProductSizeById(productSizeId);
+				if (productsize == null)
+				{
+					MessageBox.Show("Không tìm thấy thông tin kích thước sản phẩm.");
+					return;
+				}
+
+				// Thêm hóa đơn và cập nhật số lượng
+				_purchaseInvoiceService.AddInvoice(invoice);
+				_productSizeService.UpdateProductSizeQuantity(invoice.ProductId, productsize.Size, invoice.Quantity);
+
+				// Hiển thị thông báo thành công
+				MessageBox.Show("Hàng đã được thêm thành công.");
+				LoadDataGridView();
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"Lỗi khi nhập hàng: {ex.Message}");
+			}
+		}
+
+		private void btn_Capnhat_Click(object sender, EventArgs e)
         {
             txt_InvoiceId.Text = "";
             txt_Quantity.Text = "";

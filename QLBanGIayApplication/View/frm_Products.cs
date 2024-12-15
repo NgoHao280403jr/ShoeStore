@@ -295,7 +295,7 @@ namespace QLBanGiay_Application.View
                 ck_Hienthi.Checked = selectedProduct.Isactive;
 
                 //string imagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "img", selectedProduct.Image);
-                string imagePath = Path.Combine(@"D:\Dowload\ShoeStore-main\ShoeStore-main\img", selectedProduct.Image);
+                string imagePath = Path.Combine(@"D:\QLBanGiay\img", selectedProduct.Image);
                 if (!string.IsNullOrEmpty(selectedProduct.Image) && File.Exists(imagePath))
                 {
                     Picture_SP.Image = Image.FromFile(imagePath);

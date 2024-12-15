@@ -26,7 +26,8 @@ namespace QLBanGiay_Application.View
         public frm_Customers(UserService userService)
         {
             InitializeComponent();
-            this.Load += Frm_Customers_Load;
+			this.StartPosition = FormStartPosition.CenterScreen;
+			this.Load += Frm_Customers_Load;
             this.btn_Timkiem.Click += Btn_Timkiem_Click;
             this.btn_Them.Click += Btn_Them_Click;
             this.btn_Capnhat.Click += Btn_Capnhat_Click;
