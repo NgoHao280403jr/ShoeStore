@@ -25,6 +25,7 @@ namespace QLBanGiay_Application.View
         private readonly OrderService _orderService;
         private readonly CustomerService _CustomerService;
         private readonly OrderdetailService _orderdetailService;
+        private readonly ExportPdf exportPdf;
         private readonly QlShopBanGiayContext _context;
         OrderRepository orderRepository;
         public frm_Orders(UserService userService)
@@ -45,11 +46,18 @@ namespace QLBanGiay_Application.View
             _orderService = new OrderService(new OrderRepository(_context));
             _orderdetailService = new OrderdetailService(new OrderdetailRepository(_context));
             _userService = userService;
+            exportPdf = new ExportPdf(_orderService, _orderdetailService);
         }
 
         private void Btn_Xuathd_Click(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            if(txt_Madm.Text == string.Empty)
+            {
+                MessageBox.Show("Hãy chọn 1 hóa đơn để xuất ra");
+                return;
+            }
+            long orderId = long.Parse(txt_Madm.Text);
+            exportPdf.ExportInvoiceToPdf(orderId);
         }
 
         private void Btn_Thoat_Click(object? sender, EventArgs e)
@@ -465,9 +473,5 @@ namespace QLBanGiay_Application.View
             }
         }
 
-        private void btn_Xuathd_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

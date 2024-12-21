@@ -534,7 +534,6 @@
             btn_Xuathd.Size = new Size(215, 56);
             btn_Xuathd.TabIndex = 3;
             btn_Xuathd.Text = "Xuất hóa đơn";
-            btn_Xuathd.Click += btn_Xuathd_Click;
             // 
             // btn_Themhd
             // 
