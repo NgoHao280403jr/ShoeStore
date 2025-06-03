@@ -9,6 +9,6 @@ namespace QLBanGiay.Repository.IRepository
 		Task<Product> GetProductByIdAsync(int id);
         Task<List<Product>> SearchProductsAsync(string searchTerm, int page, int pageSize);
         Task<int> GetSearchTotalCountAsync(string searchTerm);
-
+        Task IndexAllProductsToElasticsearchAsync();
     }
 }

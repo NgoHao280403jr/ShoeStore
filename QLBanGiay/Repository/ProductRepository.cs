@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Nest;
+using QLBanGiay.DTO;
 using QLBanGiay.Models.Models;
 using QLBanGiay.Repository.IRepository;
 
@@ -7,13 +9,13 @@ namespace QLBanGiay.Repository
 	public class ProductRepository : IProductRepository
 	{
 		private readonly QlShopBanGiayContext _context;
-
-		public ProductRepository(QlShopBanGiayContext context)
-		{
-			_context = context;
-		}
-
-		public async Task<List<Product>> GetProductsAsync(
+        private readonly IElasticClient _elasticClient;
+        public ProductRepository(QlShopBanGiayContext context, IElasticClient elasticClient)
+        {
+            _context = context;
+            _elasticClient = elasticClient;
+        }
+        public async Task<List<Product>> GetProductsAsync(
 			int page,
 			int pageSize,
 			string sortBy,
@@ -118,30 +120,89 @@ namespace QLBanGiay.Repository
 				.Include(p => p.ProductSizes) 
 				.FirstOrDefaultAsync(p => p.Productid == id); 
 		}
-        public async Task<List<Product>> SearchProductsAsync(string searchTerm, int page, int pageSize)
-        {
-            var query = _context.Products
-                .Where(p => EF.Functions.Like(p.Productname.ToLower(), $"%{searchTerm.ToLower()}%") ||
-                            (p.Category != null && EF.Functions.Like(p.Category.Categoryname.ToLower(), $"%{searchTerm.ToLower()}%")) ||
-                            (p.Category != null && p.Category.Parentcategory != null && EF.Functions.Like(p.Category.Parentcategory.Parentcategoryname.ToLower(), $"%{searchTerm.ToLower()}%")))
-                .Include(p => p.Category)
-                .ThenInclude(c => c.Parentcategory)
-                .AsQueryable();
+		//public async Task<List<Product>> SearchProductsAsync(string searchTerm, int page, int pageSize)
+		//{
+		//	var query = _context.Products
+		//		.Where(p => EF.Functions.Like(p.Productname.ToLower(), $"%{searchTerm.ToLower()}%") ||
+		//					(p.Category != null && EF.Functions.Like(p.Category.Categoryname.ToLower(), $"%{searchTerm.ToLower()}%")) ||
+		//					(p.Category != null && p.Category.Parentcategory != null && EF.Functions.Like(p.Category.Parentcategory.Parentcategoryname.ToLower(), $"%{searchTerm.ToLower()}%")))
+		//		.Include(p => p.Category)
+		//		.ThenInclude(c => c.Parentcategory)
+		//		.AsQueryable();
 
-            return await query
-                .OrderBy(p => p.Productname)
-                .Skip((page - 1) * pageSize)
-                .Take(pageSize)
-                .ToListAsync();
-        }
+		//	return await query
+		//		.OrderBy(p => p.Productname)
+		//		.Skip((page - 1) * pageSize)
+		//		.Take(pageSize)
+		//		.ToListAsync();
+		//}
 
-        public async Task<int> GetSearchTotalCountAsync(string searchTerm)
+		public async Task<int> GetSearchTotalCountAsync(string searchTerm)
         {
             return await _context.Products
                 .CountAsync(p => p.Productname.Contains(searchTerm) ||
                                  (p.Category != null && p.Category.Categoryname.Contains(searchTerm)) ||
                                  (p.Category != null && p.Category.Parentcategory != null && p.Category.Parentcategory.Parentcategoryname.Contains(searchTerm)));
         }
+		public async Task<List<Product>> SearchProductsAsync(string searchTerm, int page, int pageSize)
+		{
+			var response = await _elasticClient.SearchAsync<Product>(s => s
+				.Query(q => q
+					.MultiMatch(m => m
+						.Fields(f => f
+							.Field(p => p.Productname)
+							.Field(p => p.Productdescription)
+						)
+						.Query(searchTerm)
+					)
+				)
+				.From((page - 1) * pageSize)
+				.Size(pageSize)
+			);
+			return response.Documents.ToList();
+		}
+        public async Task IndexAllProductsToElasticsearchAsync()
+        {
+            var products = await _context.Products
+                .Include(p => p.Category)
+                .ThenInclude(c => c.Parentcategory)
+                .ToListAsync();
 
+            var elasticProducts = products.Select(p => new ProductElasticDto
+            {
+                Productid = p.Productid,
+                Productname = p.Productname,
+                Productdescription = p.Productdescription,
+                Price = p.Price,
+                Categoryname = p.Category?.Categoryname,
+                Parentcategoryname = p.Category?.Parentcategory?.Parentcategoryname
+            }).ToList();
+
+            var indexName = "product";
+
+            // Kiểm tra index đã tồn tại chưa
+            var indexExists = await _elasticClient.Indices.ExistsAsync(indexName);
+            if (!indexExists.Exists)
+            {
+                var createResponse = await _elasticClient.Indices.CreateAsync(indexName, c => c
+                    .Map<ProductElasticDto>(m => m.AutoMap())
+                );
+
+                if (!createResponse.IsValid)
+                    throw new Exception("❌ Failed to create Elasticsearch index: " + createResponse.DebugInformation);
+            }
+
+            var response = await _elasticClient.BulkAsync(b => b
+                .Index(indexName)
+                .IndexMany(elasticProducts)
+            );
+
+            if (response.Errors)
+            {
+                var errors = string.Join("\n", response.ItemsWithErrors.Select(e => e.Error.Reason));
+                throw new Exception("❌ Indexing failed:\n" + errors);
+            }
+        }
     }
 }
+

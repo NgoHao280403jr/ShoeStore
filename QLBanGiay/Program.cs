@@ -3,7 +3,7 @@ using QLBanGiay.Models.Models;
 using QLBanGiay.Repository;
 using QLBanGiay.Repository.IRepository;
 using QLBanGiay.Services;
-
+using Nest;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -30,6 +30,12 @@ builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<ProductService>();
 builder.Services.AddScoped<IProductCategoryRepository, ProductCategoryRepository>();
 builder.Services.AddScoped<ProductCategoryService>();
+builder.Services.AddSingleton<IElasticClient>(sp =>
+{
+    var settings = new ConnectionSettings(new Uri(builder.Configuration["Elasticsearch:Uri"]))
+        .DefaultIndex("product");
+    return new ElasticClient(settings);
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
